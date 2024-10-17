@@ -2,7 +2,7 @@
 # #%L
 # AEM Rules for SonarQube
 # %%
-# Copyright (C) 2015-2019 Wunderman Thompson Technology
+# Copyright (C) 2015-2024 VML
 # %%
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
 
 name: build-and-analyse
 
-on: [push]
+on: [ push ]
 
 jobs:
   build:
@@ -28,7 +28,7 @@ jobs:
 
     strategy:
       matrix:
-        java-version: [11]
+        java-version: [ 11 ]
 
     steps:
       - uses: actions/checkout@v3

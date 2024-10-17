@@ -1,11 +1,22 @@
-.idea/
-*.iml
-*.ipr
-*.iws
+node_modules
+.DS_Store
 target/
-atlassian-ide-plugin.xml
+node/
+.idea/
+sonar-example-plugin.iml
+.java-version
+local-docker-image/extensions/plugins/*
+
+# Eclipse
 .classpath
 .project
 .settings/
-.java-version
-.DS_Store
+
+# yarn
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

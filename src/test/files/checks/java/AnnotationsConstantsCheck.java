@@ -2,7 +2,7 @@
  * #%L
  * AEM Rules for SonarQube
  * %%
- * Copyright (C) 2015-2019 Wunderman Thompson Technology
+ * Copyright (C) 2015-2024 VML
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@ package com.example;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
+
 import org.apache.felix.scr.annotations.Properties;
 import org.apache.felix.scr.annotations.Property;
 import org.apache.felix.scr.annotations.sling.SlingServlet;
@@ -29,14 +30,14 @@ import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
 
 @SlingServlet(
-    resourceTypes = {"some/resource/path"},
-    selectors = {"inspect", "install"},
-    extensions = {"json"},
-    methods = {"POST"} // Noncompliant {{Use constant METHOD_POST from class org.apache.sling.api.servlets.HttpConstants instead of hardcoded value.}}
+        resourceTypes = {"some/resource/path"},
+        selectors = {"inspect", "install"},
+        extensions = {"json"},
+        methods = {"POST"} // Noncompliant {{Use constant METHOD_POST from class org.apache.sling.api.servlets.HttpConstants instead of hardcoded value.}}
 )
 @Properties({
-    @Property(name = "service.vendor", value = ZenGardenConstants.VENDOR_NAME), // Noncompliant {{Use constant SERVICE_VENDOR from interface org.osgi.framework.Constants instead of hardcoded value.}}
-    @Property(name = "service.description", value = "Provides import process.") // Noncompliant {{Use constant SERVICE_DESCRIPTION from interface org.osgi.framework.Constants instead of hardcoded value.}}
+        @Property(name = "service.vendor", value = ZenGardenConstants.VENDOR_NAME), // Noncompliant {{Use constant SERVICE_VENDOR from interface org.osgi.framework.Constants instead of hardcoded value.}}
+        @Property(name = "service.description", value = "Provides import process.") // Noncompliant {{Use constant SERVICE_DESCRIPTION from interface org.osgi.framework.Constants instead of hardcoded value.}}
 })
 public class AnnotationsConstantsCheck extends SlingAllMethodsServlet {
 
@@ -44,12 +45,13 @@ public class AnnotationsConstantsCheck extends SlingAllMethodsServlet {
 
     @Override("Test")
     protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response)
-        throws ServletException, IOException {
+            throws ServletException, IOException {
     }
 
-    @Override("service.description") // Noncompliant {{Use constant SERVICE_DESCRIPTION from interface org.osgi.framework.Constants instead of hardcoded value.}}
+    @Override("service.description")
+    // Noncompliant {{Use constant SERVICE_DESCRIPTION from interface org.osgi.framework.Constants instead of hardcoded value.}}
     protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response)
-        throws ServletException, IOException {
+            throws ServletException, IOException {
     }
 
 }
