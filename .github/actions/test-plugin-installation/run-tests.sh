@@ -31,7 +31,7 @@ print_usage() {
 usage: $0 [IMAGE...]
 
 examples:
-       $0 7.6-community
+       $0 9.9-community
 EOF
 }
 

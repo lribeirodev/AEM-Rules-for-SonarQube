@@ -24,7 +24,7 @@ inputs:
   sonarqube-base-image:
     description: 'Which base Docker image to use to set up SonarQube'
     required: true
-    default: sonarqube-8.9-community
+    default: sonarqube-9.9-community
   aem-rules-binary:
     description: "Name of the JAR file to copy from Maven's 'target' directory into the plugins directory"
     required: true
