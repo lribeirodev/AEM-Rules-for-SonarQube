@@ -18,11 +18,11 @@
 # #L%
 #
 
-name: sonar-test
+name: sonar-local
 
 services:
-  sonar-test:
-    image: wttech/sonar-test
+  sonar-local:
+    image: sonarqube:10.7.0-community
     build:
       context: .
     ports:

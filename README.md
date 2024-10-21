@@ -1,13 +1,15 @@
-[![Wunderman Thompson Technology logo](assets/vml-logo.png)](http://www.cognifide.com/)
+[<img src="assets/vml-logo.png" width=50% height=50%>](http://www.vml.com/poland)
 
-![Builds Status](https://github.com/wttech/AEM-Rules-for-SonarQube/actions/workflows/build.yml/badge.svg)
+
+![Builds Status](https://github.com/wttech/AEM-Rules-for-SonarQube/actions/workflows/build.yml/badge.svg) [<img src="https://rules.sonarsource.com/images/logos/SonarCloud-black.svg" height="28" alt="Available in SonarCloud">](https://sonarcloud.io)
+[<img src="https://rules.sonarsource.com/images/logos/SonarQube-black.svg" height="28" alt="Available in SonarQube">](https://www.sonarqube.org/)
 # About AEM Rules for SonarQube
 
 ![AEM Rules for SonarQube](https://raw.githubusercontent.com/wttech/AEM-Rules-for-SonarQube/master/assets/logo.png)
 
 ## Purpose
 
-As we all know, SonarQube is a great tool that helps us increase quality of our codebase. However, it does apply mainly to general Java issues. As we know, we can hurt ourselves much more doing AEM. [Adobe Experience Manager](https://docs.adobe.com/docs/en/aem/6-2.html) is a comprehensive content management platform solution for building websites, mobile apps and forms. This tool is intended to find common bugs and bad smells specific for AEM development. Documentation of each rule is available from SonarQube interface after plugin installation.
+As we all know, SonarQube is a great tool that helps us increase quality of our codebase. However, it does apply mainly to general Java issues. As we know, we can hurt ourselves much more doing AEM. [Adobe Experience Manager](https://experienceleague.adobe.com/en/docs) is a comprehensive content management platform solution for building websites, mobile apps and forms. This tool is intended to find common bugs and bad smells specific for AEM development. Documentation of each rule is available from SonarQube interface after plugin installation.
 
 ## Prerequisites
 
@@ -15,24 +17,15 @@ Each release has its own prerequisites section, for more information please chec
 
 ## Installation
 
-**Custom Dockerfile**
+### Local docker image
 
-Following Dockerfile uses official Sonarqube 7.9 image and download AEM Rules 1.0-RC2 to plugin directory.
+Check the plugin locally with the prepared ```docker-compose.yml```. Just run these commands from the repo root to build the latest package and fire up a container.
 
 ```
-FROM sonarqube:7.9-community AS aemrulesqube79
-RUN curl -Lk -o $SONARQUBE_HOME/extensions/plugins/aemrules-1.0-RC2.jar https://github.com/wttech/AEM-Rules-for-SonarQube/releases/download/v1.0-RC2/aemrules-1.0-RC2.jar
+mvn clean package
+cd local-docker-image
+docker-compose up -d
 ```
-
-**Community image**
-
-This is already prepared solution thanks to @ahmed-musallam.
-
-`docker run --rm -p 9000:9000 ahmedmusallam/sonarqube-aem:latest`
-
-This solution is for those who would like to start testing theirs code within aem rules and sonarqube. It contains SonarQube v 7.7, aem rules v 0.11 and predefined quality gates.
-If you would like to participate in our Aem Rules development, please refer to [wiki page](https://github.com/wttech/AEM-Rules-for-SonarQube/wiki) to get into. 
-
 
 ### Update Center
 
@@ -50,7 +43,8 @@ Go to your SonarQube instance administration console and open Update Center. Fin
 Use of the plugin does not differ much from regular SonarQube analysis. However, as rules are often tied to a certain AEM version and its components (Felix, Sling), we've introduced the `aemVersion` analysis property.
 
 Each rule defines supported AEM version or version range. Most of the rules are universal.
-By providing the AEM version parameter, you can instruct the Sonar Runner to only use only a subset of rules applicable to a particular AEM version. When the parameter is not provided then a default AEM version is used (currently 6.4)
+
+Rules are not available in [<img src="https://rules.sonarsource.com/images/logos/SonarLint-black.svg" height="28" alt="Not available in SonarLint">](https://www.sonarlint.org/)
 
 ### Running analysis
 
@@ -58,14 +52,19 @@ When running analysis, pass `sonarRunner.aemVersion` property with your AEM vers
 
 `sonarRunner.aemVersion=<MAJOR_VERSION>.<MINOR_VERSION>`
 
-Runing with Maven
-```
-mvn sonar:sonar -DsonarRunner.aemVersion=6.4
-```
+To avoid quality profiles collisions, the additional execution param has been added.
 
-Runing with Gradle (See [Gradle AEM Plugin](https://github.com/wttech/gradle-aem-plugin))
+`-Dsonar.html.file.suffixes=.notexistingsuffix`
+
+Running with Maven
 ```
-gradlew sonarQube -DsonarRunner.aemVersion=6.4
+mvn clean verify sonar:sonar \
+    -Dsonar.projectKey={sonar_project_key} \
+    -Dsonar.projectName='{sonar_project_name}' \
+    -Dsonar.host.url=http://localhost:9000 \
+    -Dsonar.token={sonar_project_token} \
+    -DsonarRunner.aemVersion=6.5 \
+    -Dsonar.html.file.suffixes=.notexistingsuffix
 ```
 
 # Rule set
@@ -178,13 +177,13 @@ Release notes for each version can be found in [releases section](https://github
 
 # License
 
-Copyright 2015-2016 Wunderman Thompson Technology
+Copyright 2015-2024 VML
 
 Licensed under the Apache License, Version 2.0
 
 # Commercial Support
 
-Technical support can be made available if needed. Please [contact us](mailto:labs-support@cognifide.com) for more details.
+Technical support can be made available if needed. Please [contact us](mailto:labs-support@wundermanthompson.com) for more details.
 
 We can:
 

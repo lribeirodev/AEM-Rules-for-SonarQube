@@ -29,7 +29,7 @@ public class VersionSupportChecker {
 
     public static final String VERSION_PROPERTY = "sonarRunner.aemVersion";
 
-    public static final String DEFAULT_AEM_VERSION = "6.4";
+    public static final String DEFAULT_AEM_VERSION = "6.5";
 
     private boolean all = false;
 
