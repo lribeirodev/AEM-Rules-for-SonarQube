@@ -19,4 +19,6 @@
     #L%
 
 -->
-<div data-sly-list="${model.value" ></div>
+<div data-index-number="${model.index}" /> <!--/* Non-Compliant */-->
+
+<div data-index-number="${model.index @ context='number'}" />

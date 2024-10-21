@@ -6,6 +6,7 @@ node/
 sonar-example-plugin.iml
 .java-version
 local-docker-image/extensions/plugins/*
+*.iml
 
 # Eclipse
 .classpath
