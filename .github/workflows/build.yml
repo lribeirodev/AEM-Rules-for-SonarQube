@@ -41,5 +41,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          mvn clean package \
-             org.jacoco:jacoco-maven-plugin:report
+          mvn clean package jacoco:report coveralls:report
