@@ -20,8 +20,8 @@
 package com.vml.aemrules.htl;
 
 import com.vml.aemrules.htl.checks.HtlAttributesShouldBeAtTheEndCheck;
-import com.vml.aemrules.htl.rules.HtlCheckClasses;
-import com.vml.aemrules.rules.AemRulesRulesDefinition;
+import com.vml.aemrules.htl.rules.HtlRulesList;
+import com.vml.aemrules.htl.rules.HtlRulesDefinition;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -65,10 +65,10 @@ public class HtlSensorTest {
 
     @Before
     public void setUp() {
-        RulesDefinition rulesDefinition = new AemRulesRulesDefinition();
+        RulesDefinition rulesDefinition = new HtlRulesDefinition();
         RulesDefinition.Context context = new RulesDefinition.Context();
         rulesDefinition.define(context);
-        Repository htlRepository = context.repository(HtlCheckClasses.REPOSITORY_KEY);
+        Repository htlRepository = context.repository(HtlRulesList.REPOSITORY_KEY);
 
         FileLinesContextFactory fileLinesContextFactory = getMockedFileLinesContextFactory();
         Configuration configuration = getMockedConfiguration();
@@ -81,7 +81,7 @@ public class HtlSensorTest {
     private CheckFactory getCheckFactory(Repository htlRepository) {
         List<NewActiveRule> ar = new ArrayList<>();
         for (RulesDefinition.Rule rule : htlRepository.rules()) {
-            ar.add(new NewActiveRule.Builder().setRuleKey(RuleKey.of(HtlCheckClasses.REPOSITORY_KEY, rule.key())).build());
+            ar.add(new NewActiveRule.Builder().setRuleKey(RuleKey.of(HtlRulesList.REPOSITORY_KEY, rule.key())).build());
         }
         return new CheckFactory(new DefaultActiveRules(ar));
     }

@@ -41,18 +41,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-@Rule(
-        key = AdministrativeAccessUsageCheck.RULE_KEY,
-        name = AdministrativeAccessUsageCheck.RULE_MESSAGE,
-        priority = Priority.MAJOR,
-        tags = Tags.AEM
-)
-@AemVersion(
-        from = "6.0"
-)
-@Metadata(
-        technicalDebt = "30min"
-)
+@Rule(key = AdministrativeAccessUsageCheck.RULE_KEY)
+@AemVersion(from = "6.0")
 public class AdministrativeAccessUsageCheck extends IssuableSubscriptionVisitor {
 
     public static final String RULE_KEY = "AEM-11";

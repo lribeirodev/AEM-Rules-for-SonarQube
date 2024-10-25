@@ -19,7 +19,7 @@
  */
 package com.vml.aemrules.rules;
 
-import com.vml.aemrules.java.rules.JavaCheckClasses;
+import com.vml.aemrules.java.rules.JavaCheckRegistrar;
 import com.vml.aemrules.metadata.Metadata;
 import com.vml.aemrules.tag.Tags;
 import com.vml.aemrules.version.AemVersion;
@@ -38,6 +38,7 @@ import org.sonar.plugins.java.api.tree.BaseTreeVisitor;
 
 import java.util.List;
 
+import static com.vml.aemrules.java.rules.JavaRulesDefinition.REPOSITORY_KEY;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 
@@ -66,15 +67,15 @@ public class RulesLoaderTest {
     @Before
     public void setUp() {
         context = new RulesDefinition.Context();
-        repo = context.createRepository(JavaCheckClasses.REPOSITORY_KEY, "java");
-        repo.setName(JavaCheckClasses.REPOSITORY_KEY);
+        repo = context.createRepository(REPOSITORY_KEY, "java");
+        repo.setName(REPOSITORY_KEY);
     }
 
     @Test
     public void shouldLoadRuleWithAllSettings() {
         givenRulesLoaded(List.of(RuleWithAllSettings.class));
 
-        RulesDefinition.Repository repository = context.repository(JavaCheckClasses.REPOSITORY_KEY);
+        RulesDefinition.Repository repository = context.repository(REPOSITORY_KEY);
         RulesDefinition.Rule rule = repository.rule(RULE_KEY);
 
         Assert.assertThat(rule.markdownDescription(), is(RULE_MARKDOWN_TEST_DESCRIPTION));
@@ -88,7 +89,7 @@ public class RulesLoaderTest {
     public void shouldNotSetTechnicalDebtWhenAnnotationNotPresent() {
         givenRulesLoaded(List.of(RuleWithoutMetadataAnnotation.class));
 
-        RulesDefinition.Repository repository = context.repository(JavaCheckClasses.REPOSITORY_KEY);
+        RulesDefinition.Repository repository = context.repository(REPOSITORY_KEY);
         RulesDefinition.Rule rule = repository.rule(RULE_KEY);
 
         Assert.assertThat(rule.markdownDescription(), is(RULE_MARKDOWN_TEST_DESCRIPTION));
@@ -102,7 +103,7 @@ public class RulesLoaderTest {
     public void shouldNotSetTechnicalDebtWhenTechnicalDebtNotSetInMetadata() {
         givenRulesLoaded(List.of(RuleWithEmptyTechnicalDebt.class));
 
-        RulesDefinition.Repository repository = context.repository(JavaCheckClasses.REPOSITORY_KEY);
+        RulesDefinition.Repository repository = context.repository(REPOSITORY_KEY);
         RulesDefinition.Rule rule = repository.rule(RULE_KEY);
 
         Assert.assertThat(rule.markdownDescription(), is(RULE_MARKDOWN_TEST_DESCRIPTION));
@@ -116,7 +117,7 @@ public class RulesLoaderTest {
     public void shouldNotLoadRuleWhenRuleAnnotationIsNotPresent() {
         givenRulesLoaded(List.of(RuleWithoutRuleAnnotation.class));
 
-        RulesDefinition.Repository repository = context.repository(JavaCheckClasses.REPOSITORY_KEY);
+        RulesDefinition.Repository repository = context.repository(REPOSITORY_KEY);
         RulesDefinition.Rule rule = repository.rule(RULE_KEY);
 
         Assert.assertThat(rule, is(nullValue()));
@@ -127,7 +128,7 @@ public class RulesLoaderTest {
     public void shouldSetDefaultValuesWhenRuleAttributeWithNameOnly() {
         givenRulesLoaded(List.of(RuleWithOnlyNameAttribute.class));
 
-        RulesDefinition.Repository repository = context.repository(JavaCheckClasses.REPOSITORY_KEY);
+        RulesDefinition.Repository repository = context.repository(REPOSITORY_KEY);
         RulesDefinition.Rule rule = repository.rule("com.vml.aemrules.rules.RulesLoaderTest.RuleWithOnlyNameAttribute");
 
         Assert.assertThat(rule.markdownDescription(), is("No description yet."));
@@ -146,7 +147,7 @@ public class RulesLoaderTest {
     public void shouldLoadRuleWithProperty() {
         givenRulesLoaded(List.of(RuleWithRuleProperty.class));
 
-        RulesDefinition.Repository repository = context.repository(JavaCheckClasses.REPOSITORY_KEY);
+        RulesDefinition.Repository repository = context.repository(REPOSITORY_KEY);
         RulesDefinition.Rule rule = repository.rule(RULE_KEY);
         RulesDefinition.Param param = rule.param(RULE_PROPERTY_KEY);
 
@@ -159,7 +160,7 @@ public class RulesLoaderTest {
     public void shouldLoadRuleWithPropertyWithoutAttributes() {
         givenRulesLoaded(List.of(RuleWithRulePropertyWithoutAttributes.class));
 
-        RulesDefinition.Repository repository = context.repository(JavaCheckClasses.REPOSITORY_KEY);
+        RulesDefinition.Repository repository = context.repository(REPOSITORY_KEY);
         RulesDefinition.Rule rule = repository.rule(RULE_KEY);
         RulesDefinition.Param param = rule.param("testProperty");
 

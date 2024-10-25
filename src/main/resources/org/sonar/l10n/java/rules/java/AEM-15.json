@@ -1,0 +1,15 @@
+{
+    "title": "Check if using 'synchronized' can be replaced with more sophisticated solution.",
+    "type": "CODE_SMELL",
+    "status": "ready",
+    "remediation": {
+        "func": "Constant\/Issue",
+        "constantCost": "30min"
+    },
+    "tags": [
+        "multi-threading",
+        "performance"
+    ],
+    "defaultSeverity": "Info",
+    "sqKey": "AEM-15"
+}

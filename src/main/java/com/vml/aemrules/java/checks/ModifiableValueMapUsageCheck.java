@@ -19,10 +19,7 @@
  */
 package com.vml.aemrules.java.checks;
 
-import com.vml.aemrules.metadata.Metadata;
-import com.vml.aemrules.tag.Tags;
 import com.vml.aemrules.version.AemVersion;
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import org.sonar.plugins.java.api.JavaFileScannerContext;
@@ -40,18 +37,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-@Rule(
-        key = ModifiableValueMapUsageCheck.RULE_KEY,
-        name = ModifiableValueMapUsageCheck.RULE_MESSAGE,
-        priority = Priority.CRITICAL,
-        tags = Tags.AEM
-)
-@AemVersion(
-        all = true
-)
-@Metadata(
-        technicalDebt = "10min"
-)
+@Rule(key = ModifiableValueMapUsageCheck.RULE_KEY)
+@AemVersion(all = true)
 public class ModifiableValueMapUsageCheck extends BaseTreeVisitor implements JavaFileScanner {
 
     protected static final String RULE_KEY = "AEM-17";

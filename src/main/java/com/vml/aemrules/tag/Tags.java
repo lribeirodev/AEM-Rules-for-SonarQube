@@ -27,10 +27,6 @@ public class Tags {
 
     public static final String PERFORMANCE = "performance";
 
-    public static final String MULTI_THREADING = "multi-threading";
-
-    public static final String SLING_MODELS = "sling-models";
-
     private Tags() {
         throw new AssertionError();
     }

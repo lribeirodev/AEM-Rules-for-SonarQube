@@ -27,7 +27,7 @@ public class SlingQueryImplicitStrategyCheckTest extends AbstractBaseTest {
     @Test
     public void checkImplicitSearches() {
         check = new SlingQueryImplicitStrategyCheck();
-        filename = "src/test/resources/java/SlingQueryImplicitStrategyCheck.java";
+        filename = "src/test/files/java/SlingQueryImplicitStrategyCheck.java";
         verify();
     }
 

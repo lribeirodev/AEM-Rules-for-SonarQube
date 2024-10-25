@@ -1,0 +1,37 @@
+<p>
+    The <a href="https://helpx.adobe.com/experience-manager/6-3/sites/developing/using/reference-materials/javadoc/com/day/cq/wcm/api/Page.html#getContentResource()"><code>page.getContentResource()</code></a>
+    is a method of the <a href="https://helpx.adobe.com/experience-manager/6-3/sites/developing/using/reference-materials/diff-previous/changes/com.day.cq.wcm.api.Page.html"><code>Page</code> class</a>
+    which allows you to get a Resource from the page.<br>
+    <br>
+    It is possible to get a <code>null</code> if a jcr:content node does not exist in the repository.
+</p>
+<p>
+    Lack of <code>jrc:content</code> is a quite common situation and occurs when one publishes a deeply nested page without publishing its parents first.
+    In that case parent pages will be published without <code>jrc:content</code> node.
+</p>
+<p>
+    Therefore, you should always null check the return value of <code>getContentResource()</code>
+</p>
+
+<h3>Noncompliant Code Example</h3>
+<pre>
+public ValueMap getProperty(Page page) {
+	return page.getContentResource().getValueMap();
+}
+</pre>
+<h3>Compliant Solution</h3>
+<pre>
+public ValueMap getProperty(Page page) {
+	if (page.getContentResource != null) {
+	  return page.getContentResource.getValueMap();
+	}
+	return ValueMap.EMPTY;
+}
+</pre>
+<p>or</p>
+<pre>
+public ValueMap getProperty(Page page) {
+    Optional&lt;Resource&gt; contentResource = Optional.ofNullable(page.getContentResource());
+    return contentResource.map(Resource::getValueMap).orElse(ValueMap.EMPTY);
+}
+</pre>

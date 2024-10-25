@@ -19,10 +19,7 @@
  */
 package com.vml.aemrules.java.checks.resourceresolver.close;
 
-import com.vml.aemrules.metadata.Metadata;
-import com.vml.aemrules.tag.Tags;
 import com.vml.aemrules.version.AemVersion;
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import org.sonar.plugins.java.api.JavaFileScannerContext;
@@ -35,19 +32,8 @@ import org.sonar.plugins.java.api.tree.VariableTree;
 import java.util.ArrayList;
 import java.util.List;
 
-@Rule(
-        key = ResourceResolverTryWithResourcesCheck.RULE_KEY,
-        name = ResourceResolverTryWithResourcesCheck.RULE_MESSAGE,
-        priority = Priority.INFO,
-        tags = Tags.AEM
-)
-@AemVersion(
-        all = true
-)
-@Metadata(
-        technicalDebt = "10min"
-)
-
+@Rule(key = ResourceResolverTryWithResourcesCheck.RULE_KEY)
+@AemVersion(all = true)
 public class ResourceResolverTryWithResourcesCheck extends BaseTreeVisitor implements
         JavaFileScanner {
 
@@ -56,14 +42,10 @@ public class ResourceResolverTryWithResourcesCheck extends BaseTreeVisitor imple
     protected static final String RULE_MESSAGE = "ResourceResolver can be closed using try-with-resources Java 7 feature.";
 
     private static final String SLING_RESOURCE_RESOLVER = "org.apache.sling.api.resource.ResourceResolver";
-
-    private boolean insideTryStatement = false;
-
-    private boolean insideLambdaExpression = false;
-
-    private JavaFileScannerContext context;
-
     private final List<String> resourceResolversInTryWithResources = new ArrayList<>();
+    private boolean insideTryStatement = false;
+    private boolean insideLambdaExpression = false;
+    private JavaFileScannerContext context;
 
     public void scanFile(JavaFileScannerContext javaFileScannerContext) {
         context = javaFileScannerContext;

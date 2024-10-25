@@ -27,35 +27,35 @@ public class ResourceResolverShouldBeClosedTest extends AbstractBaseTest {
     @Test
     public void checkInjectorNotClosedInFinallyBlock() {
         check = new ResourceResolverShouldBeClosed();
-        filename = "src/test/resources/java/SampleServlet.java";
+        filename = "src/test/files/java/SampleServlet.java";
         verify();
     }
 
     @Test
     public void checkResourceResolverNotClosedInFinallyBlockWhenResourceResolverComesFromDifferentClass() {
         check = new ResourceResolverShouldBeClosed();
-        filename = "src/test/resources/java/ResourceResolverConsumer.java";
+        filename = "src/test/files/java/ResourceResolverConsumer.java";
         verifyNoIssues();
     }
 
     @Test
     public void checkResourceResolverNotClosedWhenItIsOpenedInActivateAndClosedInDeactivate() {
         check = new ResourceResolverShouldBeClosed();
-        filename = "src/test/resources/java/LongSessionService.java";
+        filename = "src/test/files/java/LongSessionService.java";
         verifyNoIssues();
     }
 
     @Test
     public void checkResourceResolverClosedInDeactivateMethod() {
         check = new ResourceResolverShouldBeClosed();
-        filename = "src/test/resources/java/LongSessionEventListener.java";
+        filename = "src/test/files/java/LongSessionEventListener.java";
         verifyNoIssues();
     }
 
     @Test
     public void checkResourceResolverClosedInDeactivateMethodError() {
         check = new ResourceResolverShouldBeClosed();
-        filename = "src/test/resources/java/LongResourceResolverEvenListenerError.java";
+        filename = "src/test/files/java/LongResourceResolverEvenListenerError.java";
         verify();
     }
 

@@ -1,0 +1,14 @@
+{
+    "title": "Implicit search strategy used in Sling Query",
+    "type": "CODE_SMELL",
+    "status": "ready",
+    "remediation": {
+        "func": "Constant\/Issue",
+        "constantCost": "30min"
+    },
+    "tags": [
+        "aem"
+    ],
+    "defaultSeverity": "Minor",
+    "sqKey": "AEM-19"
+}

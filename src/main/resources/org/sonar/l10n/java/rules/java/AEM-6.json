@@ -1,0 +1,14 @@
+{
+    "title": "ResourceResolver should be closed in finally block.",
+    "type": "CODE_SMELL",
+    "status": "ready",
+    "remediation": {
+        "func": "Constant\/Issue",
+        "constantCost": "15min"
+    },
+    "tags": [
+        "aem"
+    ],
+    "defaultSeverity": "Critical",
+    "sqKey": "AEM-6"
+}

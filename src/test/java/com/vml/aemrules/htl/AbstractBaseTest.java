@@ -22,7 +22,7 @@ package com.vml.aemrules.htl;
 import com.vml.aemrules.htl.api.HtlCheck;
 import com.vml.aemrules.htl.checks.AbstractHtlCheck;
 import com.vml.aemrules.htl.lex.HtlLexer;
-import com.vml.aemrules.htl.rules.HtlCheckClasses;
+import com.vml.aemrules.htl.rules.HtlRulesList;
 import com.vml.aemrules.htl.visitors.HtlScanner;
 import com.vml.aemrules.utils.Throwables;
 import org.sonar.api.batch.fs.InputFile;
@@ -62,8 +62,8 @@ public abstract class AbstractBaseTest {
         scanner.addVisitor(new ExpectedIssueCollector(htmlCheckVerifier));
         if (check != null) {
             Class<? extends HtlCheck> htlCheck = check.getClass();
-            Rule rule = HtlCheckClasses.getRule(htlCheck);
-            RuleKey ruleKey = RuleKey.of(HtlCheckClasses.REPOSITORY_KEY, rule.key());
+            Rule rule = HtlRulesList.getRule(htlCheck);
+            RuleKey ruleKey = RuleKey.of(HtlRulesList.REPOSITORY_KEY, rule.key());
             check.setRuleKey(ruleKey);
         }
         scanner.addVisitor(check);

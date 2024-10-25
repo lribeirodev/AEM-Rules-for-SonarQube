@@ -22,11 +22,13 @@ name: sonar-local
 
 services:
   sonar-local:
-    image: sonarqube:10.7.0-community
+    image: sonarqube:9.9-community
     build:
       context: .
     ports:
       - "9000:9000"
+      - "5005:5005"
     restart: unless-stopped
     volumes:
       - ./extensions/plugins:/opt/sonarqube/extensions/plugins:ro
+      - ./conf:/opt/sonarqube/conf:ro

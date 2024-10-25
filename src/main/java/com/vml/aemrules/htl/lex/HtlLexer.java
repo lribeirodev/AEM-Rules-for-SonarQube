@@ -20,12 +20,13 @@
 package com.vml.aemrules.htl.lex;
 
 import org.apache.sling.scripting.sightly.impl.compiler.Syntax;
-import org.sonar.channel.Channel;
-import org.sonar.channel.ChannelDispatcher;
-import org.sonar.channel.CodeReader;
+
 import org.sonar.plugins.html.node.Node;
 import org.sonar.plugins.html.node.NodeType;
 import org.sonar.plugins.html.node.TagNode;
+import org.sonar.sslr.channel.Channel;
+import org.sonar.sslr.channel.ChannelDispatcher;
+import org.sonar.sslr.channel.CodeReader;
 
 import java.io.Reader;
 import java.util.ArrayList;

@@ -19,10 +19,7 @@
  */
 package com.vml.aemrules.java.checks.slingmodels;
 
-import com.vml.aemrules.metadata.Metadata;
-import com.vml.aemrules.tag.Tags;
 import com.vml.aemrules.version.AemVersion;
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import org.sonar.plugins.java.api.JavaFileScannerContext;
@@ -38,18 +35,8 @@ import org.sonar.plugins.java.api.tree.Tree;
 
 import java.util.List;
 
-@Rule(
-        key = DefaultInjectionStrategyAnnotationCheck.RULE_KEY,
-        name = DefaultInjectionStrategyAnnotationCheck.RULE_MESSAGE,
-        priority = Priority.MINOR,
-        tags = {Tags.AEM, Tags.SLING_MODELS}
-)
-@AemVersion(
-        all = true
-)
-@Metadata(
-        technicalDebt = "5min"
-)
+@Rule(key = DefaultInjectionStrategyAnnotationCheck.RULE_KEY)
+@AemVersion(all = true)
 public class DefaultInjectionStrategyAnnotationCheck extends BaseTreeVisitor implements JavaFileScanner {
 
     public static final String RULE_KEY = "AEM-16";

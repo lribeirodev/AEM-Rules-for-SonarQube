@@ -26,28 +26,28 @@ public class PreferSlingServletAnnotationTest extends AbstractBaseTest {
     @Test
     public void checkLackOfAnnotation() {
         check = new PreferSlingServletAnnotation();
-        filename = "src/test/resources/java/SlingServletOne.java";
+        filename = "src/test/files/java/SlingServletOne.java";
         verify();
     }
 
     @Test
     public void checkMixedAnnotations() {
         check = new PreferSlingServletAnnotation();
-        filename = "src/test/resources/java/SlingServletTwo.java";
+        filename = "src/test/files/java/SlingServletTwo.java";
         verify();
     }
 
     @Test
     public void checkRedundantProperties() {
         check = new PreferSlingServletAnnotation();
-        filename = "src/test/resources/java/SlingServletThree.java";
+        filename = "src/test/files/java/SlingServletThree.java";
         verify();
     }
 
     @Test
     public void checkStandardAnnotations() {
         check = new PreferSlingServletAnnotation();
-        filename = "src/test/resources/java/SlingServletWithStandardAnnotations.java";
+        filename = "src/test/files/java/SlingServletWithStandardAnnotations.java";
         verifyNoIssues();
     }
 }

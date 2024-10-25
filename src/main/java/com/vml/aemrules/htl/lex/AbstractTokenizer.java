@@ -19,16 +19,18 @@
  */
 package com.vml.aemrules.htl.lex;
 
-import org.sonar.channel.Channel;
-import org.sonar.channel.CodeReader;
-import org.sonar.channel.EndMatcher;
 import org.sonar.plugins.html.node.Node;
+import org.sonar.sslr.channel.Channel;
+import org.sonar.sslr.channel.CodeReader;
+import org.sonar.sslr.channel.EndMatcher;
 
+import java.util.Arrays;
 import java.util.List;
 
 abstract class AbstractTokenizer<T extends List<Node>> extends Channel<T> {
 
     private final char[] endChars;
+
     private final char[] startChars;
 
     public AbstractTokenizer(String startChars, String endChars) {
@@ -50,6 +52,16 @@ abstract class AbstractTokenizer<T extends List<Node>> extends Channel<T> {
         return true;
     }
 
+    protected static String popTo(CodeReader codeReader, EndMatcher endMatcher, StringBuilder stringBuilder) {
+        boolean shouldContinue = codeReader.peek() != -1;
+        while (shouldContinue) {
+            stringBuilder.append((char) codeReader.pop());
+            shouldContinue = !endMatcher.match(codeReader.peek()) && codeReader.peek() != -1;
+        }
+
+        return stringBuilder.toString();
+    }
+
     protected void addNode(List<Node> nodeList, Node node) {
         nodeList.add(node);
     }
@@ -61,7 +73,7 @@ abstract class AbstractTokenizer<T extends List<Node>> extends Channel<T> {
             setStartPosition(codeReader, node);
 
             StringBuilder stringBuilder = new StringBuilder();
-            codeReader.popTo(getEndMatcher(codeReader), stringBuilder);
+            popTo(codeReader, getEndMatcher(codeReader), stringBuilder);
             for (int i = 0; i < endChars.length; i++) {
                 codeReader.pop(stringBuilder);
             }
@@ -104,20 +116,22 @@ abstract class AbstractTokenizer<T extends List<Node>> extends Channel<T> {
 
         @Override
         public boolean match(int endFlag) {
-            boolean result = false;
             if (endFlag == '"') {
                 quoting = !quoting;
             }
             if (!quoting) {
-                if (equalsIgnoreCase(codeReader.peek(startChars.length), startChars)) {
+                boolean started = equalsIgnoreCase(codeReader.peek(startChars.length), startChars);
+                if (started) {
                     nesting++;
-                } else if (equalsIgnoreCase(codeReader.peek(endChars.length), endChars)) {
-                    nesting--;
-                    result = nesting < 0;
+                } else {
+                    boolean ended = Arrays.equals(codeReader.peek(endChars.length), endChars);
+                    if (ended) {
+                        nesting--;
+                        return nesting < 0;
+                    }
                 }
             }
-
-            return result;
+            return false;
         }
     }
 

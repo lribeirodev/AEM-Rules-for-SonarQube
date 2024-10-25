@@ -27,7 +27,7 @@ public class ResourceResolverTryWithResourcesTest extends AbstractBaseTest {
     @Test
     public void checkResourceResolverUsesTryWithResourcesBlock() {
         check = new ResourceResolverTryWithResourcesCheck();
-        filename = "src/test/resources/java/AutoclosableResourceResolver.java";
+        filename = "src/test/files/java/AutoclosableResourceResolver.java";
         verify();
     }
 

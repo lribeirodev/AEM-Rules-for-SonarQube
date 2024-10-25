@@ -26,7 +26,7 @@ public class AdministrativeAccessUsageCheckTest extends AbstractBaseTest {
     @Test
     public void administrativeAccessUsageCheck() {
         check = new AdministrativeAccessUsageCheck();
-        filename = "src/test/resources/java/AdministrativeAccessUsageCheck.java";
+        filename = "src/test/files/java/AdministrativeAccessUsageCheck.java";
         verify();
     }
 

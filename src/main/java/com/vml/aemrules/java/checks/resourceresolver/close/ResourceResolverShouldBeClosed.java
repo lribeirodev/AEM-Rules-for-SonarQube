@@ -21,10 +21,7 @@ package com.vml.aemrules.java.checks.resourceresolver.close;
 
 import com.vml.aemrules.java.checks.visitors.CheckClosedVisitor;
 import com.vml.aemrules.java.checks.visitors.FinallyBlockVisitor;
-import com.vml.aemrules.metadata.Metadata;
-import com.vml.aemrules.tag.Tags;
 import com.vml.aemrules.version.AemVersion;
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import org.sonar.plugins.java.api.JavaFileScannerContext;
@@ -40,18 +37,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Rule(
-        key = ResourceResolverShouldBeClosed.RULE_KEY,
-        name = ResourceResolverShouldBeClosed.RULE_MESSAGE,
-        priority = Priority.CRITICAL,
-        tags = Tags.AEM
-)
-@AemVersion(
-        all = true
-)
-@Metadata(
-        technicalDebt = "15min"
-)
+@Rule(key = ResourceResolverShouldBeClosed.RULE_KEY)
+@AemVersion(all = true)
 public class ResourceResolverShouldBeClosed extends BaseTreeVisitor implements JavaFileScanner {
 
     public static final String RULE_KEY = "AEM-6";

@@ -22,7 +22,7 @@ package com.vml.aemrules.htl.checks;
 import com.vml.aemrules.metadata.Metadata;
 import com.vml.aemrules.tag.Tags;
 import com.vml.aemrules.version.AemVersion;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.scripting.sightly.compiler.expression.Expression;
 import org.apache.sling.scripting.sightly.compiler.expression.ExpressionNode;
 import org.apache.sling.scripting.sightly.compiler.expression.nodes.Identifier;

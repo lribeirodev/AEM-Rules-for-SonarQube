@@ -20,7 +20,7 @@
 package com.vml.aemrules.htl;
 
 import com.vml.aemrules.htl.api.ParsingErrorRule;
-import com.vml.aemrules.htl.rules.HtlCheckClasses;
+import com.vml.aemrules.htl.rules.HtlRulesList;
 import com.vml.aemrules.utils.Throwables;
 import org.apache.sling.scripting.sightly.compiler.SightlyCompilerException;
 import org.sonar.api.batch.fs.InputFile;
@@ -46,7 +46,7 @@ public abstract class HtlFilesAnalyzer {
 
     public HtlFilesAnalyzer(CheckFactory checkFactory) {
         this.checks = HtlChecks.createHtlCheck(checkFactory)
-                .addChecks(HtlCheckClasses.REPOSITORY_KEY, HtlCheckClasses.getCheckClasses());
+                .addChecks(HtlRulesList.REPOSITORY_KEY, HtlRulesList.getCheckClasses());
         this.parsingErrorRuleKey = setupParsingErrorRuleKey(checks);
     }
 

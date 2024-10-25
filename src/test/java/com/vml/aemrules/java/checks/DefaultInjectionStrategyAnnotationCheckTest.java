@@ -27,14 +27,14 @@ public class DefaultInjectionStrategyAnnotationCheckTest extends AbstractBaseTes
     @Test
     public void checkAnnotation() {
         check = new DefaultInjectionStrategyAnnotationCheck();
-        filename = "src/test/resources/java/DefaultInjectionStrategyAnnotationCheck.java";
+        filename = "src/test/files/java/DefaultInjectionStrategyAnnotationCheck.java";
         verify();
     }
 
     @Test
     public void checkMultipleAdaptablesAnnotation() {
         check = new DefaultInjectionStrategyAnnotationCheck();
-        filename = "src/test/resources/java/DefaultInjectionStrategyAnnotationCheckMultipleAdaptables.java";
+        filename = "src/test/files/java/DefaultInjectionStrategyAnnotationCheckMultipleAdaptables.java";
         verify();
     }
 

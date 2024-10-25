@@ -20,11 +20,11 @@
 package com.vml.aemrules.htl.lex;
 
 import org.apache.commons.lang3.StringUtils;
-import org.sonar.channel.CodeReader;
-import org.sonar.channel.EndMatcher;
 import org.sonar.plugins.html.node.Attribute;
 import org.sonar.plugins.html.node.Node;
 import org.sonar.plugins.html.node.TagNode;
+import org.sonar.sslr.channel.CodeReader;
+import org.sonar.sslr.channel.EndMatcher;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -77,13 +77,13 @@ class ElementTokenizer extends AbstractTokenizer<List<Node>> {
             if (isQuote((char) ch)) {
                 codeReader.pop();
                 if (codeReader.peek() != ch) {
-                    codeReader.popTo(new QuoteMatcher((char) ch), sbValue);
+                    popTo(codeReader, new QuoteMatcher((char) ch), sbValue);
                     attribute.setValue(unescapeQuotes(sbValue.toString(), (char) ch));
                 }
                 codeReader.pop();
                 attribute.setQuoteChar((char) ch);
             } else {
-                codeReader.popTo(END_UNQUOTED_ATTRIBUTE_MATCHER, sbValue);
+                popTo(codeReader, END_UNQUOTED_ATTRIBUTE_MATCHER, sbValue);
                 attribute.setValue(sbValue.toString().trim());
             }
         }
@@ -92,7 +92,7 @@ class ElementTokenizer extends AbstractTokenizer<List<Node>> {
     private static void handleBeforeAttributeName(CodeReader codeReader, TagNode element) {
         Attribute attribute;
         StringBuilder sbQName = new StringBuilder();
-        codeReader.popTo(END_Q_NAME_MATCHER, sbQName);
+        popTo(codeReader, END_Q_NAME_MATCHER, sbQName);
         attribute = new Attribute(sbQName.toString().trim());
         attribute.setLine(codeReader.getLinePosition() + element.getStartLinePosition() - 1);
         element.getAttributes().add(attribute);
@@ -100,7 +100,7 @@ class ElementTokenizer extends AbstractTokenizer<List<Node>> {
 
     private static void handleBeforeNodeName(CodeReader codeReader, TagNode element) {
         StringBuilder sbNodeName = new StringBuilder();
-        codeReader.popTo(END_TOKEN_MATCHER, sbNodeName);
+        popTo(codeReader, END_TOKEN_MATCHER, sbNodeName);
         element.setNodeName(sbNodeName.toString());
     }
 

@@ -1,0 +1,22 @@
+<p>Prefer cleaner <code>@SlingServlet</code> annotation over <code>@Properties</code> approach. Do not mix up both approaches.</p>
+
+<h3>Noncompliant Code Example</h3>
+<pre>
+@Component
+@Service(value = javax.servlet.Servlet.class)
+@Properties({
+        @Property(name = "sling.servlet.resourceTypes", value = { "some/resource/path" }),
+        @Property(name = "sling.servlet.selectors", value = { "selector" }),
+        @Property(name = "sling.servlet.extensions", value = { "tab" }),
+        @Property(name = "sling.servlet.methods", value = { HttpConstants.METHOD_GET })
+})
+</pre>
+<h3>Compliant Solution</h3>
+<pre>
+@SlingServlet(
+        resourceTypes = "some/resource/path",
+        selectors = "selector",
+        extensions = "tab",
+        methods = HttpConstants.METHOD_GET
+)
+</pre>

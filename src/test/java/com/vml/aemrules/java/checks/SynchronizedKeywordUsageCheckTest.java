@@ -26,7 +26,7 @@ public class SynchronizedKeywordUsageCheckTest extends AbstractBaseTest {
     @Test
     public void checkThreadSafeFieldsInServlet() {
         check = new SynchronizedKeywordUsageCheck();
-        filename = "src/test/resources/java/SynchronizedKeywordUsageCheck.java";
+        filename = "src/test/files/java/SynchronizedKeywordUsageCheck.java";
         verify();
     }
 

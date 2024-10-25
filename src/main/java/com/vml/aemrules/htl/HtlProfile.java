@@ -19,7 +19,7 @@
  */
 package com.vml.aemrules.htl;
 
-import com.vml.aemrules.htl.rules.HtlCheckClasses;
+import com.vml.aemrules.htl.rules.HtlRulesList;
 import org.sonar.api.server.profile.BuiltInQualityProfilesDefinition;
 import org.sonar.check.Rule;
 
@@ -33,11 +33,11 @@ public class HtlProfile implements BuiltInQualityProfilesDefinition {
     public void define(Context context) {
         NewBuiltInQualityProfile htl = context
                 .createBuiltInQualityProfile(QUALITY_PROFILE_NAME, Htl.KEY);
-        HtlCheckClasses.getCheckClasses().stream()
-                .map(HtlCheckClasses::getRule)
+        HtlRulesList.getCheckClasses().stream()
+                .map(HtlRulesList::getRule)
                 .map(Rule::key)
                 .filter(Objects::nonNull)
-                .forEach(ruleKey -> htl.activateRule(HtlCheckClasses.REPOSITORY_KEY, ruleKey));
+                .forEach(ruleKey -> htl.activateRule(HtlRulesList.REPOSITORY_KEY, ruleKey));
         htl.done();
     }
 }

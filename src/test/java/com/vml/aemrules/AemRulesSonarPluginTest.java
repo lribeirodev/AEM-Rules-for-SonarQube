@@ -35,6 +35,6 @@ public class AemRulesSonarPluginTest {
         Plugin.Context context = new Plugin.Context(SonarRuntimeImpl.forSonarQube(Version.create(6, 7), SonarQubeSide.SERVER, SonarEdition.COMMUNITY));
 
         new AemRulesSonarPlugin().define(context);
-        assertThat(context.getExtensions()).hasSize(7);
+        assertThat(context.getExtensions()).hasSize(8);
     }
 }

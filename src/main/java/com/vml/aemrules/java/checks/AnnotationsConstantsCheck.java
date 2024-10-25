@@ -20,11 +20,8 @@
 package com.vml.aemrules.java.checks;
 
 import com.vml.aemrules.java.util.ConstantsChecker;
-import com.vml.aemrules.metadata.Metadata;
-import com.vml.aemrules.tag.Tags;
 import com.vml.aemrules.version.AemVersion;
 import org.apache.commons.lang3.StringUtils;
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import org.sonar.plugins.java.api.JavaFileScannerContext;
@@ -33,18 +30,8 @@ import org.sonar.plugins.java.api.tree.BaseTreeVisitor;
 import org.sonar.plugins.java.api.tree.LiteralTree;
 import org.sonar.plugins.java.api.tree.Tree.Kind;
 
-@Rule(
-        key = AnnotationsConstantsCheck.RULE_KEY,
-        name = AnnotationsConstantsCheck.RULE_MESSAGE,
-        priority = Priority.MINOR,
-        tags = Tags.AEM
-)
-@AemVersion(
-        all = true
-)
-@Metadata(
-        technicalDebt = "5min"
-)
+@Rule(key = AnnotationsConstantsCheck.RULE_KEY)
+@AemVersion(all = true)
 public class AnnotationsConstantsCheck extends BaseTreeVisitor implements JavaFileScanner {
 
     public static final String RULE_KEY = "AEM-1";

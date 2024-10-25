@@ -19,10 +19,11 @@
  */
 package com.vml.aemrules.htl.lex;
 
-import org.sonar.channel.CodeReader;
-import org.sonar.channel.EndMatcher;
+
 import org.sonar.plugins.html.node.CommentNode;
 import org.sonar.plugins.html.node.Node;
+import org.sonar.sslr.channel.CodeReader;
+import org.sonar.sslr.channel.EndMatcher;
 
 import java.util.List;
 

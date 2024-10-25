@@ -26,7 +26,7 @@ public class ContentResourceShouldBeNullCheckedCheckTest extends AbstractBaseTes
     @Test
     public void checkIfContentResourceIsNotNull() {
         check = new ContentResourceShouldBeNullCheckedCheck();
-        filename = "src/test/resources/java/ContentResourceShouldBeNullCheckedCheck.java";
+        filename = "src/test/files/java/ContentResourceShouldBeNullCheckedCheck.java";
         verify();
     }
 }

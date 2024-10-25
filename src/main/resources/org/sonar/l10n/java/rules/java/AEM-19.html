@@ -1,0 +1,23 @@
+<p>
+    The <a href="https://sling.apache.org/documentation/bundles/sling-query.html"><code>SlingQuery</code></a>
+    is a Sling resource tree traversal tool inspired by the jQuery JavaScript API.
+</p>
+<p>
+    <code>SearchStrategy</code> can have negative performance impact if mismatched.<br><br>
+    Therefore developer should always make informed decision and define strategy explicitly.
+</p>
+
+<h3>Noncompliant Code Example</h3>
+<pre>
+private void strategyNotDefined(Resource resource) {
+		SlingQuery sq = $(resource);
+		sq.find();
+	}
+</pre>
+<h3>Compliant Solution</h3>
+<pre>
+private void strategyDefined(Resource resource) {
+		SlingQuery sq = $(resource).searchStrategy(SearchStrategy.BFS);
+		sq.find();
+	}
+</pre>

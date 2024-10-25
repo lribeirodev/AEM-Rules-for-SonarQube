@@ -26,7 +26,7 @@ public class ModifiableValueMapUsageCheckTest extends AbstractBaseTest {
     @Test
     public void checkIfMVMIsUsedToRetrievePropertiesFromResource() {
         check = new ModifiableValueMapUsageCheck();
-        filename = "src/test/resources/java/ModifiableValueMapUsageCheck.java";
+        filename = "src/test/files/java/ModifiableValueMapUsageCheck.java";
         verify();
     }
 }

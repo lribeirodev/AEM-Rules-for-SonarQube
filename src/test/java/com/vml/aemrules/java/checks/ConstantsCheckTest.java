@@ -26,7 +26,7 @@ public class ConstantsCheckTest extends AbstractBaseTest {
     @Test
     public void checkConstants() {
         check = new ConstantsCheck();
-        filename = "src/test/resources/java/ConstantsCheck.java";
+        filename = "src/test/files/java/ConstantsCheck.java";
         verify(false);
     }
 }

@@ -19,9 +19,7 @@
  */
 package com.vml.aemrules.java.checks.slingquery;
 
-import com.vml.aemrules.tag.Tags;
 import com.vml.aemrules.version.AemVersion;
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import org.sonar.plugins.java.api.JavaFileScannerContext;
@@ -35,15 +33,8 @@ import org.sonar.plugins.java.api.tree.VariableTree;
 import java.util.HashMap;
 import java.util.Map;
 
-@Rule(
-        key = SlingQueryImplicitStrategyCheck.RULE_KEY,
-        name = SlingQueryImplicitStrategyCheck.RULE_MESSAGE,
-        priority = Priority.MINOR,
-        tags = Tags.AEM
-)
-@AemVersion(
-        all = true
-)
+@Rule(key = SlingQueryImplicitStrategyCheck.RULE_KEY)
+@AemVersion(all = true)
 public class SlingQueryImplicitStrategyCheck extends BaseTreeVisitor implements JavaFileScanner {
 
     protected static final String RULE_KEY = "AEM-19";

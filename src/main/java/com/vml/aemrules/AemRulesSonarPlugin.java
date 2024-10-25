@@ -23,8 +23,9 @@ import com.vml.aemrules.htl.Constants;
 import com.vml.aemrules.htl.Htl;
 import com.vml.aemrules.htl.HtlProfile;
 import com.vml.aemrules.htl.HtlSensor;
-import com.vml.aemrules.java.rules.JavaCheckClasses;
-import com.vml.aemrules.rules.AemRulesRulesDefinition;
+import com.vml.aemrules.htl.rules.HtlRulesDefinition;
+import com.vml.aemrules.java.rules.JavaCheckRegistrar;
+import com.vml.aemrules.java.rules.JavaRulesDefinition;
 import org.sonar.api.Plugin;
 import org.sonar.api.config.PropertyDefinition;
 import org.sonar.api.resources.Qualifiers;
@@ -58,11 +59,16 @@ public class AemRulesSonarPlugin implements Plugin {
     @Override
     public void define(Context context) {
         context.addExtensions(
+                JavaRulesDefinition.class,
+                JavaCheckRegistrar.class
+        );
+
+        context.addExtensions(
                 Htl.class,
-                AemRulesRulesDefinition.class,
-                JavaCheckClasses.class,
+                HtlRulesDefinition.class,
                 HtlProfile.class,
                 HtlSensor.class);
+
         context.addExtensions(pluginProperties());
     }
 }

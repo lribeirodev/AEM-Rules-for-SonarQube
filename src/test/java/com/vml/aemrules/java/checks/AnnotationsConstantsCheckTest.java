@@ -26,7 +26,7 @@ public class AnnotationsConstantsCheckTest extends AbstractBaseTest {
     @Test
     public void checkConstantsInAnnotations() {
         check = new AnnotationsConstantsCheck();
-        filename = "src/test/resources/java/AnnotationsConstantsCheck.java";
+        filename = "src/test/files/java/AnnotationsConstantsCheck.java";
         verify(false);
     }
 

@@ -19,10 +19,7 @@
  */
 package com.vml.aemrules.java.checks;
 
-import com.vml.aemrules.metadata.Metadata;
-import com.vml.aemrules.tag.Tags;
 import com.vml.aemrules.version.AemVersion;
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.tree.BaseTreeVisitor;
@@ -35,26 +32,13 @@ import org.sonar.plugins.java.api.tree.Tree.Kind;
 import java.util.Arrays;
 import java.util.List;
 
-@Rule(
-        key = SynchronizedKeywordUsageCheck.RULE_KEY,
-        name = SynchronizedKeywordUsageCheck.MESSAGE,
-        description = SynchronizedKeywordUsageCheck.DESCRIPTION,
-        priority = Priority.INFO,
-        tags = {Tags.MULTI_THREADING, Tags.PERFORMANCE}
-)
-@AemVersion(
-        all = true
-)
-@Metadata(
-        technicalDebt = "30min"
-)
+@Rule(key = SynchronizedKeywordUsageCheck.RULE_KEY)
+@AemVersion(all = true)
 public class SynchronizedKeywordUsageCheck extends IssuableSubscriptionVisitor {
-
-    protected static final String MESSAGE = "Usage of 'synchronized' keyword should be avoided if possible.";
 
     protected static final String RULE_KEY = "AEM-15";
 
-    protected static final String DESCRIPTION = "Check if using 'synchronized' can be replaced with more sophisticated solution.";
+    protected static final String MESSAGE = "Usage of 'synchronized' keyword should be avoided if possible.";
 
     private static final List<Kind> ACCEPTED_NODE_KINDS = Arrays.asList(Kind.SYNCHRONIZED_STATEMENT, Kind.METHOD);
 

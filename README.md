@@ -3,6 +3,7 @@
 
 ![Builds Status](https://github.com/wttech/AEM-Rules-for-SonarQube/actions/workflows/build.yml/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/Cognifide/AEM-Rules-for-SonarQube/badge.svg?branch=master)](https://coveralls.io/github/Cognifide/AEM-Rules-for-SonarQube?branch=master)
+[<img src="https://rules.sonarsource.com/images/logos/SonarLint-black.svg" height="28" alt="Available in SonarLint">](https://www.sonarlint.org/)
 [<img src="https://rules.sonarsource.com/images/logos/SonarCloud-black.svg" height="28" alt="Available in SonarCloud">](https://sonarcloud.io)
 [<img src="https://rules.sonarsource.com/images/logos/SonarQube-black.svg" height="28" alt="Available in SonarQube">](https://www.sonarqube.org/)
 # About AEM Rules for SonarQube
@@ -45,8 +46,6 @@ Go to your SonarQube instance administration console and open Update Center. Fin
 Use of the plugin does not differ much from regular SonarQube analysis. However, as rules are often tied to a certain AEM version and its components (Felix, Sling), we've introduced the `aemVersion` analysis property.
 
 Each rule defines supported AEM version or version range. Most of the rules are universal.
-
-Rules are not available in [<img src="https://rules.sonarsource.com/images/logos/SonarLint-black.svg" height="28" alt="Not available in SonarLint">](https://www.sonarlint.org/)
 
 ### Running analysis
 

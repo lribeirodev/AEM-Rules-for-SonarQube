@@ -40,16 +40,16 @@ public class SessionShouldBeLoggedOutTest extends AbstractBaseTest {
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-                {"src/test/resources/java/SessionLogoutOne.java", false},
-                {"src/test/resources/java/SessionLogoutTwo.java", false},
-                {"src/test/resources/java/SessionLogoutThree.java", false},
-                {"src/test/resources/java/SessionLogoutFour.java", true},
-                {"src/test/resources/java/SessionLogoutFive.java", true},
-                {"src/test/resources/java/SessionLogoutSix.java", true},
-                {"src/test/resources/java/SessionLogoutSeven.java", true},
-                {"src/test/resources/java/SessionLogoutEight.java", false},
-                {"src/test/resources/java/LongSessionEventListener.java", false},
-                {"src/test/resources/java/LongSessionEventListenerError.java", true}
+                {"src/test/files/java/SessionLogoutOne.java", false},
+                {"src/test/files/java/SessionLogoutTwo.java", false},
+                {"src/test/files/java/SessionLogoutThree.java", false},
+                {"src/test/files/java/SessionLogoutFour.java", true},
+                {"src/test/files/java/SessionLogoutFive.java", true},
+                {"src/test/files/java/SessionLogoutSix.java", true},
+                {"src/test/files/java/SessionLogoutSeven.java", true},
+                {"src/test/files/java/SessionLogoutEight.java", false},
+                {"src/test/files/java/LongSessionEventListener.java", false},
+                {"src/test/files/java/LongSessionEventListenerError.java", true}
         });
     }
 

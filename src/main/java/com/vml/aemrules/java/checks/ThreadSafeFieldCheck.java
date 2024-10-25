@@ -39,21 +39,9 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-@Rule(
-        key = ThreadSafeFieldCheck.RULE_KEY,
-        name = ThreadSafeFieldCheck.RULE_NAME,
-        priority = Priority.CRITICAL,
-        tags = {Tags.BUG, Tags.AEM}
-)
-@AemVersion(
-        all = true
-)
-@Metadata(
-        technicalDebt = "1h"
-)
+@Rule(key = ThreadSafeFieldCheck.RULE_KEY)
+@AemVersion(all = true)
 public class ThreadSafeFieldCheck extends BaseTreeVisitor implements JavaFileScanner {
-
-    public static final String RULE_NAME = "Non-thread safe object used as a field of Servlet / Filter etc.";
 
     public static final String RULE_KEY = "AEM-3";
 

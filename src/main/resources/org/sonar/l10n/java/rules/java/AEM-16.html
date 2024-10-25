@@ -1,0 +1,23 @@
+<p>
+    Usage of <code>@Optional</code> is redundant, <code>defaultInjectionStrategy</code> is defined as <code>OPTIONAL</code>
+</p>
+
+<h3>Noncompliant Code Example</h3>
+<pre>
+@Model(adaptables = Resource.class , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+public class SampleModel {
+
+@Inject
+@Optional //Noncompliant
+private String str1;
+(...)
+</pre>
+<h3>Compliant Solution</h3>
+<pre>
+@Model(adaptables = Resource.class , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+public class SampleModel {
+
+@Inject // Compliant
+private String str1;
+(...)
+</pre>

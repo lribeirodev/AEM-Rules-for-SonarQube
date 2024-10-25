@@ -20,11 +20,8 @@
 package com.vml.aemrules.java.checks;
 
 import com.vml.aemrules.java.util.ConstantsChecker;
-import com.vml.aemrules.metadata.Metadata;
-import com.vml.aemrules.tag.Tags;
 import com.vml.aemrules.version.AemVersion;
 import org.apache.commons.lang3.StringUtils;
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.tree.LiteralTree;
@@ -33,18 +30,8 @@ import org.sonar.plugins.java.api.tree.Tree.Kind;
 
 import java.util.List;
 
-@Rule(
-        key = ConstantsCheck.RULE_KEY,
-        name = ConstantsCheck.RULE_MESSAGE,
-        priority = Priority.MINOR,
-        tags = Tags.AEM
-)
-@AemVersion(
-        all = true
-)
-@Metadata(
-        technicalDebt = "5min"
-)
+@Rule(key = ConstantsCheck.RULE_KEY)
+@AemVersion(all = true)
 public class ConstantsCheck extends IssuableSubscriptionVisitor {
 
     public static final String RULE_MESSAGE = "Use predefined constant instead of hardcoded value.";

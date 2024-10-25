@@ -47,18 +47,8 @@ import java.util.Map;
 import static org.sonar.plugins.java.api.tree.Tree.Kind.EQUAL_TO;
 import static org.sonar.plugins.java.api.tree.Tree.Kind.NOT_EQUAL_TO;
 
-@Rule(
-        key = ContentResourceShouldBeNullCheckedCheck.RULE_KEY,
-        name = ContentResourceShouldBeNullCheckedCheck.RULE_MESSAGE,
-        priority = Priority.MINOR,
-        tags = Tags.AEM
-)
-@AemVersion(
-        all = true
-)
-@Metadata(
-        technicalDebt = "5min"
-)
+@Rule(key = ContentResourceShouldBeNullCheckedCheck.RULE_KEY)
+@AemVersion(all = true)
 public class ContentResourceShouldBeNullCheckedCheck extends BaseTreeVisitor implements JavaFileScanner {
 
     public static final String RULE_KEY = "AEM-18";

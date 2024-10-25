@@ -1,0 +1,14 @@
+{
+    "title": "Do not use deprecated administrative access methods",
+    "type": "CODE_SMELL",
+    "status": "ready",
+    "remediation": {
+        "func": "Constant\/Issue",
+        "constantCost": "30min"
+    },
+    "tags": [
+        "aem"
+    ],
+    "defaultSeverity": "Major",
+    "sqKey": "AEM-11"
+}

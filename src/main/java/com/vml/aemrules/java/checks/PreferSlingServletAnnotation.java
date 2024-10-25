@@ -19,11 +19,8 @@
  */
 package com.vml.aemrules.java.checks;
 
-import com.vml.aemrules.metadata.Metadata;
-import com.vml.aemrules.tag.Tags;
 import com.vml.aemrules.version.AemVersion;
 import org.apache.commons.lang3.StringUtils;
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import org.sonar.plugins.java.api.JavaFileScannerContext;
@@ -46,18 +43,10 @@ import static org.sonar.plugins.java.api.tree.Tree.Kind.IDENTIFIER;
 import static org.sonar.plugins.java.api.tree.Tree.Kind.MEMBER_SELECT;
 import static org.sonar.plugins.java.api.tree.Tree.Kind.STRING_LITERAL;
 
-@Rule(
-        key = PreferSlingServletAnnotation.RULE_KEY,
-        name = PreferSlingServletAnnotation.RULE_MESSAGE,
-        priority = Priority.MINOR,
-        tags = Tags.AEM
-)
+@Rule(key = PreferSlingServletAnnotation.RULE_KEY)
 @AemVersion(
         from = "6.0",
         to = "6.2"
-)
-@Metadata(
-        technicalDebt = "10min"
 )
 public class PreferSlingServletAnnotation extends BaseTreeVisitor implements JavaFileScanner {
 
