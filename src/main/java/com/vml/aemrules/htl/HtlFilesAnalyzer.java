@@ -23,14 +23,14 @@ import com.vml.aemrules.htl.api.ParsingErrorRule;
 import com.vml.aemrules.htl.rules.HtlRulesList;
 import com.vml.aemrules.utils.Throwables;
 import org.apache.sling.scripting.sightly.compiler.SightlyCompilerException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.batch.rule.CheckFactory;
 import org.sonar.api.batch.sensor.SensorContext;
 import org.sonar.api.batch.sensor.issue.NewIssue;
 import org.sonar.api.batch.sensor.issue.NewIssueLocation;
 import org.sonar.api.rule.RuleKey;
-import org.sonar.api.utils.log.Logger;
-import org.sonar.api.utils.log.Loggers;
 import org.sonar.squidbridge.ProgressReport;
 import org.sonar.squidbridge.api.AnalysisException;
 
@@ -38,15 +38,18 @@ import java.io.IOException;
 import java.io.InterruptedIOException;
 import java.util.concurrent.CancellationException;
 
+import static com.vml.aemrules.htl.Constants.REPOSITORY_KEY;
+
+
 public abstract class HtlFilesAnalyzer {
 
-    private static final Logger LOGGER = Loggers.get(HtlFilesAnalyzer.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(HtlFilesAnalyzer.class);
     protected final HtlChecks checks;
     private final RuleKey parsingErrorRuleKey;
 
-    public HtlFilesAnalyzer(CheckFactory checkFactory) {
+    protected HtlFilesAnalyzer(CheckFactory checkFactory) {
         this.checks = HtlChecks.createHtlCheck(checkFactory)
-                .addChecks(HtlRulesList.REPOSITORY_KEY, HtlRulesList.getCheckClasses());
+                .addChecks(REPOSITORY_KEY, HtlRulesList.getChecks());
         this.parsingErrorRuleKey = setupParsingErrorRuleKey(checks);
     }
 
@@ -107,7 +110,7 @@ public abstract class HtlFilesAnalyzer {
             scanFile(sensorContext, inputFile);
         } catch (SightlyCompilerException e) {
             checkInterrupted(e);
-            LOGGER.error("Unable to parse file: " + inputFile.uri());
+            LOGGER.error("Unable to parse file: {}", inputFile.uri());
             LOGGER.error(e.getMessage());
             processRecognitionException(e, sensorContext, inputFile);
         } catch (Exception e) {

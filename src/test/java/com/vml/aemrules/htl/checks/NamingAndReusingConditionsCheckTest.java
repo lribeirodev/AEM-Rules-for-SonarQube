@@ -27,7 +27,7 @@ public class NamingAndReusingConditionsCheckTest extends AbstractBaseTest {
     @Test
     public void checkHtlAttributesOrder() {
         check = new NamingAndReusingConditionsCheck();
-        filename = "src/test/resources/htl/NamingAndReusingConditionsCheck.html";
+        filename = "src/test/files/htl/NamingAndReusingConditionsCheck.html";
         verify();
     }
 }

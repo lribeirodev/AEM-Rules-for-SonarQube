@@ -1,0 +1,9 @@
+<p>In HTL event attributes must contain display context definition.</p>
+<h3>Noncompliant Code Example</h3>
+<pre>
+&lt;a href=&quot;#id&quot; onclick=&quot;${myFunctionName}()&quot;&gt;Link&lt;/a&gt; &lt;!--/* Non-Compliant */--&gt;
+</pre>
+<h3>Compliant Solution</h3>
+<pre>
+&lt;a href=&quot;#id&quot; onclick=&quot;${myFunctionName @ context=&#39;scriptToken&#39;}()&quot;&gt;Link&lt;/a&gt;
+</pre>

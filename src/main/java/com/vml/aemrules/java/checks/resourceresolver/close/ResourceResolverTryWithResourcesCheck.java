@@ -74,7 +74,7 @@ public class ResourceResolverTryWithResourcesCheck extends BaseTreeVisitor imple
         tree.resourceList().stream()
                 // We're iterating over a resource specification in a try-with-resource block
                 // so we expect variable trees
-                .filter(resource -> resource instanceof VariableTree)
+                .filter(VariableTree.class::isInstance)
                 .map(VariableTree.class::cast)
                 .map(resource -> resource.simpleName().name())
                 .forEach(resourceResolversInTryWithResources::add);

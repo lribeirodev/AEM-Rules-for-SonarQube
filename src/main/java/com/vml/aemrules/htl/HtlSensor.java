@@ -66,7 +66,7 @@ public class HtlSensor extends HtlFilesAnalyzer implements Sensor {
     @Override
     public void describe(SensorDescriptor descriptor) {
         descriptor
-                .name(Htl.NAME)
+                .name(Htl.LANGUAGE_NAME)
                 .onlyOnFileType(Type.MAIN);
     }
 

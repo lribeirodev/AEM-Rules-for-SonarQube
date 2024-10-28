@@ -20,11 +20,8 @@
 package com.vml.aemrules.htl.checks;
 
 import com.vml.aemrules.htl.api.ParsingErrorRule;
-import com.vml.aemrules.metadata.Metadata;
-import com.vml.aemrules.tag.Tags;
 import com.vml.aemrules.version.AemVersion;
 import org.apache.sling.scripting.sightly.compiler.expression.Expression;
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.html.node.Attribute;
 import org.sonar.plugins.html.node.TagNode;
@@ -34,18 +31,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@Rule(
-        key = NamingAndReusingConditionsCheck.RULE_KEY,
-        name = NamingAndReusingConditionsCheck.RULE_MESSAGE,
-        priority = Priority.INFO,
-        tags = Tags.AEM
-)
-@AemVersion(
-        all = true
-)
-@Metadata(
-        technicalDebt = "10min"
-)
+@Rule(key = NamingAndReusingConditionsCheck.RULE_KEY)
+@AemVersion(all = true)
 @ParsingErrorRule
 public class NamingAndReusingConditionsCheck extends AbstractHtlCheck {
 

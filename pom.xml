@@ -207,7 +207,6 @@
             <version>${htl.version}</version>
         </dependency>
 
-        <!-- TODO: Check if versions are valid with target AEM version-->
         <!-- unit tests -->
         <dependency>
             <artifactId>sonar-testing-harness</artifactId>
@@ -299,14 +298,12 @@
             <scope>test</scope>
             <version>1.12.0</version>
         </dependency>
-        <!-- TODO: Update dependecy with new version-->
         <dependency>
             <artifactId>org.apache.sling.servlets.resolver</artifactId>
             <groupId>org.apache.sling</groupId>
             <scope>test</scope>
             <version>2.3.2</version>
         </dependency>
-        <!-- TODO: Update dependecy with new version-->
         <dependency>
             <artifactId>org.apache.sling.api</artifactId>
             <groupId>org.apache.sling</groupId>
@@ -372,8 +369,8 @@
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>3.2.4</version>
                 <configuration>
-<!--                    <shadedArtifactAttached>false</shadedArtifactAttached>-->
-<!--                    <minimizeJar>true</minimizeJar>-->
+                    <shadedArtifactAttached>false</shadedArtifactAttached>
+                    <minimizeJar>true</minimizeJar>
                     <createDependencyReducedPom>false</createDependencyReducedPom>
                 </configuration>
                 <executions>
@@ -430,7 +427,7 @@
                         <exclude>**/LICENSE.txt</exclude>
                         <exclude>**.xml</exclude>
                         <exclude>assets/**</exclude>
-                        <exclude>src/test/resources/htl/HtlCommentsCheck.html</exclude>
+                        <exclude>src/test/files/htl/HtlCommentsCheck.html</exclude>
                     </excludes>
                 </configuration>
                 <executions>

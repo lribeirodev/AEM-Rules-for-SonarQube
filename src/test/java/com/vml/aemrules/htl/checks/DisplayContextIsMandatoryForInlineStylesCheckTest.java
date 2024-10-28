@@ -27,7 +27,7 @@ public class DisplayContextIsMandatoryForInlineStylesCheckTest extends AbstractB
     @Test
     public void checkInlineStyleDisplayContext() {
         check = new InlineStyleMandatoryDisplayContextCheck();
-        filename = "src/test/resources/htl/DefineDisplayContextInInlineStylesCheck.html";
+        filename = "src/test/files/htl/DefineDisplayContextInInlineStylesCheck.html";
         verify();
     }
 }

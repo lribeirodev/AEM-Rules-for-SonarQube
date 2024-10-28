@@ -27,7 +27,7 @@ public class PlaceTemplatesInSeparateFilesCheckTest extends AbstractBaseTest {
     @Test
     public void checkHtlAttributesOrder() {
         check = new PlaceTemplatesInSeparateFilesCheck();
-        filename = "src/test/resources/htl/PlaceTemplatesInSeparateFilesCheck.html";
+        filename = "src/test/files/htl/PlaceTemplatesInSeparateFilesCheck.html";
         verify();
     }
 }

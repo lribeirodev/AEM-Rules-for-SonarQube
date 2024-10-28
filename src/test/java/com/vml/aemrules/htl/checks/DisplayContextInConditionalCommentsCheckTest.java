@@ -27,7 +27,7 @@ public class DisplayContextInConditionalCommentsCheckTest extends AbstractBaseTe
     @Test
     public void checkContextInConditionalComments() {
         check = new DisplayContextInConditionalCommentsCheck();
-        filename = "src/test/resources/htl/DisplayContextInConditionalCommentsCheck.html";
+        filename = "src/test/files/htl/DisplayContextInConditionalCommentsCheck.html";
         verify();
     }
 }

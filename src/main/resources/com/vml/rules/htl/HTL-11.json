@@ -1,0 +1,14 @@
+{
+    "title": "Use existing HTML elements instead of adding extra sly tags",
+    "type": "CODE_SMELL",
+    "status": "ready",
+    "remediation": {
+        "func": "Constant\/Issue",
+        "constantCost": "5min"
+    },
+    "tags": [
+        "aem"
+    ],
+    "defaultSeverity": "Minor",
+    "sqKey": "HTL-11"
+}

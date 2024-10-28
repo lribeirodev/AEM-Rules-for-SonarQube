@@ -21,6 +21,9 @@ package com.vml.aemrules.java;
 
 public final class Constants {
 
+    public static final String REPOSITORY_KEY = "AEM-JAVA";
+    public static final String REPOSITORY_NAME = "AEM Java";
+
     public static final String SLING_RESOURCE_QUALIFIED_NAME = "org.apache.sling.api.resource.Resource";
 
     private Constants() {

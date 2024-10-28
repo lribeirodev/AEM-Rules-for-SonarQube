@@ -27,7 +27,7 @@ public class AvoidUsingUnsafeDisplayContextCheckTest extends AbstractBaseTest {
     @Test
     public void checkAllDataAttributesContainsDisplayContext() {
         check = new AvoidUsingUnsafeDisplayContextCheck();
-        filename = "src/test/resources/htl/AvoidUsingUnsafeDisplayContextCheck.html";
+        filename = "src/test/files/htl/AvoidUsingUnsafeDisplayContextCheck.html";
         verify();
     }
 }

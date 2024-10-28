@@ -19,12 +19,12 @@
  */
 package com.vml.aemrules.version;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import static com.vml.aemrules.version.VersionSupportChecker.DEFAULT_AEM_VERSION;
 import static com.vml.aemrules.version.VersionSupportChecker.create;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class VersionSupportCheckerTest {
 
@@ -32,75 +32,75 @@ public class VersionSupportCheckerTest {
     public void shouldSupportAllVersionsWhenAllSet() {
         VersionSupportChecker versionSupportChecker = create(
                 CheckSupportingAllVersions.class.getAnnotation(AemVersion.class));
-        Assert.assertThat(versionSupportChecker.supports("6.3"), is(true));
-        Assert.assertThat(versionSupportChecker.supports("2.1"), is(true));
-        Assert.assertThat(versionSupportChecker.supports("2.0"), is(true));
+        assertThat(versionSupportChecker.supports("6.3"), is(true));
+        assertThat(versionSupportChecker.supports("2.1"), is(true));
+        assertThat(versionSupportChecker.supports("2.0"), is(true));
     }
 
     @Test
     public void shouldSupportAllVersionsBetweenFromAndTo() {
         VersionSupportChecker versionSupportChecker = create(
                 CheckSupportingVersionsFromTo.class.getAnnotation(AemVersion.class));
-        Assert.assertThat(versionSupportChecker.supports("6.1"), is(true));
-        Assert.assertThat(versionSupportChecker.supports("5.2"), is(true));
-        Assert.assertThat(versionSupportChecker.supports("5.1"), is(true));
-        Assert.assertThat(versionSupportChecker.supports("6.4"), is(true));
-        Assert.assertThat(versionSupportChecker.supports("6.5"), is(false));
-        Assert.assertThat(versionSupportChecker.supports("5.0"), is(false));
+        assertThat(versionSupportChecker.supports("6.1"), is(true));
+        assertThat(versionSupportChecker.supports("5.2"), is(true));
+        assertThat(versionSupportChecker.supports("5.1"), is(true));
+        assertThat(versionSupportChecker.supports("6.4"), is(true));
+        assertThat(versionSupportChecker.supports("6.5"), is(false));
+        assertThat(versionSupportChecker.supports("5.0"), is(false));
     }
 
     @Test
     public void shouldSupportAllVersionsFrom() {
         VersionSupportChecker versionSupportChecker = create(
                 CheckSupportingVersionsFrom.class.getAnnotation(AemVersion.class));
-        Assert.assertThat(versionSupportChecker.supports("100.1"), is(true));
-        Assert.assertThat(versionSupportChecker.supports("10.1"), is(true));
-        Assert.assertThat(versionSupportChecker.supports("17.2"), is(true));
-        Assert.assertThat(versionSupportChecker.supports("10.0"), is(false));
-        Assert.assertThat(versionSupportChecker.supports("5.9"), is(false));
+        assertThat(versionSupportChecker.supports("100.1"), is(true));
+        assertThat(versionSupportChecker.supports("10.1"), is(true));
+        assertThat(versionSupportChecker.supports("17.2"), is(true));
+        assertThat(versionSupportChecker.supports("10.0"), is(false));
+        assertThat(versionSupportChecker.supports("5.9"), is(false));
     }
 
     @Test
     public void shouldSupportAllVersionsTo() {
         VersionSupportChecker supportedVersions = create(
                 CheckSupportingVersionsTo.class.getAnnotation(AemVersion.class));
-        Assert.assertThat(supportedVersions.supports("1.1"), is(true));
-        Assert.assertThat(supportedVersions.supports("10.1"), is(true));
-        Assert.assertThat(supportedVersions.supports("0.2"), is(true));
-        Assert.assertThat(supportedVersions.supports("8.5"), is(true));
-        Assert.assertThat(supportedVersions.supports("10.2"), is(false));
-        Assert.assertThat(supportedVersions.supports("20.9"), is(false));
+        assertThat(supportedVersions.supports("1.1"), is(true));
+        assertThat(supportedVersions.supports("10.1"), is(true));
+        assertThat(supportedVersions.supports("0.2"), is(true));
+        assertThat(supportedVersions.supports("8.5"), is(true));
+        assertThat(supportedVersions.supports("10.2"), is(false));
+        assertThat(supportedVersions.supports("20.9"), is(false));
     }
 
     @Test
     public void shouldSupportAllProvidedVersions() {
         VersionSupportChecker supportedVersions = create(
                 CheckSupportingVersionsIncluded.class.getAnnotation(AemVersion.class));
-        Assert.assertThat(supportedVersions.supports("6.1"), is(true));
-        Assert.assertThat(supportedVersions.supports("2.1"), is(true));
-        Assert.assertThat(supportedVersions.supports("4.8"), is(true));
-        Assert.assertThat(supportedVersions.supports("6.0"), is(false));
-        Assert.assertThat(supportedVersions.supports("2.2"), is(false));
+        assertThat(supportedVersions.supports("6.1"), is(true));
+        assertThat(supportedVersions.supports("2.1"), is(true));
+        assertThat(supportedVersions.supports("4.8"), is(true));
+        assertThat(supportedVersions.supports("6.0"), is(false));
+        assertThat(supportedVersions.supports("2.2"), is(false));
     }
 
     @Test
     public void shouldSupportAllVersionsExcludingProvided() {
         VersionSupportChecker supportedVersions = create(
                 CheckSupportingVersionsExcluded.class.getAnnotation(AemVersion.class));
-        Assert.assertThat(supportedVersions.supports("6.1"), is(false));
-        Assert.assertThat(supportedVersions.supports("2.1"), is(false));
-        Assert.assertThat(supportedVersions.supports("4.8"), is(false));
-        Assert.assertThat(supportedVersions.supports("6.0"), is(true));
-        Assert.assertThat(supportedVersions.supports("2.2"), is(true));
+        assertThat(supportedVersions.supports("6.1"), is(false));
+        assertThat(supportedVersions.supports("2.1"), is(false));
+        assertThat(supportedVersions.supports("4.8"), is(false));
+        assertThat(supportedVersions.supports("6.0"), is(true));
+        assertThat(supportedVersions.supports("2.2"), is(true));
     }
 
     @Test
     public void shouldUseDefaultVersionWhenProvidedVersionIsEmptyOrNull() {
         VersionSupportChecker supportedVersions = create(
                 CheckSupportingDefaultVersion.class.getAnnotation(AemVersion.class));
-        Assert.assertThat(supportedVersions.supports(DEFAULT_AEM_VERSION), is(true));
-        Assert.assertThat(supportedVersions.supports(""), is(true));
-        Assert.assertThat(supportedVersions.supports(null), is(true));
+        assertThat(supportedVersions.supports(DEFAULT_AEM_VERSION), is(true));
+        assertThat(supportedVersions.supports(""), is(true));
+        assertThat(supportedVersions.supports(null), is(true));
     }
 
     @Test(expected = IllegalArgumentException.class)

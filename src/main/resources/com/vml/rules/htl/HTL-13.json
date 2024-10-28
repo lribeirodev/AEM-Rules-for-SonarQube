@@ -1,0 +1,14 @@
+{
+    "title": "Avoid using 'unsafe' display context, this disables XSS protection completely",
+    "type": "CODE_SMELL",
+    "status": "ready",
+    "remediation": {
+        "func": "Constant\/Issue",
+        "constantCost": "5min"
+    },
+    "tags": [
+        "aem"
+    ],
+    "defaultSeverity": "Critical",
+    "sqKey": "HTL-13"
+}

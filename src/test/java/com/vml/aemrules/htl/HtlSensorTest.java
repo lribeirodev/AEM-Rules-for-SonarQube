@@ -20,11 +20,13 @@
 package com.vml.aemrules.htl;
 
 import com.vml.aemrules.htl.checks.HtlAttributesShouldBeAtTheEndCheck;
-import com.vml.aemrules.htl.rules.HtlRulesList;
 import com.vml.aemrules.htl.rules.HtlRulesDefinition;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
+import org.sonar.api.SonarEdition;
+import org.sonar.api.SonarQubeSide;
+import org.sonar.api.SonarRuntime;
 import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.batch.fs.internal.DefaultInputFile;
 import org.sonar.api.batch.fs.internal.TestInputFileBuilder;
@@ -35,12 +37,13 @@ import org.sonar.api.batch.sensor.internal.DefaultSensorDescriptor;
 import org.sonar.api.batch.sensor.internal.SensorContextTester;
 import org.sonar.api.batch.sensor.issue.Issue;
 import org.sonar.api.config.Configuration;
+import org.sonar.api.internal.SonarRuntimeImpl;
 import org.sonar.api.measures.FileLinesContext;
 import org.sonar.api.measures.FileLinesContextFactory;
 import org.sonar.api.rule.RuleKey;
 import org.sonar.api.server.rule.RulesDefinition;
 import org.sonar.api.server.rule.RulesDefinition.Repository;
-import org.sonar.plugins.html.api.HtmlConstants;
+import org.sonar.api.utils.Version;
 
 import java.io.File;
 import java.io.IOException;
@@ -50,6 +53,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.vml.aemrules.htl.Constants.REPOSITORY_KEY;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -65,10 +69,11 @@ public class HtlSensorTest {
 
     @Before
     public void setUp() {
-        RulesDefinition rulesDefinition = new HtlRulesDefinition();
+        SonarRuntime sonarRuntime = SonarRuntimeImpl.forSonarQube(Version.create(8, 9), SonarQubeSide.SERVER, SonarEdition.COMMUNITY);
+        RulesDefinition rulesDefinition = new HtlRulesDefinition(sonarRuntime);
         RulesDefinition.Context context = new RulesDefinition.Context();
         rulesDefinition.define(context);
-        Repository htlRepository = context.repository(HtlRulesList.REPOSITORY_KEY);
+        Repository htlRepository = context.repository(REPOSITORY_KEY);
 
         FileLinesContextFactory fileLinesContextFactory = getMockedFileLinesContextFactory();
         Configuration configuration = getMockedConfiguration();
@@ -81,7 +86,7 @@ public class HtlSensorTest {
     private CheckFactory getCheckFactory(Repository htlRepository) {
         List<NewActiveRule> ar = new ArrayList<>();
         for (RulesDefinition.Rule rule : htlRepository.rules()) {
-            ar.add(new NewActiveRule.Builder().setRuleKey(RuleKey.of(HtlRulesList.REPOSITORY_KEY, rule.key())).build());
+            ar.add(new NewActiveRule.Builder().setRuleKey(RuleKey.of(REPOSITORY_KEY, rule.key())).build());
         }
         return new CheckFactory(new DefaultActiveRules(ar));
     }
@@ -168,7 +173,7 @@ public class HtlSensorTest {
     private DefaultInputFile createInputFile(File dir, String fileName) throws IOException {
         return new TestInputFileBuilder("key", fileName)
                 .setModuleBaseDir(dir.toPath())
-                .setLanguage(HtmlConstants.LANGUAGE_KEY)
+                .setLanguage(Htl.LANGUAGE_KEY)
                 .setType(InputFile.Type.MAIN)
                 .initMetadata(new String(Files.readAllBytes(new File(dir, fileName).toPath()), StandardCharsets.UTF_8))
                 .setCharset(StandardCharsets.UTF_8)

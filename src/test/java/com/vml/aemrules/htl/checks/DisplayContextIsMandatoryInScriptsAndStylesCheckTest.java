@@ -27,7 +27,7 @@ public class DisplayContextIsMandatoryInScriptsAndStylesCheckTest extends Abstra
     @Test
     public void checkScriptsAndStyleDisplayContext() {
         check = new ScriptsAndStyleMandatoryDisplayContextCheck();
-        filename = "src/test/resources/htl/DefineDisplayContextInScriptsAndStylesCheck.html";
+        filename = "src/test/files/htl/DefineDisplayContextInScriptsAndStylesCheck.html";
         verify();
     }
 }

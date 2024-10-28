@@ -20,13 +20,9 @@
 package com.vml.aemrules.htl.checks;
 
 
-import com.vml.aemrules.metadata.Metadata;
-import com.vml.aemrules.tag.Tags;
 import com.vml.aemrules.version.AemVersion;
-
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.scripting.sightly.compiler.expression.Expression;
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.html.node.Attribute;
 import org.sonar.plugins.html.node.TagNode;
@@ -35,18 +31,8 @@ import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.regex.Pattern;
 
-@Rule(
-        key = CamelCaseCheck.RULE_KEY,
-        name = CamelCaseCheck.RULE_MESSAGE,
-        priority = Priority.MINOR,
-        tags = Tags.AEM
-)
-@AemVersion(
-        from = "6.0"
-)
-@Metadata(
-        technicalDebt = "5min"
-)
+@Rule(key = CamelCaseCheck.RULE_KEY)
+@AemVersion(from = "6.0")
 public class CamelCaseCheck extends AbstractHtlCheck {
 
     public static final String RULE_KEY = "HTL-15";

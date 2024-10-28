@@ -19,7 +19,6 @@
  */
 package com.vml.aemrules.htl.rules;
 
-import com.vml.aemrules.htl.Htl;
 import com.vml.aemrules.htl.api.HtlCheck;
 import com.vml.aemrules.htl.checks.AvoidExtraSlyTagsCheck;
 import com.vml.aemrules.htl.checks.AvoidUsingUnsafeDisplayContextCheck;
@@ -40,42 +39,35 @@ import com.vml.aemrules.htl.checks.UseMostRestrictiveHtlContextCheck;
 import com.vml.aemrules.htl.checks.UseSlyTagsOverRedundantMarkupCheck;
 import org.sonar.check.Rule;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 public final class HtlRulesList {
 
-    public static final String REPOSITORY_KEY = Htl.KEY;
-
-    public static final String REPOSITORY_NAME = "AEM Rules";
-
-    private static final List<Class<? extends HtlCheck>> CLASSES = Arrays.asList(
-            ParsingErrorCheck.class,
-            HtlCommentsCheck.class,
-            AvoidExtraSlyTagsCheck.class,
-            AvoidUsingUnsafeDisplayContextCheck.class,
-            DefaultDisplayContextCheck.class,
-            DisplayContextInConditionalCommentsCheck.class,
-            EventMandatoryDisplayContextCheck.class,
-            HtlAttributesShouldBeAtTheEndCheck.class,
-            InlineStyleMandatoryDisplayContextCheck.class,
-            NamingAndReusingConditionsCheck.class,
-            PlaceTemplatesInSeparateFilesCheck.class,
-            ScriptsAndStyleMandatoryDisplayContextCheck.class,
-            UseMostRestrictiveHtlContextCheck.class,
-            UseSlyTagsOverRedundantMarkupCheck.class,
-            CamelCaseCheck.class,
-            SlyElementsAreAutomaticallyUnwrappedCheck.class,
-            ExplicitNamesInLoopsCheck.class
-    );
-
     private HtlRulesList() {
         //private constructor
     }
 
-    public static List<Class<? extends HtlCheck>> getCheckClasses() {
-        return CLASSES;
+    public static List<Class<? extends HtlCheck>> getChecks() {
+        return List.of(
+                ParsingErrorCheck.class,
+                HtlCommentsCheck.class,
+                AvoidExtraSlyTagsCheck.class,
+                AvoidUsingUnsafeDisplayContextCheck.class,
+                DefaultDisplayContextCheck.class,
+                DisplayContextInConditionalCommentsCheck.class,
+                EventMandatoryDisplayContextCheck.class,
+                HtlAttributesShouldBeAtTheEndCheck.class,
+                InlineStyleMandatoryDisplayContextCheck.class,
+                NamingAndReusingConditionsCheck.class,
+                PlaceTemplatesInSeparateFilesCheck.class,
+                ScriptsAndStyleMandatoryDisplayContextCheck.class,
+                UseMostRestrictiveHtlContextCheck.class,
+                UseSlyTagsOverRedundantMarkupCheck.class,
+                CamelCaseCheck.class,
+                SlyElementsAreAutomaticallyUnwrappedCheck.class,
+                ExplicitNamesInLoopsCheck.class
+        );
     }
 
     public static Rule getRule(Class<? extends HtlCheck> clazz) {

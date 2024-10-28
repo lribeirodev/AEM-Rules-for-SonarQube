@@ -19,14 +19,11 @@
  */
 package com.vml.aemrules.htl.checks;
 
-import com.vml.aemrules.metadata.Metadata;
-import com.vml.aemrules.tag.Tags;
 import com.vml.aemrules.utils.Comparables;
 import com.vml.aemrules.version.AemVersion;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.sling.scripting.sightly.compiler.expression.Expression;
 import org.apache.sling.scripting.sightly.impl.compiler.Syntax;
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.html.node.Attribute;
 import org.sonar.plugins.html.node.TagNode;
@@ -34,23 +31,11 @@ import org.sonar.plugins.html.node.TagNode;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Rule(
-        key = HtlAttributesShouldBeAtTheEndCheck.RULE_KEY,
-        name = HtlAttributesShouldBeAtTheEndCheck.RULE_MESSAGE,
-        priority = Priority.MINOR,
-        tags = Tags.AEM
-)
-@AemVersion(
-        from = "6.0"
-)
-@Metadata(
-        technicalDebt = "5min"
-)
+@Rule(key = HtlAttributesShouldBeAtTheEndCheck.RULE_KEY)
+@AemVersion(from = "6.0")
 public class HtlAttributesShouldBeAtTheEndCheck extends AbstractHtlCheck {
 
     public static final String RULE_KEY = "HTL-1";
-
-    static final String RULE_MESSAGE = "Always place HTL attributes at the end";
 
     private static boolean isOrdered(Iterable<Integer> list) {
         return Comparables.isOrdered(list);

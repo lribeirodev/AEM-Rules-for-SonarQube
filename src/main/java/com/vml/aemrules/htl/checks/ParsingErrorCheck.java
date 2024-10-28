@@ -20,28 +20,12 @@
 package com.vml.aemrules.htl.checks;
 
 import com.vml.aemrules.htl.api.ParsingErrorRule;
-import com.vml.aemrules.metadata.Metadata;
-import com.vml.aemrules.tag.Tags;
 import com.vml.aemrules.version.AemVersion;
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 
-@Rule(
-        key = ParsingErrorCheck.RULE_KEY,
-        name = ParsingErrorCheck.RULE_NAME,
-        priority = Priority.MINOR,
-        tags = Tags.AEM
-)
-@AemVersion(
-        from = "6.0"
-)
-@Metadata(
-        technicalDebt = "5min"
-)
+@Rule(key = ParsingErrorCheck.RULE_KEY)
+@AemVersion(from = "6.0")
 @ParsingErrorRule
 public class ParsingErrorCheck extends AbstractHtlCheck {
-
     static final String RULE_KEY = "HTL-0";
-
-    static final String RULE_NAME = "Compilation error";
 }

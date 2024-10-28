@@ -27,7 +27,7 @@ public class UseMostRestrictiveHtlContextCheckTest extends AbstractBaseTest {
     @Test
     public void checkAllDataAttributesContainsDisplayContext() {
         check = new UseMostRestrictiveHtlContextCheck();
-        filename = "src/test/resources/htl/UseMostRestrictiveHtlContextCheck.html";
+        filename = "src/test/files/htl/UseMostRestrictiveHtlContextCheck.html";
         verify();
     }
 }

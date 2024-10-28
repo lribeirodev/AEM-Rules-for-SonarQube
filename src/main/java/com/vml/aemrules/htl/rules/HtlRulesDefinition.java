@@ -20,19 +20,30 @@
 package com.vml.aemrules.htl.rules;
 
 import com.vml.aemrules.htl.Htl;
-import com.vml.aemrules.rules.RulesLoader;
+import org.sonar.api.SonarRuntime;
 import org.sonar.api.server.rule.RulesDefinition;
+import org.sonarsource.analyzer.commons.RuleMetadataLoader;
+
+import java.util.ArrayList;
+
+import static com.vml.aemrules.htl.Constants.REPOSITORY_KEY;
+import static com.vml.aemrules.htl.Constants.REPOSITORY_NAME;
 
 public class HtlRulesDefinition implements RulesDefinition {
 
-    private static final RulesLoader rulesLoader = new RulesLoader();
+    public static final String RESOURCE_BASE_PATH = "com/vml/rules/htl";
+
+    private final SonarRuntime sonarRuntime;
+
+    public HtlRulesDefinition(SonarRuntime sonarRuntime) {
+        this.sonarRuntime = sonarRuntime;
+    }
 
     @Override
     public void define(Context context) {
-        NewRepository repo = context
-                .createRepository(HtlRulesList.REPOSITORY_KEY, Htl.KEY)
-                .setName(HtlRulesList.REPOSITORY_NAME);
-        rulesLoader.load(repo, HtlRulesList.getCheckClasses());
-        repo.done();
+        NewRepository repository = context.createRepository(REPOSITORY_KEY, Htl.LANGUAGE_KEY).setName(REPOSITORY_NAME);
+        RuleMetadataLoader ruleMetadataLoader = new RuleMetadataLoader(RESOURCE_BASE_PATH, sonarRuntime);
+        ruleMetadataLoader.addRulesByAnnotatedClass(repository, new ArrayList<>(HtlRulesList.getChecks()));
+        repository.done();
     }
 }

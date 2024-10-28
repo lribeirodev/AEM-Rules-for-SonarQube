@@ -119,7 +119,7 @@ class FindRRDeclarationVisitor extends BaseTreeVisitor {
     }
 
     private boolean isRRF(MethodInvocationTree invocationTree) {
-        return invocationTree.symbol().owner().type().fullyQualifiedName().equals(RESOURCE_RESOLVER_FACTORY);
+        return invocationTree.methodSymbol().owner().type().fullyQualifiedName().equals(RESOURCE_RESOLVER_FACTORY);
     }
 
     private boolean isResourceResolver(MethodInvocationTree invocationTree) {

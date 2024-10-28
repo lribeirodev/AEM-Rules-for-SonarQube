@@ -21,11 +21,11 @@ package com.vml.aemrules.htl.checks;
 
 
 import com.vml.aemrules.htl.AbstractBaseTest;
+import com.vml.aemrules.htl.Htl;
 import org.junit.Before;
 import org.junit.Test;
 import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.batch.fs.internal.TestInputFileBuilder;
-import org.sonar.plugins.html.api.HtmlConstants;
 import org.sonar.plugins.html.checks.HtmlIssue;
 import org.sonar.plugins.html.visitor.HtmlSourceCode;
 
@@ -46,7 +46,7 @@ public class AbstractHtlCheckTest extends AbstractBaseTest {
     private static HtmlSourceCode createHtmlSourceCode(File file) {
         return new HtmlSourceCode(
                 new TestInputFileBuilder("key", file.getPath())
-                        .setLanguage(HtmlConstants.LANGUAGE_KEY)
+                        .setLanguage(Htl.LANGUAGE_KEY)
                         .setType(InputFile.Type.MAIN)
                         .setModuleBaseDir(new File(".").toPath())
                         .setCharset(StandardCharsets.UTF_8)
@@ -57,7 +57,7 @@ public class AbstractHtlCheckTest extends AbstractBaseTest {
     @Before
     public void setUp() {
         this.check = new AbstractHtlCheck();
-        File file = new File("src/test/resources/htl/Empty.html");
+        File file = new File("src/test/files/htl/Empty.html");
         this.htmlSourceCode = createHtmlSourceCode(file);
         check.setSourceCode(htmlSourceCode);
     }

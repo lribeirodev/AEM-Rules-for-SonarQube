@@ -21,6 +21,9 @@ package com.vml.aemrules.htl;
 
 public final class Constants {
 
+    public static final String REPOSITORY_KEY = "AEM-HTL";
+    public static final String REPOSITORY_NAME = "AEM HTL";
+
     public static final String FILE_EXTENSIONS_PROP_KEY = "sonar.htl.file.suffixes";
     public static final String FILE_EXTENSIONS_DEF_VALUE = ".html";
     public static final String HTL_FILES_RELATIVE_PATHS_KEY = "sonar.htl.file.paths";

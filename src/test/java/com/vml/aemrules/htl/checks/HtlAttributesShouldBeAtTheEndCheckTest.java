@@ -27,7 +27,7 @@ public class HtlAttributesShouldBeAtTheEndCheckTest extends AbstractBaseTest {
     @Test
     public void checkHtlAttributesOrder() {
         check = new HtlAttributesShouldBeAtTheEndCheck();
-        filename = "src/test/resources/htl/HtlAttributesShouldBeAtTheEndCheck.html";
+        filename = "src/test/files/htl/HtlAttributesShouldBeAtTheEndCheck.html";
         verify();
     }
 }

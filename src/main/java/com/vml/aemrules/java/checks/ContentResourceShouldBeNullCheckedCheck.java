@@ -20,10 +20,7 @@
 package com.vml.aemrules.java.checks;
 
 import com.vml.aemrules.java.Constants;
-import com.vml.aemrules.metadata.Metadata;
-import com.vml.aemrules.tag.Tags;
 import com.vml.aemrules.version.AemVersion;
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import org.sonar.plugins.java.api.JavaFileScannerContext;
@@ -66,16 +63,11 @@ public class ContentResourceShouldBeNullCheckedCheck extends BaseTreeVisitor imp
     private static final String IS_NULL_METHOD = "isNull";
 
     private static final int METHOD_FIRST_ARGUMENT = 0;
-
+    private final Map<String, Boolean> contentResources = new HashMap<>();
     private boolean returnOccurredInsideEqualNullCheck = false;
-
     private boolean insideEqualNullCheck = false;
-
     private boolean insideIfStatement = false;
-
     private JavaFileScannerContext context;
-
-    private final Map<String, Boolean> contentResources = new HashMap();
 
     @Override
     public void scanFile(JavaFileScannerContext context) {
@@ -177,8 +169,8 @@ public class ContentResourceShouldBeNullCheckedCheck extends BaseTreeVisitor imp
             MemberSelectExpressionTree method = (MemberSelectExpressionTree) tree.methodSelect();
             if (method.expression() instanceof MethodInvocationTree) {
                 MethodInvocationTree invocation = (MethodInvocationTree) method.expression();
-                if (!invocation.symbol().isUnknown() &&
-                        isPage(invocation.symbol().owner().type().fullyQualifiedName()) &&
+                if (!invocation.methodSymbol().isUnknown() &&
+                        isPage(invocation.methodSymbol().owner().type().fullyQualifiedName()) &&
                         isGetContentResourceUsedOnPage(invocation) &&
                         !returnOccurredInsideEqualNullCheck) {
                     context.reportIssue(this, tree, RULE_MESSAGE);
@@ -201,16 +193,16 @@ public class ContentResourceShouldBeNullCheckedCheck extends BaseTreeVisitor imp
 
     private boolean isGetContentResourceUsedOnPage(VariableTree tree) {
         return tree.initializer() instanceof MethodInvocationTree &&
-                !((MethodInvocationTree) tree.initializer()).symbol().isUnknown() &&
-                isPage(((MethodInvocationTree) tree.initializer()).symbol().owner().type()
+                !((MethodInvocationTree) tree.initializer()).methodSymbol().isUnknown() &&
+                isPage(((MethodInvocationTree) tree.initializer()).methodSymbol().owner().type()
                         .fullyQualifiedName()) &&
-                GET_CONTENT_RESOURCE_METHOD.equals(((MethodInvocationTree) tree.initializer()).symbol().name());
+                GET_CONTENT_RESOURCE_METHOD.equals(((MethodInvocationTree) tree.initializer()).methodSymbol().name());
     }
 
     private boolean isGetContentResourceUsedOnResource(AssignmentExpressionTree tree) {
         return isResource(tree) &&
                 tree.expression() instanceof MethodInvocationTree &&
-                GET_CONTENT_RESOURCE_METHOD.equals(((MethodInvocationTree) tree.expression()).symbol().name());
+                GET_CONTENT_RESOURCE_METHOD.equals(((MethodInvocationTree) tree.expression()).methodSymbol().name());
     }
 
     private boolean isPage(String name) {

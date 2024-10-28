@@ -27,7 +27,7 @@ public class CamelCaseCheckTest extends AbstractBaseTest {
     @Test
     public void checkCapitalization() {
         check = new CamelCaseCheck();
-        filename = "src/test/resources/htl/CamelCaseCheck.html";
+        filename = "src/test/files/htl/CamelCaseCheck.html";
         verify();
     }
 }

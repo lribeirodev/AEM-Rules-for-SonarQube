@@ -20,28 +20,15 @@
 package com.vml.aemrules.htl.checks;
 
 
-import com.vml.aemrules.metadata.Metadata;
-import com.vml.aemrules.tag.Tags;
 import com.vml.aemrules.version.AemVersion;
 import org.apache.sling.scripting.sightly.compiler.expression.Expression;
 import org.apache.sling.scripting.sightly.impl.compiler.Syntax;
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.html.node.Node;
 import org.sonar.plugins.html.node.TagNode;
 
-@Rule(
-        key = ScriptsAndStyleMandatoryDisplayContextCheck.RULE_KEY,
-        name = ScriptsAndStyleMandatoryDisplayContextCheck.RULE_MESSAGE,
-        priority = Priority.MAJOR,
-        tags = Tags.AEM
-)
-@AemVersion(
-        from = "6.0"
-)
-@Metadata(
-        technicalDebt = "5min"
-)
+@Rule(key = ScriptsAndStyleMandatoryDisplayContextCheck.RULE_KEY)
+@AemVersion(from = "6.0")
 public class ScriptsAndStyleMandatoryDisplayContextCheck extends AbstractHtlCheck {
 
     public static final String RULE_KEY = "HTL-7";

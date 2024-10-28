@@ -46,7 +46,7 @@ public final class HtlFilePredicateProvider {
         return predicates.and(
                 predicates.hasType(InputFile.Type.MAIN),
                 predicates.or(
-                        predicates.hasLanguages(Htl.KEY),
+                        predicates.hasLanguages(Htl.LANGUAGE_KEY),
                         predicates.or(fileExtensions)
                 ),
                 predicates.or(relativePaths)

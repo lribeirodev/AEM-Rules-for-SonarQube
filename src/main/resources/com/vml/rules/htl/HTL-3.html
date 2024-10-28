@@ -1,0 +1,18 @@
+<p>HTL provides implicit variables in data-sly-list and data-sly-repeat blocks.</p>
+<p>Try to avoid them and use explicit names clarifying the role of the objects instead.</p>
+<h3>Noncompliant Code Example</h3>
+<pre>
+&lt;ul data-sly-list=&quot;${model.downloadableFiles}&quot;&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;${item.url}&quot;&gt;${item.name}&lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+<h3>Compliant Solution</h3>
+<pre>
+&lt;ul data-sly-list.file=&quot;${model.downloadableFiles}&quot;&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;${file.url}&quot;&gt;${file.name}&lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+</pre>

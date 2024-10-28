@@ -20,13 +20,13 @@
 package com.vml.aemrules.htl.visitors;
 
 import com.google.common.io.Files;
+import com.vml.aemrules.htl.Htl;
 import com.vml.aemrules.htl.lex.HtlLexer;
 import com.vml.aemrules.utils.Throwables;
 import org.apache.sling.scripting.sightly.compiler.expression.Expression;
 import org.junit.Before;
 import org.junit.Test;
 import org.sonar.api.batch.fs.internal.TestInputFileBuilder;
-import org.sonar.plugins.html.api.HtmlConstants;
 import org.sonar.plugins.html.node.CommentNode;
 import org.sonar.plugins.html.node.Node;
 import org.sonar.plugins.html.node.TagNode;
@@ -73,7 +73,7 @@ public class HtlScannerTest {
 
     private HtmlSourceCode createHtmlSourceCode(String relativePath) {
         return new HtmlSourceCode(new TestInputFileBuilder("key", relativePath)
-                .setLanguage(HtmlConstants.LANGUAGE_KEY)
+                .setLanguage(Htl.LANGUAGE_KEY)
                 .setModuleBaseDir(new File(".").toPath())
                 .build()
         );
@@ -83,7 +83,7 @@ public class HtlScannerTest {
         File root = new File("src/test/resources");
         File file = new File(root, fileName);
         try {
-            return new StringReader(Files.toString(file, StandardCharsets.UTF_8));
+            return new StringReader(Files.asCharSource(file, StandardCharsets.UTF_8).read());
         } catch (IOException e) {
             throw new IllegalArgumentException("Cannot read " + fileName, e);
         }

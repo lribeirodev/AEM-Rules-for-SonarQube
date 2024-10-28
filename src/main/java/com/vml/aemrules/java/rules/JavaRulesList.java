@@ -35,7 +35,6 @@ import com.vml.aemrules.java.checks.slingquery.SlingQueryImplicitStrategyCheck;
 import org.sonar.plugins.java.api.JavaCheck;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -53,22 +52,18 @@ public class JavaRulesList {
     }
 
     public static List<Class<? extends JavaCheck>> getJavaChecks() {
-        return Collections.unmodifiableList(Arrays.asList(
-                        AdministrativeAccessUsageCheck.class,
-                        AnnotationsConstantsCheck.class,
-                        ConstantsCheck.class,
-                        PreferSlingServletAnnotation.class,
-                        ResourceResolverShouldBeClosed.class,
-                        SessionShouldBeLoggedOut.class,
-                        SynchronizedKeywordUsageCheck.class,
-                        ThreadSafeFieldCheck.class,
-                        DefaultInjectionStrategyAnnotationCheck.class,
-                        ModifiableValueMapUsageCheck.class,
-                        ContentResourceShouldBeNullCheckedCheck.class,
-                        SlingQueryImplicitStrategyCheck.class,
-                        ResourceResolverTryWithResourcesCheck.class
-                )
-        );
+        return List.of(AdministrativeAccessUsageCheck.class,
+                AnnotationsConstantsCheck.class, ConstantsCheck.class,
+                PreferSlingServletAnnotation.class,
+                ResourceResolverShouldBeClosed.class,
+                SessionShouldBeLoggedOut.class,
+                SynchronizedKeywordUsageCheck.class,
+                ThreadSafeFieldCheck.class,
+                DefaultInjectionStrategyAnnotationCheck.class,
+                ModifiableValueMapUsageCheck.class,
+                ContentResourceShouldBeNullCheckedCheck.class,
+                SlingQueryImplicitStrategyCheck.class,
+                ResourceResolverTryWithResourcesCheck.class);
     }
 
     public static List<Class<? extends JavaCheck>> getJavaTestChecks() {

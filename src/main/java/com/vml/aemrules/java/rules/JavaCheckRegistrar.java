@@ -30,7 +30,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import static com.vml.aemrules.java.rules.JavaRulesDefinition.REPOSITORY_KEY;
+import static com.vml.aemrules.java.Constants.REPOSITORY_KEY;
 
 @SonarLintSide
 public class JavaCheckRegistrar implements CheckRegistrar {

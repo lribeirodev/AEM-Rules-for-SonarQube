@@ -19,7 +19,6 @@
  */
 package com.vml.aemrules.matcher;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.sonar.java.model.JParser;
 import org.sonar.java.model.JParserConfig;
@@ -36,6 +35,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class MethodMatcherTest {
 
@@ -73,7 +73,7 @@ public class MethodMatcherTest {
                 ParameterTypePredicate.is("com.vml.test.MyClass2")
         );
 
-        Assert.assertThat(methodMatcher.matches(methodInvocationTree), is(true));
+        assertThat(methodMatcher.matches(methodInvocationTree), is(true));
     }
 
     @Test
@@ -87,7 +87,7 @@ public class MethodMatcherTest {
                 ParameterTypePredicate.is("com.vml.test.MyClass2")
         );
 
-        Assert.assertThat(methodMatcher.matches(methodInvocationTree), is(true));
+        assertThat(methodMatcher.matches(methodInvocationTree), is(true));
     }
 
     @Test
@@ -101,7 +101,7 @@ public class MethodMatcherTest {
                 ParameterTypePredicate.is("com.vml.test.MyClass2")
         );
 
-        Assert.assertThat(methodMatcher.matches(methodInvocationTree), is(false));
+        assertThat(methodMatcher.matches(methodInvocationTree), is(false));
     }
 
     @Test
@@ -114,7 +114,7 @@ public class MethodMatcherTest {
                 ParameterTypePredicate.is("com.vml.test.MyClass1")
         );
 
-        Assert.assertThat(methodMatcher.matches(methodInvocationTree), is(false));
+        assertThat(methodMatcher.matches(methodInvocationTree), is(false));
     }
 
     @Test
@@ -128,7 +128,7 @@ public class MethodMatcherTest {
                 ParameterTypePredicate.is("com.vml.test.MyClass2")
         );
 
-        Assert.assertThat(methodMatcher.matches(methodInvocationTree), is(false));
+        assertThat(methodMatcher.matches(methodInvocationTree), is(false));
     }
 
     @Test
@@ -142,7 +142,7 @@ public class MethodMatcherTest {
                 ParameterTypePredicate.is("com.vml.test.MyClass2")
         );
 
-        Assert.assertThat(methodMatcher.matches(methodInvocationTree), is(false));
+        assertThat(methodMatcher.matches(methodInvocationTree), is(false));
     }
 
     private void givenMethodInvocationTree(String codeToParse) {

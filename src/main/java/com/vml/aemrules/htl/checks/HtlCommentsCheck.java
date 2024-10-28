@@ -19,12 +19,9 @@
  */
 package com.vml.aemrules.htl.checks;
 
-import com.vml.aemrules.metadata.Metadata;
-import com.vml.aemrules.tag.Tags;
 import com.vml.aemrules.version.AemVersion;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.scripting.sightly.impl.compiler.Syntax;
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.html.node.CommentNode;
 
@@ -35,18 +32,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-@Rule(
-        key = HtlCommentsCheck.RULE_KEY,
-        name = HtlCommentsCheck.RULE_MESSAGE,
-        priority = Priority.MINOR,
-        tags = Tags.AEM
-)
-@AemVersion(
-        all = true
-)
-@Metadata(
-        technicalDebt = "5min"
-)
+@Rule(key = HtlCommentsCheck.RULE_KEY)
+@AemVersion(all = true)
 public class HtlCommentsCheck extends AbstractHtlCheck {
 
     static final String RULE_KEY = "HTL-5";

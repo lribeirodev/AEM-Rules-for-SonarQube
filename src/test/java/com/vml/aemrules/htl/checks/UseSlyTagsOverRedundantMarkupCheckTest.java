@@ -27,7 +27,7 @@ public class UseSlyTagsOverRedundantMarkupCheckTest extends AbstractBaseTest {
     @Test
     public void checkRedundantSlyTags() {
         check = new UseSlyTagsOverRedundantMarkupCheck();
-        filename = "src/test/resources/htl/UseSlyTagsOverRedundantMarkupCheck.html";
+        filename = "src/test/files/htl/UseSlyTagsOverRedundantMarkupCheck.html";
         verify();
     }
 }

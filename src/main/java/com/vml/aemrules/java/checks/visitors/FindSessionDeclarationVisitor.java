@@ -119,7 +119,7 @@ public class FindSessionDeclarationVisitor extends BaseTreeVisitor {
     }
 
     private boolean isSlingRepository(MethodInvocationTree methodInvocation) {
-        return methodInvocation.symbol().owner().type().fullyQualifiedName().equals(SLING_REPOSITORY);
+        return methodInvocation.methodSymbol().owner().type().fullyQualifiedName().equals(SLING_REPOSITORY);
     }
 
     private boolean isSession(MethodInvocationTree methodInvocation) {

@@ -19,15 +19,12 @@
  */
 package com.vml.aemrules.htl.checks;
 
-import com.vml.aemrules.metadata.Metadata;
-import com.vml.aemrules.tag.Tags;
 import com.vml.aemrules.version.AemVersion;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.scripting.sightly.compiler.expression.Expression;
 import org.apache.sling.scripting.sightly.compiler.expression.ExpressionNode;
 import org.apache.sling.scripting.sightly.compiler.expression.nodes.Identifier;
 import org.apache.sling.scripting.sightly.compiler.expression.nodes.PropertyAccess;
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.html.node.Attribute;
 import org.sonar.plugins.html.node.TagNode;
@@ -37,18 +34,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-@Rule(
-        key = PlaceTemplatesInSeparateFilesCheck.RULE_KEY,
-        name = PlaceTemplatesInSeparateFilesCheck.RULE_MESSAGE,
-        priority = Priority.MINOR,
-        tags = Tags.AEM
-)
-@AemVersion(
-        from = "6.0"
-)
-@Metadata(
-        technicalDebt = "15min"
-)
+@Rule(key = PlaceTemplatesInSeparateFilesCheck.RULE_KEY)
+@AemVersion(from = "6.0")
 public class PlaceTemplatesInSeparateFilesCheck extends AbstractHtlCheck {
 
     public static final String RULE_KEY = "HTL-2";

@@ -29,7 +29,6 @@ import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.batch.fs.internal.TestInputFileBuilder;
 import org.sonar.api.rule.RuleKey;
 import org.sonar.check.Rule;
-import org.sonar.plugins.html.api.HtmlConstants;
 import org.sonar.plugins.html.checks.HtmlIssue;
 import org.sonar.plugins.html.node.CommentNode;
 import org.sonar.plugins.html.visitor.HtmlSourceCode;
@@ -40,6 +39,8 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
+import static com.vml.aemrules.htl.Constants.REPOSITORY_KEY;
+
 public abstract class AbstractBaseTest {
 
     protected AbstractHtlCheck check;
@@ -49,7 +50,7 @@ public abstract class AbstractBaseTest {
     private static HtmlSourceCode createSourceCode(File file) {
         return new HtmlSourceCode(
                 new TestInputFileBuilder("key", file.getPath())
-                        .setLanguage(HtmlConstants.LANGUAGE_KEY)
+                        .setLanguage(Htl.LANGUAGE_KEY)
                         .setType(InputFile.Type.MAIN)
                         .setModuleBaseDir(new File(".").toPath())
                         .setCharset(StandardCharsets.UTF_8)
@@ -63,7 +64,7 @@ public abstract class AbstractBaseTest {
         if (check != null) {
             Class<? extends HtlCheck> htlCheck = check.getClass();
             Rule rule = HtlRulesList.getRule(htlCheck);
-            RuleKey ruleKey = RuleKey.of(HtlRulesList.REPOSITORY_KEY, rule.key());
+            RuleKey ruleKey = RuleKey.of(REPOSITORY_KEY, rule.key());
             check.setRuleKey(ruleKey);
         }
         scanner.addVisitor(check);

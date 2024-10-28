@@ -27,7 +27,7 @@ public class ExplicitNamesInLoopsCheckTest extends AbstractBaseTest {
     @Test
     public void ExplicitNamesInLoopsCheck() {
         check = new ExplicitNamesInLoopsCheck();
-        filename = "src/test/resources/htl/ExplicitNamesInLoopsCheck.html";
+        filename = "src/test/files/htl/ExplicitNamesInLoopsCheck.html";
         verify();
     }
 }

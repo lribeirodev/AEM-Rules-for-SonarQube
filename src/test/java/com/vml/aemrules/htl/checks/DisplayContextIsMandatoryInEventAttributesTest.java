@@ -27,7 +27,7 @@ public class DisplayContextIsMandatoryInEventAttributesTest extends AbstractBase
     @Test
     public void checkEventAttributeDisplayContext() {
         check = new EventMandatoryDisplayContextCheck();
-        filename = "src/test/resources/htl/DefineDisplayContextInEventAttributes.html";
+        filename = "src/test/files/htl/DefineDisplayContextInEventAttributes.html";
         verify();
     }
 }

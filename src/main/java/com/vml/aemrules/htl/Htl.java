@@ -26,12 +26,12 @@ public class Htl extends AbstractLanguage {
     /**
      * Language key
      */
-    public static final String KEY = "htl";
+    public static final String LANGUAGE_KEY = "htl";
 
     /**
      * Language name
      */
-    public static final String NAME = "HTL";
+    public static final String LANGUAGE_NAME = "HTL";
 
     /**
      * Default Htl files known suffixes
@@ -39,7 +39,7 @@ public class Htl extends AbstractLanguage {
     public static final String[] DEFAULT_FILE_SUFFIXES = new String[]{};
 
     public Htl() {
-        super(KEY, NAME);
+        super(LANGUAGE_KEY, LANGUAGE_NAME);
     }
 
     @Override

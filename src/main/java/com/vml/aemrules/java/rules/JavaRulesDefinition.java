@@ -22,14 +22,15 @@ package com.vml.aemrules.java.rules;
 import org.sonar.api.SonarRuntime;
 import org.sonar.api.server.rule.RulesDefinition;
 import org.sonarsource.analyzer.commons.RuleMetadataLoader;
+import org.sonarsource.api.sonarlint.SonarLintSide;
 
 import java.util.ArrayList;
 
+import static com.vml.aemrules.java.Constants.REPOSITORY_KEY;
+import static com.vml.aemrules.java.Constants.REPOSITORY_NAME;
+
+@SonarLintSide
 public class JavaRulesDefinition implements RulesDefinition {
-
-    public static final String REPOSITORY_KEY = "AEM-Rules";
-
-    public static final String REPOSITORY_NAME = "AEM Rules";
 
     private static final String RESOURCE_BASE_PATH = "org/sonar/l10n/java/rules/java";
 

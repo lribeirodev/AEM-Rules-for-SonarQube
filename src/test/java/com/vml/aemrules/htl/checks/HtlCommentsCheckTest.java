@@ -28,7 +28,7 @@ public class HtlCommentsCheckTest extends AbstractBaseTest {
     @Test
     public void checkHTLStyleOfCommenting() {
         check = new HtlCommentsCheck();
-        filename = "src/test/resources/htl/HtlCommentsCheck.html";
+        filename = "src/test/files/htl/HtlCommentsCheck.html";
         verify();
     }
 } 

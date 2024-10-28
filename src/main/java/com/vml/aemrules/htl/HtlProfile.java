@@ -25,19 +25,21 @@ import org.sonar.check.Rule;
 
 import java.util.Objects;
 
+import static com.vml.aemrules.htl.Constants.REPOSITORY_KEY;
+
 public class HtlProfile implements BuiltInQualityProfilesDefinition {
 
-    private static final String QUALITY_PROFILE_NAME = "AEM HTL Profile";
+    private static final String QUALITY_PROFILE_NAME = "HTL";
 
     @Override
     public void define(Context context) {
         NewBuiltInQualityProfile htl = context
-                .createBuiltInQualityProfile(QUALITY_PROFILE_NAME, Htl.KEY);
-        HtlRulesList.getCheckClasses().stream()
+                .createBuiltInQualityProfile(QUALITY_PROFILE_NAME, Htl.LANGUAGE_KEY);
+        HtlRulesList.getChecks().stream()
                 .map(HtlRulesList::getRule)
                 .map(Rule::key)
                 .filter(Objects::nonNull)
-                .forEach(ruleKey -> htl.activateRule(HtlRulesList.REPOSITORY_KEY, ruleKey));
+                .forEach(ruleKey -> htl.activateRule(REPOSITORY_KEY, ruleKey));
         htl.done();
     }
 }

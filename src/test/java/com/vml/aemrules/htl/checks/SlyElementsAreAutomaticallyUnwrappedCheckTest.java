@@ -27,7 +27,7 @@ public class SlyElementsAreAutomaticallyUnwrappedCheckTest extends AbstractBaseT
     @Test
     public void checkRedundantUnwrapAttributes() {
         check = new SlyElementsAreAutomaticallyUnwrappedCheck();
-        filename = "src/test/resources/htl/SlyElementsAreAutomaticallyUnwrappedCheck.html";
+        filename = "src/test/files/htl/SlyElementsAreAutomaticallyUnwrappedCheck.html";
         verify();
     }
 }

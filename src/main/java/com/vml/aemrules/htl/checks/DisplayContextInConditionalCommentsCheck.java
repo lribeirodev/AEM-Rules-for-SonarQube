@@ -19,29 +19,16 @@
  */
 package com.vml.aemrules.htl.checks;
 
-import com.vml.aemrules.metadata.Metadata;
-import com.vml.aemrules.tag.Tags;
 import com.vml.aemrules.version.AemVersion;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.scripting.sightly.impl.compiler.Syntax;
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.html.node.CommentNode;
 
 import java.util.regex.Pattern;
 
-@Rule(
-        key = DisplayContextInConditionalCommentsCheck.RULE_KEY,
-        name = DisplayContextInConditionalCommentsCheck.RULE_MESSAGE,
-        priority = Priority.MINOR,
-        tags = Tags.AEM
-)
-@AemVersion(
-        from = "6.0"
-)
-@Metadata(
-        technicalDebt = "5min"
-)
+@Rule(key = DisplayContextInConditionalCommentsCheck.RULE_KEY)
+@AemVersion(from = "6.0")
 public class DisplayContextInConditionalCommentsCheck extends AbstractHtlCheck {
 
     public static final String RULE_KEY = "HTL-14";

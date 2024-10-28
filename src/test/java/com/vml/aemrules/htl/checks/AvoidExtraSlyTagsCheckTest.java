@@ -27,7 +27,7 @@ public class AvoidExtraSlyTagsCheckTest extends AbstractBaseTest {
     @Test
     public void avoidExtraSlyTags() {
         check = new AvoidExtraSlyTagsCheck();
-        filename = "src/test/resources/htl/AvoidExtraSlyTagsCheck.html";
+        filename = "src/test/files/htl/AvoidExtraSlyTagsCheck.html";
         verify();
     }
 }

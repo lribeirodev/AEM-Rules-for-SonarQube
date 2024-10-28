@@ -20,28 +20,15 @@
 package com.vml.aemrules.htl.checks;
 
 
-import com.vml.aemrules.metadata.Metadata;
-import com.vml.aemrules.tag.Tags;
 import com.vml.aemrules.version.AemVersion;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.scripting.sightly.impl.compiler.Syntax;
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.html.node.Attribute;
 import org.sonar.plugins.html.node.TagNode;
 
-@Rule(
-        key = EventMandatoryDisplayContextCheck.RULE_KEY,
-        name = EventMandatoryDisplayContextCheck.RULE_MESSAGE,
-        priority = Priority.MAJOR,
-        tags = Tags.AEM
-)
-@AemVersion(
-        from = "6.0"
-)
-@Metadata(
-        technicalDebt = "5min"
-)
+@Rule(key = EventMandatoryDisplayContextCheck.RULE_KEY)
+@AemVersion(from = "6.0")
 public class EventMandatoryDisplayContextCheck extends AbstractHtlCheck {
 
     public static final String RULE_KEY = "HTL-8";

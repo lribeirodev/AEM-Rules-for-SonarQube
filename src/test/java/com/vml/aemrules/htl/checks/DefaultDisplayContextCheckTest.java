@@ -27,7 +27,7 @@ public class DefaultDisplayContextCheckTest extends AbstractBaseTest {
     @Test
     public void checkDefaultDisplayContext() {
         check = new DefaultDisplayContextCheck();
-        filename = "src/test/resources/htl/UseDefaultDisplayContextCheck.html";
+        filename = "src/test/files/htl/UseDefaultDisplayContextCheck.html";
         verify();
     }
 }

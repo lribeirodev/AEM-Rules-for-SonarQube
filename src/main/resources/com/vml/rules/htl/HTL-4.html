@@ -1,0 +1,19 @@
+<p>Always try to re-use existing conditions, so the code is more readable.</p>
+<h3>Noncompliant Code Example</h3>
+<pre>
+&lt;span class=&quot;uber-mode__top-bar&quot; data-sly-test=&quot;${uberModeHelper.uberModeEnabled || forceUberMode}&quot;&gt;
+    &lt;div class=&quot;my-component&quot;&gt;
+        Some text
+    &lt;/div&gt;
+&lt;/span&gt;
+&lt;span class=&quot;uber-mode__bottom-bar&quot; data-sly-test=&quot;${uberModeHelper.uberModeEnabled || forceUberMode}&quot;&gt;&lt;/span&gt;
+</pre>
+<h3>Compliant Solution</h3>
+<pre>
+&lt;span class=&quot;uber-mode__top-bar&quot; data-sly-test.uberMode=&quot;${uberModeHelper.uberModeEnabled || forceUberMode}&quot;&gt;
+    &lt;div class=&quot;my-component&quot;&gt;
+        Some text
+    &lt;/div&gt;
+&lt;/span&gt;
+&lt;span class=&quot;uber-mode__bottom-bar&quot; data-sly-test=&quot;${uberMode}&quot;&gt;&lt;/span&gt;
+</pre>

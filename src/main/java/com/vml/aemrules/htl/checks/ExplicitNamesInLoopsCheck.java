@@ -19,30 +19,15 @@
  */
 package com.vml.aemrules.htl.checks;
 
-import com.vml.aemrules.metadata.Metadata;
-import com.vml.aemrules.tag.Tags;
 import com.vml.aemrules.version.AemVersion;
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.html.node.TagNode;
 
-@Rule(
-        key = ExplicitNamesInLoopsCheck.RULE_KEY,
-        name = ExplicitNamesInLoopsCheck.RULE_NAME,
-        priority = Priority.MINOR,
-        tags = Tags.AEM
-)
-@AemVersion(
-        all = true
-)
-@Metadata(
-        technicalDebt = "10min"
-)
+@Rule(key = ExplicitNamesInLoopsCheck.RULE_KEY)
+@AemVersion(all = true)
 public class ExplicitNamesInLoopsCheck extends AbstractHtlCheck {
 
     static final String RULE_KEY = "HTL-3";
-
-    static final String RULE_NAME = "Explicit names in loops";
 
     static final String RULE_MESSAGE = "Use explicit names in loops";
 

@@ -35,12 +35,12 @@ import java.util.List;
 
 public class AemRulesSonarPlugin implements Plugin {
 
-    private static List<PropertyDefinition> pluginProperties() {
+    private static List<PropertyDefinition> createHtlLanguageProperties() {
         return Arrays.asList(
                 PropertyDefinition.builder(Constants.FILE_EXTENSIONS_PROP_KEY)
                         .name("File suffixes")
                         .description("List of file suffixes that will be scanned.")
-                        .category(Htl.NAME)
+                        .category(Htl.LANGUAGE_NAME)
                         .defaultValue(Constants.FILE_EXTENSIONS_DEF_VALUE)
                         .onQualifiers(Qualifiers.PROJECT)
                         .multiValues(true)
@@ -48,7 +48,7 @@ public class AemRulesSonarPlugin implements Plugin {
                 PropertyDefinition.builder(Constants.HTL_FILES_RELATIVE_PATHS_KEY)
                         .name("HTL files relative paths")
                         .description("List of relative paths that contains HTL files.")
-                        .category(Htl.NAME)
+                        .category(Htl.LANGUAGE_NAME)
                         .defaultValue(Constants.HTL_FILES_RELATIVE_PATHS_DEF_VALUE)
                         .onQualifiers(Qualifiers.PROJECT)
                         .multiValues(true)
@@ -69,6 +69,6 @@ public class AemRulesSonarPlugin implements Plugin {
                 HtlProfile.class,
                 HtlSensor.class);
 
-        context.addExtensions(pluginProperties());
+        context.addExtensions(createHtlLanguageProperties());
     }
 }

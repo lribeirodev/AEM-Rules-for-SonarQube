@@ -19,10 +19,7 @@
  */
 package com.vml.aemrules.htl.checks;
 
-import com.vml.aemrules.metadata.Metadata;
-import com.vml.aemrules.tag.Tags;
 import com.vml.aemrules.version.AemVersion;
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.html.node.TagNode;
 
@@ -35,18 +32,8 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-@Rule(
-        key = DefaultDisplayContextCheck.RULE_KEY,
-        name = DefaultDisplayContextCheck.RULE_MESSAGE,
-        priority = Priority.MINOR,
-        tags = Tags.AEM
-)
-@AemVersion(
-        from = "6.0"
-)
-@Metadata(
-        technicalDebt = "5min"
-)
+@Rule(key = DefaultDisplayContextCheck.RULE_KEY)
+@AemVersion(from = "6.0")
 public class DefaultDisplayContextCheck extends AbstractHtlCheck {
 
     public static final String RULE_KEY = "HTL-6";

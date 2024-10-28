@@ -1,0 +1,10 @@
+<p>If it's not possible to use an existing element, prefer sly tags over introducing superfluous markup that renders on the page.</p>
+<h3>Noncompliant Code Example</h3>
+<pre>
+&lt;div data-sly-use.model=&quot;com.example.Model&quot; data-sly-use.templates=&quot;templates.html&quot;&gt;&lt;/div&gt;
+&lt;div data-sly-use.model=&quot;com.example.Model&quot; data-sly-use.templates=&quot;templates.html&quot; data-sly-unwrap&gt;&lt;/div&gt;
+</pre>
+<h3>Compliant Solution</h3>
+<pre>
+&lt;sly data-sly-use.model=&quot;com.example.Model&quot; data-sly-use.templates=&quot;templates.html&quot;&gt;&lt;/sly&gt;
+</pre>

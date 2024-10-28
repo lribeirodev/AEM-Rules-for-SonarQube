@@ -37,11 +37,11 @@ public final class HtlLexer {
 
     private static final List<Channel<List<Node>>> tokenizers = Arrays.asList(
             /* HTL Comments */
-            new CommentTokenizer(Syntax.SLY_COMMENT_PREFIX, Syntax.SLY_COMMENT_SUFFIX, false),
+            new CommentTokenizer<>(Syntax.SLY_COMMENT_PREFIX, Syntax.SLY_COMMENT_SUFFIX, false),
             /* HTML Comments */
-            new CommentTokenizer("<!--", "-->", true),
+            new CommentTokenizer<>("<!--", "-->", true),
             /* JSP Comments */
-            new CommentTokenizer("<%--", "--%>", false),
+            new CommentTokenizer<>("<%--", "--%>", false),
             /* HTML Directive */
             new DoctypeTokenizer("<!DOCTYPE", ">"),
             /* XML Directives */
