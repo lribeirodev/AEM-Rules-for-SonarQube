@@ -31,8 +31,7 @@ import org.sonar.api.batch.sensor.SensorContext;
 import org.sonar.api.batch.sensor.issue.NewIssue;
 import org.sonar.api.batch.sensor.issue.NewIssueLocation;
 import org.sonar.api.rule.RuleKey;
-import org.sonar.squidbridge.ProgressReport;
-import org.sonar.squidbridge.api.AnalysisException;
+import org.sonarsource.analyzer.commons.ProgressReport;
 
 import java.io.IOException;
 import java.io.InterruptedIOException;

@@ -30,6 +30,7 @@ jobs:
       matrix:
         sonarqube-image:
           - 'sonarqube:9.9-community'
+          - 'sonarqube:10.7-community'
           - 'sonarqube:lts-community'
           - 'sonarqube:latest'
       fail-fast: false

@@ -138,50 +138,16 @@
         </dependency>
         <dependency>
             <artifactId>sonar-html-plugin</artifactId>
-            <exclusions>
-                <exclusion>
-                    <artifactId>guava</artifactId>
-                    <groupId>com.google.guava</groupId>
-                </exclusion>
-            </exclusions>
             <groupId>org.sonarsource.html</groupId>
             <version>${sonar.html.version}</version>
         </dependency>
         <dependency>
-            <artifactId>sslr-squid-bridge</artifactId>
-            <exclusions>
-                <exclusion>
-                    <artifactId>sslr-core</artifactId>
-                    <groupId>org.codehaus.sonar.sslr</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>sonar-plugin-api</artifactId>
-                    <groupId>org.codehaus.sonar</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>sslr-xpath</artifactId>
-                    <groupId>org.codehaus.sonar.sslr</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>jcl-over-slf4j</artifactId>
-                    <groupId>org.slf4j</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>slf4j-api</artifactId>
-                    <groupId>org.slf4j</groupId>
-                </exclusion>
-            </exclusions>
-            <groupId>org.sonarsource.sslr-squid-bridge</groupId>
-            <version>2.6.1</version>
+            <artifactId>sonar-analyzer-commons</artifactId>
+            <groupId>org.sonarsource.analyzer-commons</groupId>
+            <version>2.14.0.3087</version>
         </dependency>
         <dependency>
             <artifactId>sonar-java-plugin</artifactId>
-            <exclusions>
-                <exclusion>
-                    <artifactId>guava</artifactId>
-                    <groupId>com.google.guava</groupId>
-                </exclusion>
-            </exclusions>
             <groupId>org.sonarsource.java</groupId>
             <type>sonar-plugin</type>
             <version>${sonar.java.plugin}</version>
@@ -255,12 +221,6 @@
             <groupId>org.sonarsource.java</groupId>
             <scope>test</scope>
             <version>${sonar.javaCheksTestkitVersion}</version>
-        </dependency>
-        <dependency>
-            <artifactId>sonar-analyzer-commons</artifactId>
-            <groupId>org.sonarsource.analyzer-commons</groupId>
-            <scope>test</scope>
-            <version>2.14.0.3087</version>
         </dependency>
         <dependency>
             <artifactId>logback-classic</artifactId>
@@ -350,19 +310,18 @@
                     <pluginKey>aemrules</pluginKey>
                     <pluginClass>com.vml.aemrules.AemRulesSonarPlugin</pluginClass>
                     <pluginApiMinVersion>9.9</pluginApiMinVersion>
-                    <pluginIssueTrackerUrl>https://github.com/wttech/AEM-Rules-for-SonarQube/issues
-                    </pluginIssueTrackerUrl>
-                    <pluginSourcesUrl>https://github.com/wttech/AEM-Rules-for-SonarQube/tree/${tagName}
-                    </pluginSourcesUrl>
+                    <pluginIssueTrackerUrl>https://github.com/wttech/AEM-Rules-for-SonarQube/issues</pluginIssueTrackerUrl>
+                    <pluginSourcesUrl>https://github.com/wttech/AEM-Rules-for-SonarQube/tree/${tagName}</pluginSourcesUrl>
                     <pluginUrl>https://github.com/wttech/AEM-Rules-for-SonarQube</pluginUrl>
                     <sonarLintSupported>true</sonarLintSupported>
                     <skipDependenciesPackaging>true</skipDependenciesPackaging>
+                    <requiredForLanguages>java</requiredForLanguages>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.2.4</version>
+                <version>3.6.0</version>
                 <configuration>
                     <shadedArtifactAttached>false</shadedArtifactAttached>
                     <minimizeJar>true</minimizeJar>

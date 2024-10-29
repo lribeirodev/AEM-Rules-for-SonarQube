@@ -36,9 +36,8 @@ import org.sonar.api.measures.FileLinesContextFactory;
 import org.sonar.api.rule.RuleKey;
 import org.sonar.plugins.html.node.Node;
 import org.sonar.plugins.html.visitor.HtmlSourceCode;
-import org.sonar.squidbridge.ProgressReport;
+import org.sonarsource.analyzer.commons.ProgressReport;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
@@ -75,9 +74,8 @@ public class HtlSensor extends HtlFilesAnalyzer implements Sensor {
         FilePredicate htlFilePredicate = HtlFilePredicateProvider.createFilePredicate(configuration, context);
         Iterable<InputFile> inputFiles = context.fileSystem().inputFiles(htlFilePredicate);
 
-        Collection<File> files = StreamSupport.stream(inputFiles.spliterator(), false)
-                .map(InputFile::uri)
-                .map(File::new)
+        Collection<String> files = StreamSupport.stream(inputFiles.spliterator(), false)
+                .map(InputFile::filename)
                 .collect(Collectors.toList());
 
         ProgressReport progressReport = new ProgressReport("Report about progress of HTL analyzer",
