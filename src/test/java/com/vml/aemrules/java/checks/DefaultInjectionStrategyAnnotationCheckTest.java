@@ -20,21 +20,21 @@
 package com.vml.aemrules.java.checks;
 
 import com.vml.aemrules.java.checks.slingmodels.DefaultInjectionStrategyAnnotationCheck;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class DefaultInjectionStrategyAnnotationCheckTest extends AbstractBaseTest {
+class DefaultInjectionStrategyAnnotationCheckTest extends AbstractBaseTest {
 
     @Test
-    public void checkAnnotation() {
-        check = new DefaultInjectionStrategyAnnotationCheck();
-        filename = "src/test/files/java/DefaultInjectionStrategyAnnotationCheck.java";
+    void checkAnnotation() {
+        this.check = new DefaultInjectionStrategyAnnotationCheck();
+        this.filename = "src/test/files/java/DefaultInjectionStrategyAnnotationCheck.java";
         verify();
     }
 
     @Test
-    public void checkMultipleAdaptablesAnnotation() {
-        check = new DefaultInjectionStrategyAnnotationCheck();
-        filename = "src/test/files/java/DefaultInjectionStrategyAnnotationCheckMultipleAdaptables.java";
+    void checkMultipleAdaptablesAnnotation() {
+        this.check = new DefaultInjectionStrategyAnnotationCheck();
+        this.filename = "src/test/files/java/DefaultInjectionStrategyAnnotationCheckMultipleAdaptables.java";
         verify();
     }
 

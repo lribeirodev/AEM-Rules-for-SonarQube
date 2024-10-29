@@ -27,7 +27,7 @@ import java.util.regex.Pattern;
 
 public class Version {
 
-    private static final Pattern VERSION_PATTERN = Pattern.compile("(?<major>[0-9]+)\\.(?<minor>[0-9])");
+    private static final Pattern VERSION_PATTERN = Pattern.compile("(?<major>\\d+)\\.(?<minor>\\d)");
 
     private final int major;
 

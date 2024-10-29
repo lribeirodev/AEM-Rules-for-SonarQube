@@ -24,8 +24,8 @@ import com.vml.aemrules.htl.Htl;
 import com.vml.aemrules.htl.lex.HtlLexer;
 import com.vml.aemrules.utils.Throwables;
 import org.apache.sling.scripting.sightly.compiler.expression.Expression;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.sonar.api.batch.fs.internal.TestInputFileBuilder;
 import org.sonar.plugins.html.node.CommentNode;
 import org.sonar.plugins.html.node.Node;
@@ -39,9 +39,9 @@ import java.io.StringReader;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class HtlScannerTest {
+class HtlScannerTest {
 
     private HtlNodeCounterVisitor counterVisitor;
 
@@ -49,7 +49,7 @@ public class HtlScannerTest {
 
     private HtlLexer lexer;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         lexer = new HtlLexer();
         htlScanner = new HtlScanner();
@@ -58,7 +58,7 @@ public class HtlScannerTest {
     }
 
     @Test
-    public void checkVisitedNode() {
+    void checkVisitedNode() {
         HtmlSourceCode htmlSourceCode = createHtmlSourceCode("scanner/testFile.html");
         try (Reader reader = readFile("scanner/testFile.html")) {
             List<Node> nodes = lexer.parse(reader);

@@ -19,7 +19,7 @@
  */
 package com.vml.aemrules;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.sonar.api.Plugin;
 import org.sonar.api.SonarEdition;
 import org.sonar.api.SonarQubeSide;
@@ -28,10 +28,10 @@ import org.sonar.api.utils.Version;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class AemRulesSonarPluginTest {
+class AemRulesSonarPluginTest {
 
     @Test
-    public void webPluginTester() {
+    void webPluginTester() {
         Plugin.Context context = new Plugin.Context(SonarRuntimeImpl.forSonarQube(Version.create(6, 7), SonarQubeSide.SERVER, SonarEdition.COMMUNITY));
 
         new AemRulesSonarPlugin().define(context);

@@ -19,14 +19,14 @@
  */
 package com.vml.aemrules.java.checks;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class ConstantsCheckTest extends AbstractBaseTest {
+class ConstantsCheckTest extends AbstractBaseTest {
 
     @Test
-    public void checkConstants() {
-        check = new ConstantsCheck();
-        filename = "src/test/files/java/ConstantsCheck.java";
+    void checkConstants() {
+        this.check = new ConstantsCheck();
+        this.filename = "src/test/files/java/ConstantsCheck.java";
         verify(false);
     }
 }

@@ -19,17 +19,18 @@
  */
 package com.vml.aemrules.version;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static com.vml.aemrules.version.VersionSupportChecker.DEFAULT_AEM_VERSION;
 import static com.vml.aemrules.version.VersionSupportChecker.create;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class VersionSupportCheckerTest {
+class VersionSupportCheckerTest {
 
     @Test
-    public void shouldSupportAllVersionsWhenAllSet() {
+    void shouldSupportAllVersionsWhenAllSet() {
         VersionSupportChecker versionSupportChecker = create(
                 CheckSupportingAllVersions.class.getAnnotation(AemVersion.class));
         assertThat(versionSupportChecker.supports("6.3"), is(true));
@@ -38,7 +39,7 @@ public class VersionSupportCheckerTest {
     }
 
     @Test
-    public void shouldSupportAllVersionsBetweenFromAndTo() {
+    void shouldSupportAllVersionsBetweenFromAndTo() {
         VersionSupportChecker versionSupportChecker = create(
                 CheckSupportingVersionsFromTo.class.getAnnotation(AemVersion.class));
         assertThat(versionSupportChecker.supports("6.1"), is(true));
@@ -50,7 +51,7 @@ public class VersionSupportCheckerTest {
     }
 
     @Test
-    public void shouldSupportAllVersionsFrom() {
+    void shouldSupportAllVersionsFrom() {
         VersionSupportChecker versionSupportChecker = create(
                 CheckSupportingVersionsFrom.class.getAnnotation(AemVersion.class));
         assertThat(versionSupportChecker.supports("100.1"), is(true));
@@ -61,7 +62,7 @@ public class VersionSupportCheckerTest {
     }
 
     @Test
-    public void shouldSupportAllVersionsTo() {
+    void shouldSupportAllVersionsTo() {
         VersionSupportChecker supportedVersions = create(
                 CheckSupportingVersionsTo.class.getAnnotation(AemVersion.class));
         assertThat(supportedVersions.supports("1.1"), is(true));
@@ -73,7 +74,7 @@ public class VersionSupportCheckerTest {
     }
 
     @Test
-    public void shouldSupportAllProvidedVersions() {
+    void shouldSupportAllProvidedVersions() {
         VersionSupportChecker supportedVersions = create(
                 CheckSupportingVersionsIncluded.class.getAnnotation(AemVersion.class));
         assertThat(supportedVersions.supports("6.1"), is(true));
@@ -84,7 +85,7 @@ public class VersionSupportCheckerTest {
     }
 
     @Test
-    public void shouldSupportAllVersionsExcludingProvided() {
+    void shouldSupportAllVersionsExcludingProvided() {
         VersionSupportChecker supportedVersions = create(
                 CheckSupportingVersionsExcluded.class.getAnnotation(AemVersion.class));
         assertThat(supportedVersions.supports("6.1"), is(false));
@@ -95,7 +96,7 @@ public class VersionSupportCheckerTest {
     }
 
     @Test
-    public void shouldUseDefaultVersionWhenProvidedVersionIsEmptyOrNull() {
+    void shouldUseDefaultVersionWhenProvidedVersionIsEmptyOrNull() {
         VersionSupportChecker supportedVersions = create(
                 CheckSupportingDefaultVersion.class.getAnnotation(AemVersion.class));
         assertThat(supportedVersions.supports(DEFAULT_AEM_VERSION), is(true));
@@ -103,21 +104,21 @@ public class VersionSupportCheckerTest {
         assertThat(supportedVersions.supports(null), is(true));
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void shouldThrowExceptionWhenVersionToSupportIsIncorrect() {
+    @Test
+    void shouldThrowExceptionWhenVersionToSupportIsIncorrect() {
         VersionSupportChecker supportedVersions = create(
                 CheckSupportingVersionsExcluded.class.getAnnotation(AemVersion.class));
-        supportedVersions.supports("f.1");
+        assertThrows(IllegalArgumentException.class, () -> supportedVersions.supports("f.1"));
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void shouldThrowExceptionWhenVersionIncorrectProvided1() {
-        create(CheckWithIncorrectVersion1.class.getAnnotation(AemVersion.class));
+    @Test
+    void shouldThrowExceptionWhenVersionIncorrectProvided1() {
+        assertThrows(IllegalArgumentException.class, () -> create(CheckWithIncorrectVersion1.class.getAnnotation(AemVersion.class)));
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void shouldThrowExceptionWhenVersionIncorrectProvided2() {
-        create(CheckWithIncorrectVersion2.class.getAnnotation(AemVersion.class));
+    @Test
+    void shouldThrowExceptionWhenVersionIncorrectProvided2() {
+        assertThrows(IllegalArgumentException.class, () -> create(CheckWithIncorrectVersion2.class.getAnnotation(AemVersion.class)));
     }
 
 

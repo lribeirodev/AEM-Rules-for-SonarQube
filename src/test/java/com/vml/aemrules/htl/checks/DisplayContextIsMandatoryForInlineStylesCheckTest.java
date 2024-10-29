@@ -20,14 +20,14 @@
 package com.vml.aemrules.htl.checks;
 
 import com.vml.aemrules.htl.AbstractBaseTest;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class DisplayContextIsMandatoryForInlineStylesCheckTest extends AbstractBaseTest {
+class DisplayContextIsMandatoryForInlineStylesCheckTest extends AbstractBaseTest {
 
     @Test
-    public void checkInlineStyleDisplayContext() {
-        check = new InlineStyleMandatoryDisplayContextCheck();
-        filename = "src/test/files/htl/DefineDisplayContextInInlineStylesCheck.html";
+    void checkInlineStyleDisplayContext() {
+        this.check = new InlineStyleMandatoryDisplayContextCheck();
+        this.filename = "src/test/files/htl/DefineDisplayContextInInlineStylesCheck.html";
         verify();
     }
 }

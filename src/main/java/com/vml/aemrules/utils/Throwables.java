@@ -36,7 +36,7 @@ public final class Throwables {
 
     public static RuntimeException propagate(Throwable throwable) {
         throwIfUnchecked(throwable);
-        throw new RuntimeException(throwable);
+        throw new AemRulesTestRuntimeException(throwable);
     }
 
     public static void throwIfUnchecked(Throwable throwable) {
@@ -45,6 +45,12 @@ public final class Throwables {
         }
         if (throwable instanceof Error) {
             throw (Error) throwable;
+        }
+    }
+
+    private static class AemRulesTestRuntimeException extends RuntimeException {
+        public AemRulesTestRuntimeException(Throwable throwable) {
+            super(throwable);
         }
     }
 }

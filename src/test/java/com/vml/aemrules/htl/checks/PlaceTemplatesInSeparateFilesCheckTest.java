@@ -20,14 +20,14 @@
 package com.vml.aemrules.htl.checks;
 
 import com.vml.aemrules.htl.AbstractBaseTest;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class PlaceTemplatesInSeparateFilesCheckTest extends AbstractBaseTest {
+class PlaceTemplatesInSeparateFilesCheckTest extends AbstractBaseTest {
 
     @Test
-    public void checkHtlAttributesOrder() {
-        check = new PlaceTemplatesInSeparateFilesCheck();
-        filename = "src/test/files/htl/PlaceTemplatesInSeparateFilesCheck.html";
+    void checkHtlAttributesOrder() {
+        this.check = new PlaceTemplatesInSeparateFilesCheck();
+        this.filename = "src/test/files/htl/PlaceTemplatesInSeparateFilesCheck.html";
         verify();
     }
 }

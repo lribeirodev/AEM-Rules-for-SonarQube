@@ -19,7 +19,7 @@
  */
 package com.vml.aemrules.matcher;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.sonar.java.model.JParser;
 import org.sonar.java.model.JParserConfig;
 import org.sonar.java.model.JavaVersionImpl;
@@ -63,7 +63,7 @@ public class MethodMatcherTest {
     private MethodInvocationTree methodInvocationTree;
 
     @Test
-    public void shouldMatchMethodWhenMethodNameAndOwnerClassAndMethodParametersMatch() {
+    void shouldMatchMethodWhenMethodNameAndOwnerClassAndMethodParametersMatch() {
         givenMethodInvocationTree(CODE_TO_PARSE_METHOD_SELECT_KIND_IDENTIFIER);
 
         MethodMatcher methodMatcher = MethodMatcher.create(
@@ -77,7 +77,7 @@ public class MethodMatcherTest {
     }
 
     @Test
-    public void shouldMatchMethodWhenMethodNameAndOwnerClassAndOnlySecondParameterMatch() {
+    void shouldMatchMethodWhenMethodNameAndOwnerClassAndOnlySecondParameterMatch() {
         givenMethodInvocationTree(CODE_TO_PARSE_METHOD_SELECT_KIND_MEMBER_SELECT);
 
         MethodMatcher methodMatcher = MethodMatcher.create(
@@ -91,7 +91,7 @@ public class MethodMatcherTest {
     }
 
     @Test
-    public void shouldNotMatchMethodWhenMethodNameDoesNotMatch() {
+    void shouldNotMatchMethodWhenMethodNameDoesNotMatch() {
         givenMethodInvocationTree(CODE_TO_PARSE_METHOD_SELECT_KIND_IDENTIFIER);
 
         MethodMatcher methodMatcher = MethodMatcher.create(
@@ -105,7 +105,7 @@ public class MethodMatcherTest {
     }
 
     @Test
-    public void shouldNotMatchMethodWhenNumberOfMethodParametersDoesNotMatch() {
+    void shouldNotMatchMethodWhenNumberOfMethodParametersDoesNotMatch() {
         givenMethodInvocationTree(CODE_TO_PARSE_METHOD_SELECT_KIND_MEMBER_SELECT);
 
         MethodMatcher methodMatcher = MethodMatcher.create(
@@ -118,7 +118,7 @@ public class MethodMatcherTest {
     }
 
     @Test
-    public void shouldNotMatchMethodWhenMethodOwnerClassDoesNotMatch() {
+    void shouldNotMatchMethodWhenMethodOwnerClassDoesNotMatch() {
         givenMethodInvocationTree(CODE_TO_PARSE_METHOD_SELECT_KIND_IDENTIFIER);
 
         MethodMatcher methodMatcher = MethodMatcher.create(
@@ -132,7 +132,7 @@ public class MethodMatcherTest {
     }
 
     @Test
-    public void shouldNotMatchMethodWhenMethodParameterTypesDoNotMatch() {
+    void shouldNotMatchMethodWhenMethodParameterTypesDoNotMatch() {
         givenMethodInvocationTree(CODE_TO_PARSE_METHOD_SELECT_KIND_MEMBER_SELECT);
 
         MethodMatcher methodMatcher = MethodMatcher.create(
@@ -154,7 +154,7 @@ public class MethodMatcherTest {
 
     private CompilationUnitTree parse(String source) {
         List<File> classpath = Arrays.asList(new File(TEST_CLASSES_FILEPATH), new File(CLASSES_FILEPATH));
-        return JParser.parse(JParserConfig.Mode.FILE_BY_FILE.create(new JavaVersionImpl(17), classpath).astParser(), JAVA_VERSION, UNIT_NAME, source);
+        return JParser.parse(JParserConfig.Mode.FILE_BY_FILE.create(new JavaVersionImpl(11), classpath).astParser(), JAVA_VERSION, UNIT_NAME, source);
     }
 
 }

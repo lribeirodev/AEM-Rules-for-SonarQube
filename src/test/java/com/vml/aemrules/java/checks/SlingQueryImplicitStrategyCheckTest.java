@@ -20,14 +20,14 @@
 package com.vml.aemrules.java.checks;
 
 import com.vml.aemrules.java.checks.slingquery.SlingQueryImplicitStrategyCheck;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class SlingQueryImplicitStrategyCheckTest extends AbstractBaseTest {
+class SlingQueryImplicitStrategyCheckTest extends AbstractBaseTest {
 
     @Test
-    public void checkImplicitSearches() {
-        check = new SlingQueryImplicitStrategyCheck();
-        filename = "src/test/files/java/SlingQueryImplicitStrategyCheck.java";
+    void checkImplicitSearches() {
+        this.check = new SlingQueryImplicitStrategyCheck();
+        this.filename = "src/test/files/java/SlingQueryImplicitStrategyCheck.java";
         verify();
     }
 

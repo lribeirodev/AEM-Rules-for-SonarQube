@@ -20,14 +20,14 @@
 package com.vml.aemrules.htl.checks;
 
 import com.vml.aemrules.htl.AbstractBaseTest;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class DisplayContextIsMandatoryInEventAttributesTest extends AbstractBaseTest {
+class DisplayContextIsMandatoryInEventAttributesTest extends AbstractBaseTest {
 
     @Test
-    public void checkEventAttributeDisplayContext() {
-        check = new EventMandatoryDisplayContextCheck();
-        filename = "src/test/files/htl/DefineDisplayContextInEventAttributes.html";
+    void checkEventAttributeDisplayContext() {
+        this.check = new EventMandatoryDisplayContextCheck();
+        this.filename = "src/test/files/htl/DefineDisplayContextInEventAttributes.html";
         verify();
     }
 }

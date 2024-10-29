@@ -27,7 +27,7 @@ services:
       context: .
     ports:
       - "9000:9000"
-      - "5005:5005"
+      - "8000:8000"
     restart: unless-stopped
     volumes:
       - ./extensions/plugins:/opt/sonarqube/extensions/plugins:ro

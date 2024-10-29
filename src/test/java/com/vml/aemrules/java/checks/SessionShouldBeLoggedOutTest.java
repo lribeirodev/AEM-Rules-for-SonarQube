@@ -19,48 +19,31 @@
  */
 package com.vml.aemrules.java.checks;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
-import java.util.Arrays;
-import java.util.Collection;
+class SessionShouldBeLoggedOutTest extends AbstractBaseTest {
 
-@RunWith(Parameterized.class)
-public class SessionShouldBeLoggedOutTest extends AbstractBaseTest {
-
-    private final boolean expectFailure;
-
-    public SessionShouldBeLoggedOutTest(Object fn, Object expectFailure) {
-        filename = (String) fn;
-        this.expectFailure = ((Boolean) expectFailure).booleanValue();
-    }
-
-    // format is filename, failure expected
-    @Parameterized.Parameters
-    public static Collection<Object[]> data() {
-        return Arrays.asList(new Object[][]{
-                {"src/test/files/java/SessionLogoutOne.java", false},
-                {"src/test/files/java/SessionLogoutTwo.java", false},
-                {"src/test/files/java/SessionLogoutThree.java", false},
-                {"src/test/files/java/SessionLogoutFour.java", true},
-                {"src/test/files/java/SessionLogoutFive.java", true},
-                {"src/test/files/java/SessionLogoutSix.java", true},
-                {"src/test/files/java/SessionLogoutSeven.java", true},
-                {"src/test/files/java/SessionLogoutEight.java", false},
-                {"src/test/files/java/LongSessionEventListener.java", false},
-                {"src/test/files/java/LongSessionEventListenerError.java", true}
-        });
-    }
-
-    @Test
-    public void checkInjectorNotClosedInFinallyBlock() {
-        check = new SessionShouldBeLoggedOut();
+    @ParameterizedTest
+    @CsvSource({
+            "src/test/files/java/SessionLogoutOne.java,false",
+            "src/test/files/java/SessionLogoutTwo.java,false",
+            "src/test/files/java/SessionLogoutThree.java,false",
+            "src/test/files/java/SessionLogoutFour.java,true",
+            "src/test/files/java/SessionLogoutFive.java,true",
+            "src/test/files/java/SessionLogoutSix.java,true",
+            "src/test/files/java/SessionLogoutSeven.java,true",
+            "src/test/files/java/SessionLogoutEight.java,false",
+            "src/test/files/java/LongSessionEventListener.java,false",
+            "src/test/files/java/LongSessionEventListenerError.java,true"
+    })
+    void checkInjectorNotClosedInFinallyBlock(String fileName, boolean expectFailure) {
+        this.filename = fileName;
+        this.check = new SessionShouldBeLoggedOut();
         if (expectFailure) {
             verify();
         } else {
             verifyNoIssues();
         }
     }
-
 }

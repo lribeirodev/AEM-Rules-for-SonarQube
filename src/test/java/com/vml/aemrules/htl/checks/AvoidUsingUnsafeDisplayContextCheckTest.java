@@ -20,14 +20,14 @@
 package com.vml.aemrules.htl.checks;
 
 import com.vml.aemrules.htl.AbstractBaseTest;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class AvoidUsingUnsafeDisplayContextCheckTest extends AbstractBaseTest {
+class AvoidUsingUnsafeDisplayContextCheckTest extends AbstractBaseTest {
 
     @Test
-    public void checkAllDataAttributesContainsDisplayContext() {
-        check = new AvoidUsingUnsafeDisplayContextCheck();
-        filename = "src/test/files/htl/AvoidUsingUnsafeDisplayContextCheck.html";
+    void checkAllDataAttributesContainsDisplayContext() {
+        this.check = new AvoidUsingUnsafeDisplayContextCheck();
+        this.filename = "src/test/files/htl/AvoidUsingUnsafeDisplayContextCheck.html";
         verify();
     }
 }

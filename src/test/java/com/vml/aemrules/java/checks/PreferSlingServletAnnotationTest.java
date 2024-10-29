@@ -19,35 +19,30 @@
  */
 package com.vml.aemrules.java.checks;
 
-import org.junit.Test;
 
-public class PreferSlingServletAnnotationTest extends AbstractBaseTest {
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
-    @Test
-    public void checkLackOfAnnotation() {
-        check = new PreferSlingServletAnnotation();
-        filename = "src/test/files/java/SlingServletOne.java";
+class PreferSlingServletAnnotationTest extends AbstractBaseTest {
+
+    @ParameterizedTest
+    @CsvSource({
+            "checkLackOfAnnotation,src/test/files/java/SlingServletOne.java",
+            "checkMixedAnnotations,src/test/files/java/SlingServletTwo.java",
+            "checkRedundantProperties,src/test/files/java/SlingServletThree.java"
+    })
+    void detect(String description, String fileName) {
+        System.out.println(description);
+        this.check = new PreferSlingServletAnnotation();
+        this.filename = fileName;
         verify();
     }
 
     @Test
-    public void checkMixedAnnotations() {
-        check = new PreferSlingServletAnnotation();
-        filename = "src/test/files/java/SlingServletTwo.java";
-        verify();
-    }
-
-    @Test
-    public void checkRedundantProperties() {
-        check = new PreferSlingServletAnnotation();
-        filename = "src/test/files/java/SlingServletThree.java";
-        verify();
-    }
-
-    @Test
-    public void checkStandardAnnotations() {
-        check = new PreferSlingServletAnnotation();
-        filename = "src/test/files/java/SlingServletWithStandardAnnotations.java";
+    void checkStandardAnnotations() {
+        this.check = new PreferSlingServletAnnotation();
+        this.filename = "src/test/files/java/SlingServletWithStandardAnnotations.java";
         verifyNoIssues();
     }
 }

@@ -20,14 +20,14 @@
 package com.vml.aemrules.htl.checks;
 
 import com.vml.aemrules.htl.AbstractBaseTest;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class NamingAndReusingConditionsCheckTest extends AbstractBaseTest {
+class NamingAndReusingConditionsCheckTest extends AbstractBaseTest {
 
     @Test
-    public void checkHtlAttributesOrder() {
-        check = new NamingAndReusingConditionsCheck();
-        filename = "src/test/files/htl/NamingAndReusingConditionsCheck.html";
+    void checkHtlAttributesOrder() {
+        this.check = new NamingAndReusingConditionsCheck();
+        this.filename = "src/test/files/htl/NamingAndReusingConditionsCheck.html";
         verify();
     }
 }

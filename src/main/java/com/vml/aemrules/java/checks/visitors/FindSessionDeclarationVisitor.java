@@ -112,7 +112,7 @@ public class FindSessionDeclarationVisitor extends BaseTreeVisitor {
             IdentifierTree identifier = (IdentifierTree) tree.expression();
             Tree declaration = getDeclaration(identifier);
             if (sessions.contains(declaration)) {
-                sessions.remove(declaration);
+            sessions.remove(declaration);
             }
         }
         super.visitReturnStatement(tree);

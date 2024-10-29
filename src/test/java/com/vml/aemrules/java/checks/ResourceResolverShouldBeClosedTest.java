@@ -20,43 +20,34 @@
 package com.vml.aemrules.java.checks;
 
 import com.vml.aemrules.java.checks.resourceresolver.close.ResourceResolverShouldBeClosed;
-import org.junit.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
-public class ResourceResolverShouldBeClosedTest extends AbstractBaseTest {
+class ResourceResolverShouldBeClosedTest extends AbstractBaseTest {
 
-    @Test
-    public void checkInjectorNotClosedInFinallyBlock() {
-        check = new ResourceResolverShouldBeClosed();
-        filename = "src/test/files/java/SampleServlet.java";
+    @ParameterizedTest
+    @CsvSource({
+            "checkInjectorNotClosedInFinallyBlock,src/test/files/java/SampleServlet.java",
+            "checkResourceResolverClosedInDeactivateMethodError,src/test/files/java/LongResourceResolverEvenListenerError.java"
+    })
+    void detect_1(String description, String fileName) {
+        System.out.println(description);
+        this.check = new ResourceResolverShouldBeClosed();
+        this.filename = fileName;
         verify();
     }
 
-    @Test
-    public void checkResourceResolverNotClosedInFinallyBlockWhenResourceResolverComesFromDifferentClass() {
-        check = new ResourceResolverShouldBeClosed();
-        filename = "src/test/files/java/ResourceResolverConsumer.java";
+    @ParameterizedTest
+    @CsvSource({
+            "checkResourceResolverNotClosedInFinallyBlockWhenResourceResolverComesFromDifferentClass,src/test/files/java/ResourceResolverConsumer.java",
+            "checkResourceResolverNotClosedWhenItIsOpenedInActivateAndClosedInDeactivate,src/test/files/java/LongSessionService.java",
+            "checkResourceResolverClosedInDeactivateMethod,src/test/files/java/LongSessionEventListener.java"
+    })
+    void detect_2(String description, String fileName) {
+        System.out.println(description);
+        this.check = new ResourceResolverShouldBeClosed();
+        this.filename = fileName;
         verifyNoIssues();
-    }
-
-    @Test
-    public void checkResourceResolverNotClosedWhenItIsOpenedInActivateAndClosedInDeactivate() {
-        check = new ResourceResolverShouldBeClosed();
-        filename = "src/test/files/java/LongSessionService.java";
-        verifyNoIssues();
-    }
-
-    @Test
-    public void checkResourceResolverClosedInDeactivateMethod() {
-        check = new ResourceResolverShouldBeClosed();
-        filename = "src/test/files/java/LongSessionEventListener.java";
-        verifyNoIssues();
-    }
-
-    @Test
-    public void checkResourceResolverClosedInDeactivateMethodError() {
-        check = new ResourceResolverShouldBeClosed();
-        filename = "src/test/files/java/LongResourceResolverEvenListenerError.java";
-        verify();
     }
 
 }

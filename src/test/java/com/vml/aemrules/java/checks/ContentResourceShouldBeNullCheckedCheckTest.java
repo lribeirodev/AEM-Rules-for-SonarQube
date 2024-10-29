@@ -19,14 +19,14 @@
  */
 package com.vml.aemrules.java.checks;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class ContentResourceShouldBeNullCheckedCheckTest extends AbstractBaseTest {
+class ContentResourceShouldBeNullCheckedCheckTest extends AbstractBaseTest {
 
     @Test
-    public void checkIfContentResourceIsNotNull() {
-        check = new ContentResourceShouldBeNullCheckedCheck();
-        filename = "src/test/files/java/ContentResourceShouldBeNullCheckedCheck.java";
+    void checkIfContentResourceIsNotNull() {
+        this.check = new ContentResourceShouldBeNullCheckedCheck();
+        this.filename = "src/test/files/java/ContentResourceShouldBeNullCheckedCheck.java";
         verify();
     }
 }

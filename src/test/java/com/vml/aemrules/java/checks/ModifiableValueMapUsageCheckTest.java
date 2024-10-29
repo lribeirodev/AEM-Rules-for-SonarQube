@@ -19,14 +19,14 @@
  */
 package com.vml.aemrules.java.checks;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class ModifiableValueMapUsageCheckTest extends AbstractBaseTest {
+class ModifiableValueMapUsageCheckTest extends AbstractBaseTest {
 
     @Test
-    public void checkIfMVMIsUsedToRetrievePropertiesFromResource() {
-        check = new ModifiableValueMapUsageCheck();
-        filename = "src/test/files/java/ModifiableValueMapUsageCheck.java";
+    void checkIfMVMIsUsedToRetrievePropertiesFromResource() {
+        this.check = new ModifiableValueMapUsageCheck();
+        this.filename = "src/test/files/java/ModifiableValueMapUsageCheck.java";
         verify();
     }
 }

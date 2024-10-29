@@ -21,14 +21,14 @@
 package com.vml.aemrules.htl.checks;
 
 import com.vml.aemrules.htl.AbstractBaseTest;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class HtlCommentsCheckTest extends AbstractBaseTest {
+class HtlCommentsCheckTest extends AbstractBaseTest {
 
     @Test
-    public void checkHTLStyleOfCommenting() {
-        check = new HtlCommentsCheck();
-        filename = "src/test/files/htl/HtlCommentsCheck.html";
+    void checkHTLStyleOfCommenting() {
+        this.check = new HtlCommentsCheck();
+        this.filename = "src/test/files/htl/HtlCommentsCheck.html";
         verify();
     }
 } 

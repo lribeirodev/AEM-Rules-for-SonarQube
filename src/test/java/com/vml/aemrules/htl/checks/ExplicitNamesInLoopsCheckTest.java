@@ -20,14 +20,14 @@
 package com.vml.aemrules.htl.checks;
 
 import com.vml.aemrules.htl.AbstractBaseTest;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class ExplicitNamesInLoopsCheckTest extends AbstractBaseTest {
+class ExplicitNamesInLoopsCheckTest extends AbstractBaseTest {
 
     @Test
-    public void ExplicitNamesInLoopsCheck() {
-        check = new ExplicitNamesInLoopsCheck();
-        filename = "src/test/files/htl/ExplicitNamesInLoopsCheck.html";
+    void ExplicitNamesInLoopsCheck() {
+        this.check = new ExplicitNamesInLoopsCheck();
+        this.filename = "src/test/files/htl/ExplicitNamesInLoopsCheck.html";
         verify();
     }
 }

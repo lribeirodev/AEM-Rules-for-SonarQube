@@ -21,8 +21,8 @@ package com.vml.aemrules.htl;
 
 import com.vml.aemrules.htl.checks.HtlAttributesShouldBeAtTheEndCheck;
 import com.vml.aemrules.htl.rules.HtlRulesDefinition;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.sonar.api.SonarEdition;
 import org.sonar.api.SonarQubeSide;
@@ -59,7 +59,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 
-public class HtlSensorTest {
+class HtlSensorTest {
 
     private static final File TEST_DIR = new File("src/test/resources/sensor");
 
@@ -67,8 +67,8 @@ public class HtlSensorTest {
 
     private SensorContextTester tester;
 
-    @Before
-    public void setUp() {
+    @BeforeEach
+    void setUp() {
         SonarRuntime sonarRuntime = SonarRuntimeImpl.forSonarQube(Version.create(8, 9), SonarQubeSide.SERVER, SonarEdition.COMMUNITY);
         RulesDefinition rulesDefinition = new HtlRulesDefinition(sonarRuntime);
         RulesDefinition.Context context = new RulesDefinition.Context();
@@ -105,7 +105,7 @@ public class HtlSensorTest {
     }
 
     @Test
-    public void checkIncorrectFile_issuesFound() throws Exception {
+    void checkIncorrectFile_issuesFound() throws Exception {
         DefaultInputFile inputFile = createInputFile(TEST_DIR, "test.html");
         tester.fileSystem().add(inputFile);
         sensor.execute(tester);
@@ -119,7 +119,7 @@ public class HtlSensorTest {
     }
 
     @Test
-    public void checkCancellation_noIssueFound() throws Exception {
+    void checkCancellation_noIssueFound() throws Exception {
         DefaultInputFile inputFile = createInputFile(TEST_DIR, "test.html");
         tester.fileSystem().add(inputFile);
         tester.setCancelled(true);
@@ -128,7 +128,7 @@ public class HtlSensorTest {
     }
 
     @Test
-    public void sonarlintCheck() throws Exception {
+    void sonarlintCheck() throws Exception {
         DefaultInputFile inputFile = createInputFile(TEST_DIR, "test.html");
         tester.fileSystem().add(inputFile);
         sensor.execute(tester);
@@ -139,7 +139,7 @@ public class HtlSensorTest {
     }
 
     @Test
-    public void checkFileWithError_analysisErrorFound() throws Exception {
+    void checkFileWithError_analysisErrorFound() throws Exception {
         DefaultInputFile inputFile = createInputFile(TEST_DIR, "error.html");
         tester.fileSystem().add(inputFile);
         sensor.execute(tester);
@@ -147,7 +147,7 @@ public class HtlSensorTest {
     }
 
     @Test
-    public void checkExpressionWithinHtmlComment_noErrorsFound() throws Exception {
+    void checkExpressionWithinHtmlComment_noErrorsFound() throws Exception {
         DefaultInputFile inputFile = createInputFile(TEST_DIR, "comment.html");
         tester.fileSystem().add(inputFile);
         sensor.execute(tester);
@@ -155,7 +155,7 @@ public class HtlSensorTest {
     }
 
     @Test
-    public void checkNestedTags_noErrorsFound() throws IOException {
+    void checkNestedTags_noErrorsFound() throws IOException {
         DefaultInputFile inputFile = createInputFile(TEST_DIR, "nestedTags.html");
         tester.fileSystem().add(inputFile);
         sensor.execute(tester);
@@ -163,7 +163,7 @@ public class HtlSensorTest {
     }
 
     @Test
-    public void checkDescriptorConfiguration() {
+    void checkDescriptorConfiguration() {
         DefaultSensorDescriptor descriptor = new DefaultSensorDescriptor();
         sensor.describe(descriptor);
         assertThat(descriptor.name()).isEqualTo("HTL");

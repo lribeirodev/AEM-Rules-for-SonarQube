@@ -20,14 +20,14 @@
 package com.vml.aemrules.htl.checks;
 
 import com.vml.aemrules.htl.AbstractBaseTest;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class DefaultDisplayContextCheckTest extends AbstractBaseTest {
+class DefaultDisplayContextCheckTest extends AbstractBaseTest {
 
     @Test
-    public void checkDefaultDisplayContext() {
-        check = new DefaultDisplayContextCheck();
-        filename = "src/test/files/htl/UseDefaultDisplayContextCheck.html";
+    void checkDefaultDisplayContext() {
+        this.check = new DefaultDisplayContextCheck();
+        this.filename = "src/test/files/htl/UseDefaultDisplayContextCheck.html";
         verify();
     }
 }

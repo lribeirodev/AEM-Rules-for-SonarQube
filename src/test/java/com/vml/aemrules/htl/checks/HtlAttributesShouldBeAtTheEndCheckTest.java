@@ -20,14 +20,14 @@
 package com.vml.aemrules.htl.checks;
 
 import com.vml.aemrules.htl.AbstractBaseTest;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class HtlAttributesShouldBeAtTheEndCheckTest extends AbstractBaseTest {
+class HtlAttributesShouldBeAtTheEndCheckTest extends AbstractBaseTest {
 
     @Test
-    public void checkHtlAttributesOrder() {
-        check = new HtlAttributesShouldBeAtTheEndCheck();
-        filename = "src/test/files/htl/HtlAttributesShouldBeAtTheEndCheck.html";
+    void checkHtlAttributesOrder() {
+        this.check = new HtlAttributesShouldBeAtTheEndCheck();
+        this.filename = "src/test/files/htl/HtlAttributesShouldBeAtTheEndCheck.html";
         verify();
     }
 }

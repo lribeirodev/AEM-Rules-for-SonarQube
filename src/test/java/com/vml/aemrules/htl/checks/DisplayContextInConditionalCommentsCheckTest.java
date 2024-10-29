@@ -20,14 +20,14 @@
 package com.vml.aemrules.htl.checks;
 
 import com.vml.aemrules.htl.AbstractBaseTest;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class DisplayContextInConditionalCommentsCheckTest extends AbstractBaseTest {
+class DisplayContextInConditionalCommentsCheckTest extends AbstractBaseTest {
 
     @Test
-    public void checkContextInConditionalComments() {
-        check = new DisplayContextInConditionalCommentsCheck();
-        filename = "src/test/files/htl/DisplayContextInConditionalCommentsCheck.html";
+    void checkContextInConditionalComments() {
+        this.check = new DisplayContextInConditionalCommentsCheck();
+        this.filename = "src/test/files/htl/DisplayContextInConditionalCommentsCheck.html";
         verify();
     }
 }

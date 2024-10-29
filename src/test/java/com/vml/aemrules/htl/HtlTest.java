@@ -19,15 +19,15 @@
  */
 package com.vml.aemrules.htl;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-public class HtlTest {
+class HtlTest {
 
     @Test
-    public void shouldReturnEmptyArrayOfDefaultFileSuffixes() {
+    void shouldReturnEmptyArrayOfDefaultFileSuffixes() {
         Htl htl = new Htl();
         assertThat(htl.getFileSuffixes()).isEmpty();
     }

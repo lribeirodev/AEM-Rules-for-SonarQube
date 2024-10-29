@@ -19,14 +19,14 @@
  */
 package com.vml.aemrules.java.checks;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class AdministrativeAccessUsageCheckTest extends AbstractBaseTest {
+class AdministrativeAccessUsageCheckTest extends AbstractBaseTest {
 
     @Test
-    public void administrativeAccessUsageCheck() {
-        check = new AdministrativeAccessUsageCheck();
-        filename = "src/test/files/java/AdministrativeAccessUsageCheck.java";
+    void administrativeAccessUsageCheck() {
+        this.check = new AdministrativeAccessUsageCheck();
+        this.filename = "src/test/files/java/AdministrativeAccessUsageCheck.java";
         verify();
     }
 

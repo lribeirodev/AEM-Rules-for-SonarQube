@@ -20,14 +20,14 @@
 package com.vml.aemrules.htl.checks;
 
 import com.vml.aemrules.htl.AbstractBaseTest;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class UseMostRestrictiveHtlContextCheckTest extends AbstractBaseTest {
+class UseMostRestrictiveHtlContextCheckTest extends AbstractBaseTest {
 
     @Test
-    public void checkAllDataAttributesContainsDisplayContext() {
-        check = new UseMostRestrictiveHtlContextCheck();
-        filename = "src/test/files/htl/UseMostRestrictiveHtlContextCheck.html";
+    void checkAllDataAttributesContainsDisplayContext() {
+        this.check = new UseMostRestrictiveHtlContextCheck();
+        this.filename = "src/test/files/htl/UseMostRestrictiveHtlContextCheck.html";
         verify();
     }
 }

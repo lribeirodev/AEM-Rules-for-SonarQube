@@ -19,14 +19,14 @@
  */
 package com.vml.aemrules.java.checks;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class SynchronizedKeywordUsageCheckTest extends AbstractBaseTest {
+class SynchronizedKeywordUsageCheckTest extends AbstractBaseTest {
 
     @Test
-    public void checkThreadSafeFieldsInServlet() {
-        check = new SynchronizedKeywordUsageCheck();
-        filename = "src/test/files/java/SynchronizedKeywordUsageCheck.java";
+    void checkThreadSafeFieldsInServlet() {
+        this.check = new SynchronizedKeywordUsageCheck();
+        this.filename = "src/test/files/java/SynchronizedKeywordUsageCheck.java";
         verify();
     }
 

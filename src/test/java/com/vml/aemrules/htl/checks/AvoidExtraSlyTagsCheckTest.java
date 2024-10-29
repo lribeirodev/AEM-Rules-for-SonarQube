@@ -20,14 +20,14 @@
 package com.vml.aemrules.htl.checks;
 
 import com.vml.aemrules.htl.AbstractBaseTest;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class AvoidExtraSlyTagsCheckTest extends AbstractBaseTest {
+class AvoidExtraSlyTagsCheckTest extends AbstractBaseTest {
 
     @Test
-    public void avoidExtraSlyTags() {
-        check = new AvoidExtraSlyTagsCheck();
-        filename = "src/test/files/htl/AvoidExtraSlyTagsCheck.html";
+    void avoidExtraSlyTags() {
+        this.check = new AvoidExtraSlyTagsCheck();
+        this.filename = "src/test/files/htl/AvoidExtraSlyTagsCheck.html";
         verify();
     }
 }

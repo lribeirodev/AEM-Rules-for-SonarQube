@@ -19,9 +19,8 @@
  */
 package com.vml.aemrules.htl;
 
-
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.sonar.api.server.profile.BuiltInQualityProfilesDefinition.BuiltInActiveRule;
 import org.sonar.api.server.profile.BuiltInQualityProfilesDefinition.BuiltInQualityProfile;
 import org.sonar.api.server.profile.BuiltInQualityProfilesDefinition.Context;
@@ -32,15 +31,15 @@ import java.util.Map.Entry;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static org.fest.assertions.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
-public class HtlProfileTest {
+class HtlProfileTest {
 
     private HtlProfile profile;
 
     private Context context;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         profile = new HtlProfile();
         this.context = new Context();
@@ -48,7 +47,7 @@ public class HtlProfileTest {
     }
 
     @Test
-    public void sanity() {
+    void sanity() {
         profile.define(context);
         Map<String, BuiltInActiveRule> activeRules = getActiveRulesByRuleKey(context);
 
@@ -57,7 +56,7 @@ public class HtlProfileTest {
     }
 
     @Test
-    public void rulesLoaded() {
+    void rulesLoaded() {
         profile.define(context);
         Map<String, BuiltInActiveRule> activeRules = getActiveRulesByRuleKey(context);
 

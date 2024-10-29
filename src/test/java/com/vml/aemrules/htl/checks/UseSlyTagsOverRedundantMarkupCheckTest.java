@@ -20,14 +20,14 @@
 package com.vml.aemrules.htl.checks;
 
 import com.vml.aemrules.htl.AbstractBaseTest;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class UseSlyTagsOverRedundantMarkupCheckTest extends AbstractBaseTest {
+class UseSlyTagsOverRedundantMarkupCheckTest extends AbstractBaseTest {
 
     @Test
-    public void checkRedundantSlyTags() {
-        check = new UseSlyTagsOverRedundantMarkupCheck();
-        filename = "src/test/files/htl/UseSlyTagsOverRedundantMarkupCheck.html";
+    void checkRedundantSlyTags() {
+        this.check = new UseSlyTagsOverRedundantMarkupCheck();
+        this.filename = "src/test/files/htl/UseSlyTagsOverRedundantMarkupCheck.html";
         verify();
     }
 }

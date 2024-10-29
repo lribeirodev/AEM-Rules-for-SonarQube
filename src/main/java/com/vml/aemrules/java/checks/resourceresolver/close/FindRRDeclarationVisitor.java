@@ -112,7 +112,7 @@ class FindRRDeclarationVisitor extends BaseTreeVisitor {
             IdentifierTree identifier = (IdentifierTree) tree.expression();
             Tree declaration = identifier.symbol().declaration();
             if (resourceResolvers.contains(declaration)) {
-                resourceResolvers.remove(declaration);
+            resourceResolvers.remove(declaration);
             }
         }
         super.visitReturnStatement(tree);

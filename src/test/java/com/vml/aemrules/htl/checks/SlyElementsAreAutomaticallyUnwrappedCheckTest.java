@@ -20,14 +20,14 @@
 package com.vml.aemrules.htl.checks;
 
 import com.vml.aemrules.htl.AbstractBaseTest;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class SlyElementsAreAutomaticallyUnwrappedCheckTest extends AbstractBaseTest {
+class SlyElementsAreAutomaticallyUnwrappedCheckTest extends AbstractBaseTest {
 
     @Test
-    public void checkRedundantUnwrapAttributes() {
-        check = new SlyElementsAreAutomaticallyUnwrappedCheck();
-        filename = "src/test/files/htl/SlyElementsAreAutomaticallyUnwrappedCheck.html";
+    void checkRedundantUnwrapAttributes() {
+        this.check = new SlyElementsAreAutomaticallyUnwrappedCheck();
+        this.filename = "src/test/files/htl/SlyElementsAreAutomaticallyUnwrappedCheck.html";
         verify();
     }
 }

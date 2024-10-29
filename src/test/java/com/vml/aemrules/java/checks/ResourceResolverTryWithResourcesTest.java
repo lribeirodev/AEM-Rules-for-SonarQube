@@ -20,14 +20,14 @@
 package com.vml.aemrules.java.checks;
 
 import com.vml.aemrules.java.checks.resourceresolver.close.ResourceResolverTryWithResourcesCheck;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class ResourceResolverTryWithResourcesTest extends AbstractBaseTest {
+class ResourceResolverTryWithResourcesTest extends AbstractBaseTest {
 
     @Test
-    public void checkResourceResolverUsesTryWithResourcesBlock() {
-        check = new ResourceResolverTryWithResourcesCheck();
-        filename = "src/test/files/java/AutoclosableResourceResolver.java";
+    void checkResourceResolverUsesTryWithResourcesBlock() {
+        this.check = new ResourceResolverTryWithResourcesCheck();
+        this.filename = "src/test/files/java/AutoclosableResourceResolver.java";
         verify();
     }
 

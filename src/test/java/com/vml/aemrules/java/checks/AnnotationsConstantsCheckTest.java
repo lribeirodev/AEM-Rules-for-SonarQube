@@ -19,14 +19,14 @@
  */
 package com.vml.aemrules.java.checks;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class AnnotationsConstantsCheckTest extends AbstractBaseTest {
+class AnnotationsConstantsCheckTest extends AbstractBaseTest {
 
     @Test
-    public void checkConstantsInAnnotations() {
-        check = new AnnotationsConstantsCheck();
-        filename = "src/test/files/java/AnnotationsConstantsCheck.java";
+    void checkConstantsInAnnotations() {
+        this.check = new AnnotationsConstantsCheck();
+        this.filename = "src/test/files/java/AnnotationsConstantsCheck.java";
         verify(false);
     }
 

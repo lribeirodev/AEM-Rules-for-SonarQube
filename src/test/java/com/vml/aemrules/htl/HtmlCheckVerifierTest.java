@@ -19,43 +19,47 @@
  */
 package com.vml.aemrules.htl;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.sonar.api.rule.RuleKey;
 import org.sonar.plugins.html.checks.HtmlIssue;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HtmlCheckVerifierTest {
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+class HtmlCheckVerifierTest {
 
     private final HtmlCheckVerifier htmlCheckVerifier = new HtmlCheckVerifier();
 
-    @Before
+    @BeforeEach
     public void setUp() {
         htmlCheckVerifier.collectExpectedIssues(HtmlCheckVerifier.ISSUE_MARKER, 1);
     }
 
-    @Test(expected = AssertionError.class)
-    public void checkUnexpectedError() {
+    @Test
+    void checkUnexpectedError() {
         List<HtmlIssue> htmlIssues = new ArrayList<>();
         htmlIssues.add(createLineIssue(1));
         htmlIssues.add(createLineIssue(2));
-        htmlCheckVerifier.checkIssues(htmlIssues);
+        assertThrows(AssertionError.class, () -> {
+            htmlCheckVerifier.checkIssues(htmlIssues);
+        });
     }
 
-    @Test()
-    public void checkMultipleExpectedIssuesInTheSameLine() {
+    @Test
+    void checkMultipleExpectedIssuesInTheSameLine() {
         List<HtmlIssue> htmlIssues = new ArrayList<>();
         htmlIssues.add(createLineIssue(1));
         htmlIssues.add(createLineIssue(1));
         htmlCheckVerifier.checkIssues(htmlIssues);
     }
 
-    @Test(expected = AssertionError.class)
-    public void checkExpectedIssueButNotReported() {
+    @Test
+    void checkExpectedIssueButNotReported() {
         List<HtmlIssue> htmlIssues = new ArrayList<>();
-        htmlCheckVerifier.checkIssues(htmlIssues);
+        assertThrows(AssertionError.class, () -> htmlCheckVerifier.checkIssues(htmlIssues));
     }
 
     private HtmlIssue createLineIssue(Integer line) {

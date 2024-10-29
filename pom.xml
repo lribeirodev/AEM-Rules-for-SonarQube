@@ -112,7 +112,7 @@
         <sonar.testingHarnessVersion>10.7.0.96327</sonar.testingHarnessVersion>
         <sonar.javaCheksTestkitVersion>7.30.1.34514</sonar.javaCheksTestkitVersion>
         <jdk.min.version>11</jdk.min.version>
-        <sonar.sources>src/main/java,src/main/js</sonar.sources>
+        <sonar.sources>src/main/java</sonar.sources>
         <coveralls.repo.token>4rVf3NGV0jyQ3EGrc8L86oEDoHWm6MgDD</coveralls.repo.token>
         <tagName>v${project.version}</tagName>
     </properties>
@@ -215,40 +215,34 @@
             <version>${sonar.testingHarnessVersion}</version>
         </dependency>
         <dependency>
-            <artifactId>junit</artifactId>
-            <groupId>junit</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <groupId>org.junit.jupiter</groupId>
             <scope>test</scope>
-            <version>4.13.2</version>
+            <version>5.11.3</version>
+        </dependency>
+        <dependency>
+            <artifactId>junit-jupiter-params</artifactId>
+            <groupId>org.junit.jupiter</groupId>
+            <scope>test</scope>
+            <version>5.11.3</version>
         </dependency>
         <dependency>
             <artifactId>mockito-core</artifactId>
             <groupId>org.mockito</groupId>
             <scope>test</scope>
-            <version>5.12.0</version>
+            <version>5.14.2</version>
         </dependency>
         <dependency>
             <artifactId>assertj-core</artifactId>
             <groupId>org.assertj</groupId>
             <scope>test</scope>
-            <version>3.26.0</version>
-        </dependency>
-        <dependency>
-            <artifactId>fest-assert</artifactId>
-            <groupId>org.easytesting</groupId>
-            <scope>test</scope>
-            <version>1.4</version>
-        </dependency>
-        <dependency>
-            <artifactId>hamcrest-all</artifactId>
-            <groupId>org.hamcrest</groupId>
-            <scope>test</scope>
-            <version>1.3</version>
+            <version>3.26.3</version>
         </dependency>
         <dependency>
             <artifactId>guava</artifactId>
             <groupId>com.google.guava</groupId>
             <scope>test</scope>
-            <version>32.0.0-jre</version>
+            <version>33.3.1-jre</version>
         </dependency>
         <dependency>
             <artifactId>sonar-plugin-api-impl</artifactId>
@@ -272,8 +266,9 @@
             <artifactId>logback-classic</artifactId>
             <groupId>ch.qos.logback</groupId>
             <scope>test</scope>
-            <version>1.2.13</version>
+            <version>1.5.12</version>
         </dependency>
+        <!-- aem dependencies-->
         <dependency>
             <artifactId>aem-api</artifactId>
             <groupId>com.adobe.aem</groupId>

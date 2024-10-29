@@ -20,14 +20,14 @@
 package com.vml.aemrules.htl.checks;
 
 import com.vml.aemrules.htl.AbstractBaseTest;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class CamelCaseCheckTest extends AbstractBaseTest {
+class CamelCaseCheckTest extends AbstractBaseTest {
 
     @Test
-    public void checkCapitalization() {
-        check = new CamelCaseCheck();
-        filename = "src/test/files/htl/CamelCaseCheck.html";
+    void checkCapitalization() {
+        this.check = new CamelCaseCheck();
+        this.filename = "src/test/files/htl/CamelCaseCheck.html";
         verify();
     }
 }

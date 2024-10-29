@@ -19,11 +19,10 @@
  */
 package com.vml.aemrules.htl.checks;
 
-
 import com.vml.aemrules.htl.AbstractBaseTest;
 import com.vml.aemrules.htl.Htl;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.batch.fs.internal.TestInputFileBuilder;
 import org.sonar.plugins.html.checks.HtmlIssue;
@@ -34,14 +33,13 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
-public class AbstractHtlCheckTest extends AbstractBaseTest {
+
+class AbstractHtlCheckTest extends AbstractBaseTest {
 
     private AbstractHtlCheck check;
-
-    private HtmlSourceCode htmlSourceCode;
 
     private static HtmlSourceCode createHtmlSourceCode(File file) {
         return new HtmlSourceCode(
@@ -54,17 +52,17 @@ public class AbstractHtlCheckTest extends AbstractBaseTest {
         );
     }
 
-    @Before
+    @BeforeEach
     public void setUp() {
         this.check = new AbstractHtlCheck();
         File file = new File("src/test/files/htl/Empty.html");
-        this.htmlSourceCode = createHtmlSourceCode(file);
-        check.setSourceCode(htmlSourceCode);
+        HtmlSourceCode htmlSourceCode = createHtmlSourceCode(file);
+        this.check.setSourceCode(htmlSourceCode);
     }
 
     @Test
-    public void creatingViolationWithoutCost() {
-        check.createViolation(0, "Issue 0");
+    void creatingViolationWithoutCost() {
+        this.check.createViolation(0, "Issue 0");
         List<HtmlIssue> issues = check.getHtmlSourceCode().getIssues();
 
         assertThat(issues).hasSize(1);
@@ -72,8 +70,8 @@ public class AbstractHtlCheckTest extends AbstractBaseTest {
     }
 
     @Test
-    public void creatingViolationWithCost() {
-        check.createViolation(1, "Issue 0", 1d);
+    void creatingViolationWithCost() {
+        this.check.createViolation(1, "Issue 0", 1d);
         List<HtmlIssue> issues = check.getHtmlSourceCode().getIssues();
 
         assertThat(issues).hasSize(1);
@@ -81,9 +79,9 @@ public class AbstractHtlCheckTest extends AbstractBaseTest {
     }
 
     @Test
-    public void creatingViolations() {
-        check.createViolation(0, "Issue 0", 1d);
-        check.createViolation(1, "Issue 1");
+    void creatingViolations() {
+        this.check.createViolation(0, "Issue 0", 1d);
+        this.check.createViolation(1, "Issue 1");
         List<HtmlIssue> issues = check.getHtmlSourceCode().getIssues();
 
         assertThat(issues).hasSize(2);

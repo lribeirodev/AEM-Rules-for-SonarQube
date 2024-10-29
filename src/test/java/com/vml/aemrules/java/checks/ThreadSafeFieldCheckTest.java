@@ -19,49 +19,24 @@
  */
 package com.vml.aemrules.java.checks;
 
-import org.junit.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
-public class ThreadSafeFieldCheckTest extends AbstractBaseTest {
+class ThreadSafeFieldCheckTest extends AbstractBaseTest {
 
-    @Test
-    public void checkThreadSafeFieldsInServlet() {
-        check = new ThreadSafeFieldCheck();
-        filename = "src/test/files/java/ThreadSafeFieldCheckServlet.java";
-        verify();
-    }
-
-    @Test
-    public void checkThreadSafeFieldsInFilter() {
-        check = new ThreadSafeFieldCheck();
-        filename = "src/test/files/java/ThreadSafeFieldCheckFilter.java";
-        verify();
-    }
-
-    @Test
-    public void checkThreadSafeFieldsInEventHandler() {
-        check = new ThreadSafeFieldCheck();
-        filename = "src/test/files/java/ThreadSafeFieldCheckEventHandler.java";
-        verify();
-    }
-
-    @Test
-    public void checkThreadSafeFieldsInScrComponent() {
-        check = new ThreadSafeFieldCheck();
-        filename = "src/test/files/java/ThreadSafeFieldCheckScrComponentAnnotation.java";
-        verify();
-    }
-
-    @Test
-    public void checkThreadSafeFieldsInDsComponent() {
-        check = new ThreadSafeFieldCheck();
-        filename = "src/test/files/java/ThreadSafeFieldCheckDsComponentAnnotation.java";
-        verify();
-    }
-
-    @Test
-    public void checkThreadSafeFieldsInSlingServletAnnotated() {
-        check = new ThreadSafeFieldCheck();
-        filename = "src/test/files/java/ThreadSafeFieldCheckSlingServletAnnotation.java";
+    @ParameterizedTest
+    @CsvSource({
+            "checkThreadSafeFieldsInServlet,src/test/files/java/ThreadSafeFieldCheckServlet.java",
+            "checkThreadSafeFieldsInFilter,src/test/files/java/ThreadSafeFieldCheckFilter.java",
+            "checkThreadSafeFieldsInEventHandler,src/test/files/java/ThreadSafeFieldCheckEventHandler.java",
+            "checkThreadSafeFieldsInScrComponent,src/test/files/java/ThreadSafeFieldCheckScrComponentAnnotation.java",
+            "checkThreadSafeFieldsInDsComponent,src/test/files/java/ThreadSafeFieldCheckDsComponentAnnotation.java",
+            "checkThreadSafeFieldsInSlingServletAnnotated,src/test/files/java/ThreadSafeFieldCheckSlingServletAnnotation.java"
+    })
+    void detect(String description, String fileName) {
+        System.out.println(description);
+        this.check = new ThreadSafeFieldCheck();
+        this.filename = fileName;
         verify();
     }
 }
