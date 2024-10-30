@@ -47,6 +47,11 @@ Use of the plugin does not differ much from regular SonarQube analysis. However,
 
 Each rule defines supported AEM version or version range. Most of the rules are universal.
 
+SonarLint supports only AEM-JAVA rules. Currently SonarLint does not support custom languages.
+Please refer to this [article](https://community.sonarsource.com/t/sonarlint-for-custom-languages/69904).
+
+It was tried to add `HTL` rules to `web` language, but [sonar-html-plugin](https://github.com/SonarSource/sonar-html) is final and can not be extended.
+
 ### Running analysis
 
 When running analysis, pass `sonarRunner.aemVersion` property with your AEM version. The format is as follows:
