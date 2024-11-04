@@ -1,0 +1,14 @@
+{
+    "title": "Consider caching data-sly-test conditions",
+    "type": "CODE_SMELL",
+    "status": "ready",
+    "remediation": {
+        "func": "Constant\/Issue",
+        "constantCost": "10min"
+    },
+    "tags": [
+        "aem"
+    ],
+    "defaultSeverity": "Info",
+    "sqKey": "HTL-4"
+}

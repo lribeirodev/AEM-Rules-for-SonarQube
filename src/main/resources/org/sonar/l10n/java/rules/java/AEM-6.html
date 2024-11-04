@@ -1,0 +1,40 @@
+<p>
+    Resource Resolver has a life cycle which begins with the creation of the Resource Resolver using any of the factory
+    methods and ends with calling the <code>close()</code> method. It is very important to call the <code>close()</code>
+    method once the resource resolver is not used any more to ensure any system resources are properly clean up.
+</p>
+
+<h3>Noncompliant Code Example</h3>
+<pre>
+try {
+    ResourceResolver resolver = resourceResolverFactory.getResourceResolver(authenticationInfoMap); // Noncompliant; resourceResolver should be closed in finally block
+    // ...
+} catch (Exception e) {
+    // ...
+}
+</pre>
+<br>
+<pre>
+try {
+    ResourceResolver resolver = resourceResolverFactory.getResourceResolver(authenticationInfoMap); // Noncompliant; resourceResolver should be closed in finally block
+    resolver.close();
+} catch (Exception e) {
+    // ...
+}
+</pre>
+<h3>Compliant Solution</h3>
+<pre>
+ResourceResolver resolver = null;
+try {
+    resolver = resourceResolverFactory.getResourceResolver(authenticationInfoMap);
+    // ...
+} catch (LoginException e) {
+    // ...
+} finally {
+    if (resolver != null) {
+        resolver.close();
+    }
+}
+</pre>
+<h3>See</h3>
+<a href="https://sling.apache.org/apidocs/sling6/org/apache/sling/api/resource/ResourceResolver.html">ResourceResolver Javadoc</a>

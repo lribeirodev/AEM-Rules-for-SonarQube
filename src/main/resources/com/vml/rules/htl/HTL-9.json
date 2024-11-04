@@ -1,0 +1,14 @@
+{
+    "title": "For inline styles display context is mandatory",
+    "type": "CODE_SMELL",
+    "status": "ready",
+    "remediation": {
+        "func": "Constant\/Issue",
+        "constantCost": "5min"
+    },
+    "tags": [
+        "aem"
+    ],
+    "defaultSeverity": "Major",
+    "sqKey": "HTL-9"
+}

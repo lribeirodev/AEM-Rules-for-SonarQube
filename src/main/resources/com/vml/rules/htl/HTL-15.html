@@ -1,0 +1,15 @@
+<p>Use Camel Case in identifiers:</p>
+<ul>
+    <li>variable names</li>
+    <li>template names</li>
+</ul>
+<h3>Noncompliant Code Example</h3>
+<pre>
+&lt;sly data-sly-template.COMPONENT_VALIDATION&gt;
+&lt;sly data-sly-use.GalleryModel=&quot;com.example.GalleryModel&quot;&gt;
+</pre>
+<h3>Compliant Solution</h3>
+<pre>
+&lt;sly data-sly-template.componentValidation&gt;
+&lt;sly data-sly-use.galleryModel=&quot;com.example.GalleryModel&quot;&gt;
+</pre>

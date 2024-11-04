@@ -1,0 +1,36 @@
+<p>
+    Administrative access to the resource tree and JCR Repository by means of usage of <code>ResourceResolverFactory.getAdministrativeResourceResolver</code>
+    and <code>SlingRepository.loginAdministrative</code> has been deprecated.
+    Use <code>ResourceResolverFactory.getServiceResourceResolver</code> or <code>SlingRepository.loginService</code>
+    respectively.
+</p>
+
+<h3>Noncompliant Code Example</h3>
+<pre>
+ResourceResolver resourceResolver = resourceResolverFactory.getAdministrativeResourceResolver(credentials);
+</pre>
+<br>
+<pre>
+Session session = slingRepository.loginAdministrative(workspace);
+</pre>
+<h3>Compliant Solution</h3>
+<pre>
+try (ResourceResolver resourceResolver = resolverFactory.getServiceResourceResolver(null)) {
+	...
+}
+</pre>
+<p>or</p>
+<pre>
+Map&lt;String, Object&gt; param = new HashMap&lt;String, Object&gt;();
+param.put(ResourceResolverFactory.SUBSERVICE, "sub service name");
+try (ResourceResolver resourceResolver = resolverFactory.getServiceResourceResolver(param)) {
+	...
+}
+</pre>
+<p>or</p>
+<pre>
+Session session = slingRepository.loginService(subServiceName, workspace);
+</pre>
+<h3>See</h3>
+<a href="https://docs.adobe.com/docs/en/aem/6-0/develop/ref/javadoc/org/apache/sling/api/resource/ResourceResolverFactory.html#getAdministrativeResourceResolver%28java.util.Map%29">ResourceResolverFactory Javadoc</a><br>
+<a href="http://sling.apache.org/documentation/the-sling-engine/service-authentication.html">Service Authentication</a>

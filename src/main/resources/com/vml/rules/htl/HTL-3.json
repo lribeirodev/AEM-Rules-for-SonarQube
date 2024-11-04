@@ -1,0 +1,14 @@
+{
+    "title": "Explicit names in loops",
+    "type": "CODE_SMELL",
+    "status": "ready",
+    "remediation": {
+        "func": "Constant\/Issue",
+        "constantCost": "10min"
+    },
+    "tags": [
+        "aem"
+    ],
+    "defaultSeverity": "Minor",
+    "sqKey": "HTL-3"
+}

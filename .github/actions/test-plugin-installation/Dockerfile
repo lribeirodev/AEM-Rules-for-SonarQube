@@ -2,7 +2,7 @@
 # #%L
 # AEM Rules for SonarQube
 # %%
-# Copyright (C) 2015-2019 Wunderman Thompson Technology
+# Copyright (C) 2015-2024 VML
 # %%
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -26,4 +26,3 @@ ARG inputs_aem_rules_binary
 FROM $inputs_sonarqube_base_image
 
 COPY $inputs_aem_rules_binary $SONARQUBE_HOME/extensions/plugins/$inputs_aem_rules_binary
-# COPY sonar-findbugs-plugin-3.11.0.jar $SONARQUBE_HOME/extensions/plugins/sonar-findbugs-plugin-3.11.0.jar

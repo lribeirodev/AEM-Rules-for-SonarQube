@@ -1,0 +1,19 @@
+<p>Use existing HTML elements instead of adding extra sly tags.</p>
+<h3>Noncompliant Code Example</h3>
+<pre>
+&lt;sly data-sly-test=&quot;${model.visible}&quot; data-sly-use=&quot;com.example.HeroModel&quot;&gt;
+    &lt;div class=&quot;myComponent&quot;&gt;
+        &lt;h1&gt;${model.headline}&lt;/h1&gt;
+        &lt;p&gt;${model.text}&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/sly&gt;
+</pre>
+<h3>Compliant Solution</h3>
+<pre>
+&lt;div class=&quot;myComponent&quot;
+     data-sly-test=&quot;${model.visible}&quot;
+     data-sly-use=&quot;com.example.HeroModel&quot;&gt;
+    &lt;h1&gt;${model.headline}&lt;/h1&gt;
+    &lt;p&gt;${model.text}&lt;/p&gt;
+&lt;/div&gt;
+</pre>

@@ -2,7 +2,7 @@
 # #%L
 # AEM Rules for SonarQube
 # %%
-# Copyright (C) 2015-2019 Wunderman Thompson Technology
+# Copyright (C) 2015-2024 VML
 # %%
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@ inputs:
   sonarqube-base-image:
     description: 'Which base Docker image to use to set up SonarQube'
     required: true
-    default: sonarqube-8.9-community
+    default: sonarqube-9.9-community
   aem-rules-binary:
     description: "Name of the JAR file to copy from Maven's 'target' directory into the plugins directory"
     required: true

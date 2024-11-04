@@ -1,0 +1,14 @@
+{
+    "title": "Please define markup context for HTML conditional comments otherwise automatically implied context will be 'comment'",
+    "type": "CODE_SMELL",
+    "status": "ready",
+    "remediation": {
+        "func": "Constant\/Issue",
+        "constantCost": "5min"
+    },
+    "tags": [
+        "aem"
+    ],
+    "defaultSeverity": "Minor",
+    "sqKey": "HTL-14"
+}

@@ -3,7 +3,7 @@
 # #%L
 # AEM Rules for SonarQube
 # %%
-# Copyright (C) 2015-2019 Wunderman Thompson Technology
+# Copyright (C) 2015-2024 VML
 # %%
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -31,7 +31,7 @@ print_usage() {
 usage: $0 [IMAGE...]
 
 examples:
-       $0 7.6-community
+       $0 9.9-community
 EOF
 }
 

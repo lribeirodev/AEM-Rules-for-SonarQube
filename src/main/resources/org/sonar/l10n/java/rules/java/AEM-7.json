@@ -1,0 +1,14 @@
+{
+    "title": "Session should be logged out in finally block.",
+    "type": "CODE_SMELL",
+    "status": "ready",
+    "remediation": {
+        "func": "Constant\/Issue",
+        "constantCost": "10min"
+    },
+    "tags": [
+        "aem"
+    ],
+    "defaultSeverity": "Critical",
+    "sqKey": "AEM-7"
+}

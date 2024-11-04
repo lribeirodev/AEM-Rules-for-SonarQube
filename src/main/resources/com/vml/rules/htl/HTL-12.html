@@ -1,0 +1,30 @@
+<p>Use the most restrictive HTL context possible.</p>
+<h3>Noncompliant Code Example</h3>
+<pre>
+&lt;div data-index-number=&quot;${model.index}&quot;&gt;&lt;/div&gt;
+</pre>
+<h3>Compliant Solution</h3>
+<pre>
+&lt;div data-index-number=&quot;${model.index @ context=&#39;number&#39;}&quot;&gt;&lt;/div&gt;
+</pre>
+<h3>Available markup context:</h3>
+<ul>
+    <li>html - Use this in case you want to output HTMLRemoves markup that may contain XSS risks</li>
+    <li>text - Use this for simple HTML contentEncodes all HTML</li>
+    <li>elementName - Allows only element names that are white-listed, outputs 'div' otherwise -</li>
+    <li>attributeName - Outputs nothing if the value doesn't correspond to the HTML attribute name syntaxdoesn't allow 'style' and 'on*' attributes</li>
+    <li>attribute - Applies HTML attribute escaping</li>
+    <li>uri - Outputs nothing if the value contains XSS risks</li>
+    <li>scriptToken - Outputs nothing if the value doesn't correspond to an Identifier, String literal or Numeric literal JavaScript token</li>
+    <li>scriptString - Applies JavaScript string escaping</li>
+    <li>scriptComment - Context for Javascript block comments. Outputs nothing if value is trying to break out of the comment context</li>
+    <li>scriptRegExp - Applies JavaScript regular expression escaping</li>
+    <li>styleToken - Outputs nothing if the value doesn't correspond to the CSS token syntax</li>
+    <li>styleString - Applies CSS string escaping</li>
+    <li>styleComment - Context for CSS comments. Outputs nothing if value is trying to break out of the comment context</li>
+    <li>comment - Applies HTML comment escaping</li>
+    <li>number - Outputs zero if the value is not a number</li>
+    <li>unsafe - Use this at your own risk, this disables XSS protection completely</li>
+</ul>
+<h3>See</h3>
+<a href="https://github.com/adobe/htl-spec/blob/master/SPECIFICATION.md#121-display-context">Source</a>

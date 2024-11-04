@@ -1,0 +1,25 @@
+<p>For style and script tags display context definition is mandatory.</p>
+<h3>Noncompliant Code Example</h3>
+<pre>
+&lt;script&gt;
+    var bar=&#39;${someText}&#39;;
+&lt;/script&gt;
+
+&lt;style&gt;
+    a {
+        font-family: &#39;${fontFamily}&#39;, sans-serif;
+    }
+&lt;/style&gt;
+</pre>
+<h3>Compliant Solution</h3>
+<pre>
+&lt;script&gt;
+    var bar=&#39;${someText @ context=&quot;scriptString&quot;}&#39;;
+&lt;/script&gt;
+
+&lt;style&gt;
+    a {
+        font-family: &#39;${fontFamily @ context=&quot;styleToken&quot;}&#39;, sans-serif;
+    }
+&lt;/style&gt;
+</pre>

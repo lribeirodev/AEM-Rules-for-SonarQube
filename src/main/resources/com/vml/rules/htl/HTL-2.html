@@ -1,0 +1,14 @@
+<p>
+    HTL Templates should be placed in separate files. This helps to understand which code is meant to render a component and which code is re-used as a template.
+    Additionally, component-specific code can be safely removed. It should be immediately obvious whether or not some code is re-used across the codebase.
+</p>
+<h3>Noncompliant Code Example</h3>
+<pre>
+&lt;template data-sly-template.image=&quot;${@ source, description}&quot;&gt;
+    &lt;img src=&quot;${source}&quot; alt=&quot;${description}&quot; title=&quot;${description}&quot;/&gt;
+&lt;/template&gt;
+
+&lt;div class=&quot;image-component&quot; data-sly-use.model=&quot;com.example.Image&quot;&gt;
+    &lt;sly data-sly-call=&quot;${image @ source=model.src, description=model.altText}&quot;
+&lt;/div&gt;
+</pre>

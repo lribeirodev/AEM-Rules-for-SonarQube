@@ -1,0 +1,29 @@
+<p>
+    The <a href="https://sling.apache.org/apidocs/sling7/org/apache/sling/api/resource/ModifiableValueMap.html">ModifiableValueMap</a>
+    is an extension of the <code>ValueMap</code> which allows to modify and persist properties.
+    It is checking user permissions and returns `null` if the user has no permission to write.
+    <br><br>
+    The modifiable value map is only changeable through any of the following methods:
+<ul>
+    <li><code>put(String, Object)</code></li>
+    <li><code>putAll(java.util.Map)</code></li>
+    <li><code>remove(Object)</code></li>
+</ul>
+<br>
+If none of the above methods is called, <code>ValueMap</code> should be used instead.
+</p>
+
+<h3>Noncompliant Code Example</h3>
+<pre>
+public Object getProperty(Resource resource) {
+	ModifiableValueMap createdResourceProperties = resource.adaptTo(ModifiableValueMap.class); // Noncompliant ValueMap should be used
+	return createdResourceProperties.get("propertyName");
+}
+</pre>
+<h3>Compliant Solution</h3>
+<pre>
+public Object getProperty(Resource resource) {
+	ValueMap createdResourceProperties = resource.getValueMap();
+	return createdResourceProperties.get("propertyName");
+}
+</pre>

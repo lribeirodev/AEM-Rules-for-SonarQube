@@ -1,0 +1,10 @@
+<p>Always Place HTL Attributes After the Ones that are Part of the Markup</p>
+<p>It's easier to understand HTL code if the attributes processed server-side are visually separated from the ones used at the front-end.</p>
+<h3>Noncompliant Code Example</h3>
+<pre>
+&lt;div data-sly-test=&quot;${model.enabled}&quot; class=&quot;decorated&quot; data-sly-unwrap=&quot;${!model.decorated}&quot;&gt; // Bad - mixing HTL attributes with other ones
+</pre>
+<h3>Compliant Solution</h3>
+<pre>
+&lt;div class=&quot;decorated&quot; data-sly-test=&quot;${model.enabled}&quot; data-sly-unwrap=&quot;${!model.decorated}&quot;&gt; // Good - HTL-specific attributes grouped at the end of the element
+</pre>

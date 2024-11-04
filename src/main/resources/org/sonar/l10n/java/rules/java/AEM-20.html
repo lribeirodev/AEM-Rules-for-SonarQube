@@ -1,0 +1,36 @@
+<p>
+    The <a href="https://sling.apache.org/apidocs/sling10/org/apache/sling/api/resource/ResourceResolver.html"><code>ResourceResolver</code></a>
+	should be initialised in
+	<a href="https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html"><code>try-with-resources</code> block</a>
+	which ensures that it will be automatically closed because of the
+	<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/AutoCloseable.html"><code>Autocloseable</code> interface</a>.
+</p>
+<p>
+	Therefore, you should always initialise ResourceResolver in <code>try-with-resources</code> block
+</p>
+
+<h3>Noncompliant Code Example</h3>
+<pre>
+protected void getResourceResolver() {
+    ResourceResolver resourceResolver = null;
+    try {
+        resourceResolver = resourceResolverFactory.getServiceResourceResolver(null); // Noncompliant
+    } catch (LoginException e) {
+        System.out.println("something went wrong");
+    } finally {
+        if (resourceResolver != null) {
+            //resourceResolver.close();
+        }
+    }
+}
+</pre>
+<h3>Compliant Solution</h3>
+<pre>
+private void getResourceResolver() {
+    try (ResourceResolver resourceResolver = resourceResolverFactory.getServiceResourceResolver(null)) {
+        resourceResolver.getResource("path/to/resource");
+    } catch (LoginException e) {
+        System.out.println("something went wrong");
+    }
+}
+</pre>

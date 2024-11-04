@@ -1,0 +1,52 @@
+<!--
+
+    #%L
+    AEM Rules for SonarQube
+    %%
+    Copyright (C) 2015-2024 VML
+    %%
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+    #L%
+
+-->
+<template data-sly-template.template="${@ source, description}"> <!--/* Non-Compliant */-->
+    <img src="${source}" alt="${description}" title="${description}"/>
+</template>
+
+<div class="image-component" data-sly-use.model="com.example.Image">
+    <sly data-sly-call="${template}"></sly>
+    <div data-sly-call="${template.property}"></div>
+</div>
+
+<div class="image-component" data-sly-use.model="com.example.Image">
+    <sly data-sly-call="${template @ source=model.src, description=model.altText}"></sly>
+</div>
+
+<template data-sly-template.one>template text</template><!--/* Non-Compliant */-->
+<div data-sly-call="${one}"></div>
+<span data-sly-call="${one}"></span>
+<span data-sly-call="${one}"></span>
+
+<template data-sly-template.two="${@ title, resource='The resource of the parent node'}"> <!--/* Non-Compliant */-->
+    <h1>${title}</h1>
+    <p>Parent: ${resource.name}</p>
+</template>
+<div data-sly-call="${two @ title=properties.jcr:title, resource=resource.parent}"></div>
+
+<div data-sly-call="${component @ title=properties.jcr:title, resource=resource.parent}"></div>
+
+<div data-sly-use.lib="templateLib.html" data-sly-call="${lib.one}"></div>
+
+<div data-sly-call="${four @ title=properties.jcr:title, resource=resource.parent}"></div>
+
+<div data-sly-call="${example @ title=properties.jcr:title, resource=resource.parent}"></div>

@@ -1,0 +1,13 @@
+<p>Avoid using 'unsafe' display context, it disables XSS protection completely.</p>
+<h3>Noncompliant Code Example</h3>
+<pre>
+&lt;div class=&quot;my-component&gt;
+    &lt;p&gt;${model.text @ context=&#39;unsafe&#39;}&lt;/p&gt;
+&lt;/div&gt;
+</pre>
+<h3>Compliant Solution</h3>
+<pre>
+&lt;div class=&quot;my-component&gt;
+    &lt;p&gt;${model.text}&lt;/p&gt;
+&lt;/div&gt;
+</pre>

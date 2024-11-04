@@ -1,0 +1,13 @@
+<p>HTL uses uri display context as default for src, poster, manifest, href, formaction, data, cite, action attributes. Explicit display context definition should be removed.</p>
+<h3>Noncompliant Code Example</h3>
+<pre>
+&lt;img alt=&quot;${model.imageAlt @ context=&#39;attribute&#39;}&quot; src=&quot;${model.imageUrl @ context=&#39;uri&#39;}&quot; /&gt;
+</pre>
+<h3>Compliant Solution</h3>
+<pre>
+&lt;img alt=&quot;${model.imageAlt}&quot; src=&quot;${model.imageUrl}&quot; /&gt;
+
+&lt;div data-service-url=&quot;${model.url @ context=&#39;uri&#39;}&quot;&gt;
+    ${&#39;http://www.example.org/search?s=1&amp;q=htl&#39; @ context=&#39;uri&#39;}
+&lt;/div&gt;
+</pre>

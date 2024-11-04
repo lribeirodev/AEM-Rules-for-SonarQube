@@ -1,0 +1,14 @@
+{
+    "title": "Use Camel Case in identifiers",
+    "type": "CODE_SMELL",
+    "status": "ready",
+    "remediation": {
+        "func": "Constant\/Issue",
+        "constantCost": "5min"
+    },
+    "tags": [
+        "aem"
+    ],
+    "defaultSeverity": "Minor",
+    "sqKey": "HTL-15"
+}

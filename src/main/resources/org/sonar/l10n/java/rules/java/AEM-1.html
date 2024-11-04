@@ -1,0 +1,13 @@
+<p>Use predefined constant in annotation instead of hardcoded value.</p>
+<h3>Noncompliant Code Example</h3>
+<pre>
+public static final String JCR_CONTENT = "jcr:content"; // Noncompliant; Use predefined constant available in com.day.cq.commons.jcr.JcrConstants
+// ...
+Resource resource = resourceResolver.getResource(resourcePath + JCR_CONTENT);
+</pre>
+<h3>Compliant Solution</h3>
+<pre>
+import com.day.cq.commons.jcr.JcrConstants
+// ...
+Resource resource = resourceResolver.getResource(resourcePath + JcrConstants.JCR_CONTENT);
+</pre>

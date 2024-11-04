@@ -1,0 +1,9 @@
+<p>For inline styles display context is mandatory.</p>
+<h3>Noncompliant Code Example</h3>
+<pre>
+&lt;a href=&quot;#id&quot; style=&quot;color: ${colorName};&quot;&gt;Link&lt;/a&gt;
+</pre>
+<h3>Compliant Solution</h3>
+<pre>
+&lt;a href=&quot;#id&quot; style=&quot;color: ${colorName @ context=&#39;styleToken&#39;};&quot;&gt;Link&lt;/a&gt;
+</pre>

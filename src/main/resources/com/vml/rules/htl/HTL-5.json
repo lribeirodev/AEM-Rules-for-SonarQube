@@ -1,0 +1,14 @@
+{
+    "title": "Always use HTL style of comments",
+    "type": "CODE_SMELL",
+    "status": "ready",
+    "remediation": {
+        "func": "Constant\/Issue",
+        "constantCost": "10min"
+    },
+    "tags": [
+        "aem"
+    ],
+    "defaultSeverity": "Minor",
+    "sqKey": "HTL-5"
+}

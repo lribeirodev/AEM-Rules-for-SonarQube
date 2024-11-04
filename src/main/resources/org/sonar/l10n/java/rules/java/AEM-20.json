@@ -1,0 +1,14 @@
+{
+    "title": "ResourceResolver can be closed using try-with-resources Java 7 feature.",
+    "type": "CODE_SMELL",
+    "status": "ready",
+    "remediation": {
+        "func": "Constant\/Issue",
+        "constantCost": "10min"
+    },
+    "tags": [
+        "aem"
+    ],
+    "defaultSeverity": "Info",
+    "sqKey": "AEM-20"
+}

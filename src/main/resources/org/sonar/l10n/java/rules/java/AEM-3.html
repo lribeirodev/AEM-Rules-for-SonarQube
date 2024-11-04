@@ -1,0 +1,30 @@
+<p>
+    It is not safe to keep session based object as a field in <code>Servlet</code>, <code>Filter</code>, or <code>EventHandler</code>.
+    As well as any Declarative Services component. Rule checks for the occurrence of any instance or static fields of
+    following types:
+</p>
+<ul>
+    <li>org.apache.sling.api.resource.ResourceResolver</li>
+    <li>javax.jcr.Session</li>
+    <li>com.day.cq.wcm.api.PageManager</li>
+</ul>
+<h3>Noncompliant Code Example</h3>
+<pre>
+public class ComponentsServlet extends SlingSafeMethodsServlet {
+
+    public static final ResourceResolver staticResolver; // Noncompliant
+
+    private ResourceResolver resolver; // Noncompliant
+
+    public ResourceResolver publicResolver; // Noncompliant
+
+    private PageManager pageManager; // Noncompliant
+
+    private Session session; // Noncompliant
+</pre>
+<br>
+<pre>
+public class ComponentsFilter implements Filter {
+
+    private PageManager pageManager; // Noncompliant
+</pre>

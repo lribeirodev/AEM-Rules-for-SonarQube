@@ -1,0 +1,28 @@
+<p>
+    Manually created <code>Session</code> should be logged out after it is no longer needed. The <code>logout()</code> method releases all resources associated with <code>Session</code>.
+</p>
+
+<h3>Noncompliant Code Example</h3>
+<pre>
+Session session = null;
+try {
+	session = repository.loginService("myService", null);
+	// ...
+} catch (RepositoryException e) {
+	// ...
+}
+</pre>
+<h3>Compliant Solution</h3>
+<pre>
+Session session = null;
+try {
+	session = repository.loginService("myService", null);
+	// ...
+} catch (RepositoryException e) {
+	// ...
+} finally {
+    if (session != null && session.isLive()) {
+        session.logout();
+    }
+}
+</pre>

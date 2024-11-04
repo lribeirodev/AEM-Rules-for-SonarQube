@@ -1,0 +1,15 @@
+{
+    "title": "Non-thread safe object used as a field of Servlet / Filter etc.",
+    "type": "CODE_SMELL",
+    "status": "ready",
+    "remediation": {
+        "func": "Constant\/Issue",
+        "constantCost": "1h"
+    },
+    "tags": [
+        "bug",
+        "aem"
+    ],
+    "defaultSeverity": "Critical",
+    "sqKey": "AEM-3"
+}
